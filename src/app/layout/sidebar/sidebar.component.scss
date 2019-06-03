@@ -1,0 +1,27 @@
+// .sidebar > .nav > li.active {
+//     border-left-color: #2196F3;
+//     width: 100%;
+// }
+.aside-inner{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 222px;
+}
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 60px;
+    margin-bottom: 0;
+    padding-top: 100px;
+    list-style: none;
+}
+.sidebar {
+    margin-right:0px !important;
+    background: #444755;
+   
+}
+.element::-webkit-scrollbar 
+{ 
+    width: 0 !important 
+}

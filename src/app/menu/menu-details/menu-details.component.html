@@ -1,0 +1,181 @@
+<!-- <countdown #countdown [config]="config" (finished)="finishTest()">
+   <div class="test_heading">Time left - $!m!:$!s!</div>
+</countdown> -->
+<div class="row">
+   <div class="col-md-2">
+      <h4 class="pl-4 pt-3"> Categories </h4>
+      <ul style="list-style-type:none; margin-left: -18px; margin-bottom: 0.3rem;" *ngFor="let data of Side_Menu_Data; let i = index;"
+         class="text-left categoryMnuStyle">
+         <li><a class="a"  (click)="triggerScrollTo(data)" >{{data.MainCourse}}</a></li>
+         <!-- <li><a class="a" href="#Salads">Salads</a></li>
+         <li><a class="a" href="#Soups">Soups</a></li>
+         <li><a class="a" href="#Indian">Indian</a></li>
+         <li><a class="a" href="#Chinese">Chinese</a></li>
+         <li><a class="a" href="#Arabian">Arabian</a></li>
+         <li><a class="a" href="#Continental">Continental</a></li>
+         <li><a class="a" href="#Desserts">Desserts</a></li>
+         <li><a class="a" href="#Beverages">Beverages</a></li> -->
+      </ul>
+   </div>
+
+   <div class="col-md-10" style="background: white;">
+
+      <div class="menu-body__">
+
+
+         <div class="row mt-3 shadow-sm">
+            <div class="col-lg-7">
+               <div class="input-group md-form form-sm form-1 pl-0">
+                  <div class="input-group-prepend">
+                     <span class="input-group-text purple lighten-3 bg-dark" id="basic-text1"><i
+                           class="fas fa-search text-white" aria-hidden="true"></i></span>
+                  </div>
+                  <input class="form-control my-0 py-1" [(ngModel)]="SearchMenu" type="text" placeholder="Search"
+                     aria-label="Search" (ngModelChange)="menuFilter()">
+               </div>
+            </div>
+            <div class="col-lg-5">
+
+               <div class="row">
+                  <div class="col-lg-6">
+                     <mat-checkbox (change)="ofs()" class="chk pt-2 d-flex" #ref>Show Out of stock</mat-checkbox>
+                  </div>
+                  <div class="col-lg-6">
+                     <button type="button" (click)="addNewItem()" class="btn btn-outline-success"
+                        style="margin-top:0px !important; ">ADD NEW
+                        ITEM</button>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+
+
+         <div class="ScrollStyle">
+            <div *ngFor="let data of ELEMENT_DATA; let i = index;" class="menu-section" >
+               <h6 class="menu-section-title">
+                  <h2 class="halfLine" id={{data.MainCourse}}><b>{{data.MainCourse}}</b></h2>
+
+               </h6>
+               <!-- Item starts -->
+               <div *ngFor="let subData of data.Subcourse; let ij = index;" class="menu-item">
+
+
+                  <div class="row m-0 p-0">
+                     <div class="col-md-7"><span *ngIf="subData.item_category =='veg'">
+                           <img src="../../../assets/img/veg.png" class="category_img" />
+                        </span>
+                        <span *ngIf="subData.item_category =='nonveg'">
+                           <img src="../../../assets/img/nonveg.png" class="category_img" />
+                        </span><b class="itemStyle">{{subData.dish_name}}</b>
+
+                        <div class="menu-item-description">
+                           <h5>₹{{subData.dish_price}}</h5>
+                        </div>
+                     </div>
+
+                     <div class="col-md-3">
+                        <div class="menu-item-price">
+                           <form class="validate-form" [formGroup]="menuFormGroup">
+                              <mat-slide-toggle ngDefaultControl 
+                              (change)="openModal(template,subData,i,ij,$event)" 
+                              [checked]="subData.dish_status">
+                              </mat-slide-toggle>
+                           </form>
+                        </div>
+                        <div *ngIf="!subData.dish_status">
+                           <p class="avalTime" >Next available <br />2050-01-01 01:01:01 </p>
+                        </div>                       
+                     </div>
+                     <div class="col-md-2 edit text-left">
+                        <a class="a editBtn" (click)='openModal1(template1,subData)'>Edit</a>
+                        <p class="statusNow">PENDING</p>
+                        <!-- <a href="" class="a">Delete</a> -->
+                     </div>
+                  </div>
+
+
+
+               </div>
+
+            </div>
+         </div>
+
+      </div>
+
+
+
+
+
+   </div>
+
+   <ng-template #template>
+      <div class="template pop_01">
+         <span>Confirm that <b>{{item_data.dish_name}}</b> is out of stock</span>
+         <hr>
+         <span><b>Choose from the below time frame:</b></span>
+         <br>
+         <span>You will not receive orders for this item till <b>{{ selection || '8 AM tomorrow morning'}}</b>.</span>
+         <br>
+         <br>
+
+         <mat-radio-group [(ngModel)]="selection" aria-label="Select an option">
+            <mat-radio-button class="a popBtnStyle" value="End of the Day">End of the Day</mat-radio-button>
+            <mat-radio-button class="a popBtnStyle" value="6 hrs from now">6 Hrs</mat-radio-button>&nbsp;&nbsp;
+            <mat-radio-button class="a popBtnStyle" value="2 hrs from now">2 Hrs</mat-radio-button>&nbsp;&nbsp;
+         
+         <!-- <mat-form-field id="datepicker togglewidth">
+               <b> <input matInput [matDatepicker]="picker1"></b>
+               <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+               <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field> -->
+            <mat-radio-button class="a popBtnStyle_radio" value="custom">
+               <!-- <label class="a">CUSTOM: </label> -->
+               <label>
+                  <input [owlDateTime]="dt1" [min]="minDate" placeholder="Custom Date & Time">
+                  <span class="trigger" [owlDateTimeTrigger]="dt1">
+                     <i class="fas fa-calendar-alt"></i>
+                  </span>
+                  <owl-date-time [hour12Timer]="true" #dt1></owl-date-time>
+               </label>
+            </mat-radio-button>
+         </mat-radio-group>
+         <br>
+         <br>
+         <div class="instructionsTxt">*You can make an item out of stock for a maximum of 12 days.</div>
+         <hr>
+
+         <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+               <button class="btn btn-primary btn-primarycancel" (click)="close()">Cancel</button>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+               <button class="btn btn-info btn-primaryconfirm" (click)="modelDataSave()">Confirm</button>
+            </div>
+
+
+      </div>
+      </div>
+      
+
+   </ng-template>
+
+      <ng-template #template1>
+         <div class="template">
+            <span>Confirm that <b>{{item_data1.dish_name}}</b> is out of stock</span>
+            <hr>
+         </div>
+         <div>
+            <br>
+            <form>
+               <label>Dish Name :<br /></label><input type="text" value="{{item_data1.dish_price}}" />
+            </form>
+   
+         </div>
+         <br>
+         <form>
+            <label>Dish Price:<br /></label><input type="text" value="  {{item_data1.dish_name}}" />
+         </form>
+   
+   
+      </ng-template>

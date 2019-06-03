@@ -1,0 +1,45 @@
+<div class="aside-inner">
+  <nav class="sidebar" sidebar-anyclick-close="" [class.show-scrollbar]="settings.layout.asideScrollbar">
+
+    <!-- START sidebar nav-->
+    <ul class="nav">
+
+      <!-- START user info-->
+      <li class="has-user-block">
+        <app-userblock></app-userblock>
+      </li>
+      <li *ngFor='let item of menuItems' [ngClass]="{'nav-heading': item.heading}" [routerLinkActive]="['active']">
+
+        <span *ngIf="item.heading">{{item.text}}</span>
+
+        <a href *ngIf="!item.heading && !item.submenu && !item.elink" [routerLink]="item.link" [attr.route]="item.link"
+          title="{{item.text}}" (click)="toggleSubmenuClick($event)" (mouseenter)="toggleSubmenuHover($event)" class="{{item.cls}}">
+          <span class="pull-right" *ngIf="item.alert" [ngClass]="item.label || 'badge badge-success'">{{item.alert}}</span>
+          <em class="{{item.icon}}" *ngIf="item.icon"></em>
+          <span>{{item.text}}</span>
+        </a>
+
+        <!-- has submenu -->
+        <a href *ngIf="!item.heading && item.submenu" title="{{item.text}}" (click)="toggleSubmenuClick($event)"
+          (mouseenter)="toggleSubmenuHover($event)" class="{{item.cls}}">
+          <span class="pull-right" *ngIf="item.alert" [ngClass]="item.label || 'badge badge-success'">{{item.alert}}</span>
+          <em class="{{item.icon}}" *ngIf="item.icon"></em>
+          <span>{{item.text}}</span>
+        </a>
+
+        <ul *ngIf="item.submenu" class="sidebar-nav sidebar-subnav" [routerLinkActive]="['opening']">
+          <li class="sidebar-subnav-header">{{item.text}}</li>
+          <li *ngFor='let subitem of item.submenu' [routerLinkActive]="['active']">
+            <a href *ngIf="!subitem.submenu && !subitem.elink" [routerLink]="subitem.link" [attr.route]="subitem.link"
+              title="{{subitem.text}}" class="{{item.cls}}">
+              <span class="pull-right" *ngIf="subitem.alert" [ngClass]="subitem.label || 'badge badge-success'">{{subitem.alert}}</span>
+              <em class="{{subitem.icon}}" *ngIf="subitem.icon"></em>
+              <span>{{subitem.text}}</span>
+            </a>
+
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</div>

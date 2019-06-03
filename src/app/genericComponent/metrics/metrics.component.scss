@@ -1,0 +1,119 @@
+.ops-metric-card {
+    width: 250px;
+    margin-left: 36px;
+    margin-top: 32px;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.1);
+    border: .5px solid #d8d8d8;
+    position: relative;
+    text-align: center;
+}
+.ops-metric-card-label {
+    font-size: 17px;
+    font-weight: 600;
+    color: #282c3f;
+    margin-bottom: 21px;
+}
+
+::ng-deep .bg-info {
+    background: linear-gradient(to right,#0375a7, #a3f6ff);
+}
+
+::ng-deep .progress {
+    width: 65%;
+}
+
+.txtmargin{
+    margin-top: 22px;
+}
+
+.status{
+    position: relative;
+    background-color: #f2f6fc;
+    display: flex;
+    padding: 15px;
+    width: 551px;
+    margin: 15px 15px 0px 15px;
+}
+
+.bkcolor{
+    background: white;
+}
+
+.foodpressed{
+    position: relative; 
+    background-color: #f2f6fc; 
+    display: flex; padding: 16px;
+     width: 551px;
+}
+.foodcorrect{
+    height: 100%; 
+    width: 1px; 
+    background-color: #ccc;
+    margin-right: 24px;
+    margin-left: 24px;
+}
+.foodearly{
+    flex: 1; 
+    align-self: center;
+}
+
+.foodcorrectcolor{
+    background-color: #9078d6;
+}
+.foodearlycolor{
+    background-color: #fbc02d;
+}
+
+
+.foodnotprocessedcolor{
+    background-color: #fa4a5b;
+}
+
+
+.food-ready-metrics-legend-red {
+    font-size: 12px;
+    font-weight: 600;
+    color: #cd394b;
+}
+
+.food-ready-metrics-legend-dark {
+    font-size: 12px;
+    font-weight: 600;
+    color: #282c3f;
+}
+
+.food-ready-metrics-legend-dark {
+    font-size: 12px;
+    font-weight: 600;
+    color: #282c3f;
+}
+
+.food-ready-legend-oval {
+    height: 8px;
+    width: 8px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.food-ready-metrics-count-red {
+    font-size: 18px;
+    font-weight: 700;
+    color: #cd394b;
+    margin-left: 5px;
+}
+
+.food-ready-metrics-count-dark {
+    font-size: 18px;
+    font-weight: 700;
+    color: #282c3f;
+    margin-left: 5px;
+}
+
+.food-ready-metrics-count-dark {
+    font-size: 18px;
+    font-weight: 700;
+    color: #282c3f;
+    margin-left: 5px;
+}
+
