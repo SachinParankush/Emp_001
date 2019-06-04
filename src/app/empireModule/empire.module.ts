@@ -3,9 +3,9 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { empireROUTES } from './empire.routes';
 import { empireComponent } from './empire.component';
-import { BaseComponentComponent } from './base-component/base-component.component';
-import { WelcomeComponentComponent } from './welcome-component/welcome-component.component';
 import { LayoutModule } from '../layout/layout.module';
+import { LandingComponent } from './landing/landing.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 export const routes = [
@@ -19,7 +19,7 @@ export const routes = [
     LayoutModule,
     // genericModule
   ],
-  declarations: [BaseComponentComponent, WelcomeComponentComponent],
+  declarations: [LandingComponent, DashboardComponent],
     providers:[DatePipe]
 })
 export class empireModule { 
