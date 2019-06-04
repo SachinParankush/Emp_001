@@ -68,6 +68,8 @@
 
 .img-rounded {
     border-radius: 2px;
+    height: 95px !important;
+    width: 95px !important;
 }
 
 img {
@@ -231,8 +233,11 @@ footer {
     background: #ffffff;
     float: left;
     width: 100%;
+    cursor:pointer;
 }
 
 .single-restaurant {
     margin-bottom: 30px;
 }
+
+

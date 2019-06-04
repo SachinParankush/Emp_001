@@ -60,61 +60,18 @@
   </div>
 
   <div class="row center container">
-    <div class="col-xs-12 col-sm-12 col-md-6 single-restaurant" style="display: block;">
-      <div class="restaurant-wrap">
+    <div class="col-xs-12 col-sm-12 col-md-6 single-restaurant" style="display: block;"  *ngFor="let data of cardDetails; let i = index;" >
+      <div class="restaurant-wrap" (click)="getMenu(data.id)">
         <div class="row">
           <div class="col-xs-12 col-sm-3 col-md-12 col-lg-3 text-xs-center">
             <a class="restaurant-logo" href="#"> <img class="img-rounded"
-                src="http://studiohash.co.in/projects/lochi//assets/upload/restaurant/75733b239185eb57574f919b7d49024frsz1demorestaurantlogo2.jpg"
+                src={{data.image}}
                 alt="Restaurant logo"> </a>
           </div>
           <!--end:col -->
           <div class="col-xs-12 col-sm-9 col-md-12 col-lg-9">
-            <h5>Hotel A <span class="small_loc">(Tumkur)</span></h5>
-            <span class="small">Mysore Palace, Agrahara, Chamrajpura, Mysuru, Karnataka, India</span>
-            <!-- <div class="bottom-part">
-              <a href="http://studiohash.co.in/projects/lochi/restaurant?r=1" class="btn theme-btn btn-sm">VIEW MENU</a>
-            </div> -->
-          </div>
-          <!-- end:col -->
-        </div>
-        <!-- end:row -->
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-6 single-restaurant" style="display: block;">
-      <div class="restaurant-wrap">
-        <div class="row">
-          <div class="col-xs-12 col-sm-3 col-md-12 col-lg-3 text-xs-center">
-            <a class="restaurant-logo" href="#"> <img class="img-rounded"
-                src="http://studiohash.co.in/projects/lochi//assets/upload/restaurant/75733b239185eb57574f919b7d49024frsz1demorestaurantlogo2.jpg"
-                alt="Restaurant logo"> </a>
-          </div>
-          <!--end:col -->
-          <div class="col-xs-12 col-sm-9 col-md-12 col-lg-9">
-            <h5>Hotel A <span class="small_loc">(Tumkur)</span></h5>
-            <span class="small">Mysore Palace, Agrahara, Chamrajpura, Mysuru, Karnataka, India</span>
-            <!-- <div class="bottom-part">
-              <a href="http://studiohash.co.in/projects/lochi/restaurant?r=1" class="btn theme-btn btn-sm">VIEW MENU</a>
-            </div> -->
-          </div>
-          <!-- end:col -->
-        </div>
-        <!-- end:row -->
-      </div>
-    </div>
-
-    <div class="col-xs-12 col-sm-12 col-md-6 single-restaurant" style="display: block;">
-      <div class="restaurant-wrap">
-        <div class="row">
-          <div class="col-xs-12 col-sm-3 col-md-12 col-lg-3 text-xs-center">
-            <a class="restaurant-logo" href="#"> <img class="img-rounded"
-                src="http://studiohash.co.in/projects/lochi//assets/upload/restaurant/75733b239185eb57574f919b7d49024frsz1demorestaurantlogo2.jpg"
-                alt="Restaurant logo"> </a>
-          </div>
-          <!--end:col -->
-          <div class="col-xs-12 col-sm-9 col-md-12 col-lg-9">
-            <h5>Hotel A <span class="small_loc">(Tumkur)</span></h5>
-            <span class="small">Mysore Palace, Agrahara, Chamrajpura, Mysuru, Karnataka, India</span>
+            <h5>{{data.HotelName}}<span class="small_loc">({{data.location}})</span></h5>
+            <span class="bottom-part">{{data.Address}}</span>
             <!-- <div class="bottom-part">
               <a href="http://studiohash.co.in/projects/lochi/restaurant?r=1" class="btn theme-btn btn-sm">VIEW MENU</a>
             </div> -->
