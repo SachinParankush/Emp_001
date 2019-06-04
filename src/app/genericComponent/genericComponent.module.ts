@@ -11,15 +11,14 @@ import { RouterModule } from '@angular/router';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2TableModule } from 'ng2-table/ng2-table';
-import { OrderCardComponent } from './order-card/order-card.component';
 import { AppStateModule } from '../appstate.module';
-import { MetricsComponent } from './metrics/metrics.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
     declarations: [
-    OrderCardComponent,
-    MetricsComponent
-    ],
+    SignInComponent,
+    RegisterComponent],
     imports: [        
         CommonModule,
         FormsModule,
@@ -34,8 +33,8 @@ import { MetricsComponent } from './metrics/metrics.component';
         NgbModule.forRoot(),
     ],
     exports: [
-        OrderCardComponent,
-        MetricsComponent
+        SignInComponent,
+        RegisterComponent
     ]
 })
 
