@@ -1,3 +1,39 @@
-<p>
-  sign-in works!
-</p>
+<div>
+  <div class="row">
+    <div class="col-md-5">
+      <form [formGroup]="angForm" novalidate>
+
+        <div class="form-group">
+          <label style="color:darkblue">UserName(Mobile)*</label>
+          <input class="form-control" formControlName="name" type="text">
+        </div><br />
+        <div class="padd"
+          *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)"
+          class="alert">
+          <div *ngIf="angForm.controls['name'].errors.required" style="color:red">
+            Name is required.
+          </div><br />
+        </div>
+        <div class="form-group">
+          <label style="color:darkblue">Password*</label>
+          <input class="form-control" formControlName="address" type="text">
+        </div><br />
+        <div
+          *ngIf="angForm.controls['address'].invalid && (angForm.controls['address'].dirty || angForm.controls['address'].touched)"
+          class="alert">
+          <div *ngIf="angForm.controls['address'].errors.required" style="color:red">
+            password is required.
+          </div><br />
+        </div><br />
+        <!-- <button type="submit"
+                [disabled]="angForm.pristine || angForm.invalid" class="btn btn-success" style="color:darkgreen">
+                SUBMIT
+            </button> -->
+        <button class="submit" type="submit">SUBMIT</button>
+
+
+      </form>
+    </div>
+  </div>
+  <br />
+</div>

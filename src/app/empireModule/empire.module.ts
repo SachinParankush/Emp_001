@@ -6,6 +6,7 @@ import { empireComponent } from './empire.component';
 import { LayoutModule } from '../layout/layout.module';
 import { LandingComponent } from './landing/landing.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { genericModule } from '../genericComponent/genericComponent.module';
 
 
 export const routes = [
@@ -17,6 +18,7 @@ export const routes = [
     SharedModule,
     empireROUTES,
     LayoutModule,
+    genericModule
     // genericModule
   ],
   declarations: [LandingComponent, DashboardComponent],
