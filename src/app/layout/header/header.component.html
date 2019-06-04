@@ -1,7 +1,7 @@
 <!-- Header Start -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-white pt-0 pb-0 mt-0 mb-0 shadow-sm" 
 style="margin:0px 0;background-color: #f8f9fa !important;">
-  <a class="navbar-brand" href="javascript:void(0)"><img src="../../../assets/img/empire_logo_small.png"></a>
+  <a class="navbar-brand" href="javascript:void(0)"><img src="../../../assets/img/empire.png"></a>
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -9,24 +9,13 @@ style="margin:0px 0;background-color: #f8f9fa !important;">
   <div class="collapse navbar-collapse pt-md-0 pb-md-0" id="navb">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="javascript:void(0)" style="font-size: 18px; color: black;">MENU DETAILS</a>
+        <!-- <a class="nav-link" href="javascript:void(0)" style="font-size: 18px; color: black;">EMPIRE</a> -->
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="javascript:void(0)" style="font-size: 18px; color: black;" [popover]="popTemplate"
-          placement="bottom" triggers="focus" mdbWavesEffect>Outlet &nbsp; <i class="fa fa-angle-down" aria-hidden="true"></i>
-        </a>
-        <!--           
-        <button type="button" class="btn btn-success" [popover]="popTemplate" popoverTitle="Dynamic html inside" placement="bottom">
-          Show me popover with html
-        </button> -->
+      <li class="nav-item">    
       </li>
 
     </ul>
     <form class="form-inline my-0 my-lg-0 mnuBtns">
-      
-      <!-- <mat-icon matBadge="22" matBadgeColor="warn"> alert </mat-icon> 
-      <a href=""><i class="far fa-bell" style="color: black;"></i></a>-->
-      <!-- <a href=""><i class="fas fa-power-off" style="color: black;"></i></a> -->
 
       <a><button class="btn btn-warning btn-xs">FAQ's</button> </a>
       <a> <i class="material-icons iconsStyle" matBadge="11"  matBadgePosition="above after" matBadgeColor="warn">notification_important </i>
@@ -38,136 +27,3 @@ style="margin:0px 0;background-color: #f8f9fa !important;">
     </form>
   </div>
 </nav>
-
-<div class="subnav">
-
-  <div class="row">
-    <div class="col-md-12 col-sm-12">
-      <div class="row">
-        <div class="col-md-5 col-sm-5">
-          <p style="float: left" class="mb-md-0"><a class="btn btn-default roundedBtn p-0"
-              routerLink="/orders/NewOrders">
-              <i class="fas fa-bars"></i> </a>ORDER</p>
-          <p style="float: left;" class="mb-md-0"><a class="btn btn-default roundedBtn p-0"
-              routerLink="/menuDetails/menu">
-              <i class="fas fa-utensils"></i> </a>MENU</p>
-          <p style="float: left;" class="mb-md-0"><a class="btn btn-default roundedBtn p-0"
-              routerLink="/orders/business-metrics">
-              <i class="fa fa-file-text"></i> </a>REPORTS</p>
-          <p style="float: left;" class="mb-md-0"><a class="btn btn-default roundedBtn p-0"
-              routerLink="/orders/NewOrders"><i class="fas fa-question"></i></a>HELP</p>
-        </div>
-        <div class="col-md-7 col-sm-7">
-
-          <p class="mt-3 text-left pr-5 rightPopUpFilter">You are viewing the details of Kammanahalli/Kalyan Nagar,
-            Opposite St. Peter's
-            School, Bangalore
-            <a class="nav-link pr-5 waves-light" href="javascript:void(0)" [popover]="popTemplate1" placement="bottom" triggers="focus" mdbWavesEffect
-              style="display:-webkit-inline-box;">Change Outlet &nbsp; <i class="fa fa-angle-down" 
-                aria-hidden="true" ></i>
-            </a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<ng-template #popTemplate>
-
-  <div class="allOutlet">
-
-    <div class="row outletSearch">
-      <div class="col-md-5">
-        <h4>ALL OUTLETS</h4>
-      </div>
-      <div class="col-md-7 text-right">
-        <input matInput placeholder="Type Restaurant Name" [(ngModel)]="searchText" (ngModelChange)="prodFilter()">
-        
-       
-        <!-- <p>
-          <mat-form-field appearance="outline">
-            <mat-label>Search Outlet</mat-label>
-            <input matInput placeholder="Type Restaurant Name" [(ngModel)]="searchText" (ngModelChange)="prodFilter()">
-          </mat-form-field>
-        </p> -->
-
-
-      </div>
-    </div>
-
-    <mat-tab-group>
-      <mat-tab *ngFor="let data of outLetDetails; let i = index;" label={{data.Place}}>
-        <div *ngFor="let subData of data.branchDetails; let i = index;">
-          <br>
-          <div class="row m-0 p-0 outletED">
-            <div class="col-10">
-              <h5>{{subData.Store_Name}}</h5>
-              <p>{{subData.Address}}</p>
-            </div>
-
-            <div class="col-2 text-right">
-              <a>
-                <mat-slide-toggle [checked]="true">
-                </mat-slide-toggle>
-              </a>
-
-            </div>
-          </div>
-        </div>
-
-
-      </mat-tab>
-
-    </mat-tab-group>
-  </div>
-</ng-template>
-
-
-
-
-
-<ng-template #popTemplate1>
-
-  <div class="allOutlet">
-
-    <div class="row">
-      <div class="col-md-5">
-        <h4>ALL OUTLETS </h4>
-      </div>
-      <div class="col-md-7">
-        <!-- <p class="outletSearch">
-          <mat-form-field appearance="outline">
-            <mat-label>Search Outlet</mat-label>
-            <input style="padding: 0px;" matInput placeholder="Type Restaurant Name" [(ngModel)]="searchText" (ngModelChange)="prodFilter()">
-          </mat-form-field>
-        </p> -->
-      </div>
-    </div>
-
-    <mat-tab-group>
-      <mat-tab *ngFor="let data of outLetDetails; let i = index;" label={{data.Place}}>
-        <div *ngFor="let subData of data.branchDetails; let i = index;">
-          <br>
-          <div class="row">
-            <div class="col-lg-8">
-              <h5>{{subData.Store_Name}}</h5>
-              <p>{{subData.Address}}</p>
-            </div>
-
-            <div class="col-lg-2 text-right">
-              <a>
-                  <mat-slide-toggle>On</mat-slide-toggle>
-              </a>
-
-            </div>
-          </div>
-        </div>
-
-
-      </mat-tab>
-
-    </mat-tab-group>
-  </div>
-</ng-template>

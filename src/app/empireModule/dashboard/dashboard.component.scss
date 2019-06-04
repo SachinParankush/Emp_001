@@ -1,0 +1,238 @@
+.navbar {
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDOjm5Zcu4jSdYXaoMjBn0ThUN8kFZp5XB5TALEIyYAFzJLCJeBw);
+    padding: .95rem 1rem;
+    border-radius: 0;
+    width: relative;
+}
+
+.container {
+    max-width: 1270px;
+    width: 94%;
+}
+
+.navbar-dark .navbar-brand, .navbar-dark .navbar-toggler {
+    color: #fff;
+}
+
+.float-lg-right {
+    float: right!important;
+}
+
+.custom-select {
+    position: relative;
+    font-family: Arial;
+}
+
+.custom-select {
+    line-height: 1;
+}
+
+.custom-select {
+    display: inline-block;
+    max-width: 100%;
+    height: calc(2.5rem - 2px);
+    padding: .375rem 1.75rem .375rem .75rem;
+    padding-right: .75rem\9;
+    color: #55595c;
+    vertical-align: middle;
+    background-image: none\9;
+    -webkit-background-size: 8px 10px;
+    background-size: 8px 10px;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+.nav {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.navbar-nav .nav-item {
+    padding-left: 10px;
+}
+
+.navbar-nav .nav-item+.nav-item {
+    margin-left: 1rem;
+}
+
+.navbar-nav .nav-item {
+    padding-left: 10px;
+}
+
+.navbar-nav .nav-item {
+    float: left;
+}
+
+.img-rounded {
+    border-radius: 2px;
+}
+
+img {
+    vertical-align: middle;
+    // width: 118px;
+    // border-style: none;
+}
+
+.empimg{
+    width: 118px;
+    border-style: none;
+}
+
+.navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .active>.nav-link:focus, .navbar-dark .navbar-nav .active>.nav-link:hover, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.active:focus, .navbar-dark .navbar-nav .nav-link.active:hover, .navbar-dark .navbar-nav .nav-link.open, .navbar-dark .navbar-nav .nav-link.open:focus, .navbar-dark .navbar-nav .nav-link.open:hover, .navbar-dark .navbar-nav .open>.nav-link, .navbar-dark .navbar-nav .open>.nav-link:focus, .navbar-dark .navbar-nav .open>.nav-link:hover {
+    color: #fff;
+}
+
+.navbar-brand {
+    float: left;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+}
+
+.inline{
+    display: inline;
+}
+
+.navbar-dark .navbar-toggler {
+    background-image: none;
+    border-color: transparent;
+}
+
+.navbar-toggleable-md .navbar-nav {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+
+.navbar-nav {
+    padding-top: .425rem;
+    padding-left: 0.75rem;
+}
+ .imgwidth{
+    width: 100%;
+ }
+
+ .header {
+    position: fixed;
+    width: 100%;
+    border: 0;
+    z-index: 99;
+}
+
+.fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+}
+
+.animated {
+    -webkit-animation-duration: .3s;
+    animation-duration: .3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+header {
+    display: block;
+}
+
+div.ex1 {
+    background-color: lightblue;
+    width: 110px;
+    height: 110px;
+    overflow: scroll;
+}
+
+.center{
+    text-align: center;
+}
+
+.h4[_ngcontent-vas-c1] {
+    text-align: center;
+}
+
+.col-sm-4 {
+    float: left;
+    width: 33%;
+}
+
+.col-sm-3 {
+    float: left;
+    width: 24%;
+    padding-right: 13px;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: "Source Sans Pro", sans-serif;
+    color: #25282b;
+}
+
+footer p, footer, footer span {
+    font-weight: 300;
+    color: #9c9da5;
+}
+
+.col-sm-2 {
+    float: left;
+    width: 16.666667%;
+}
+
+article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary {
+    display: block;
+}
+
+// .col-sm-3 {
+//     float: left;
+//     width: 25%;
+// }
+
+.bottom-footer {
+    border-top: 1px solid #9c9da5;
+    padding: 5px;
+    text-align: center;
+}
+
+footer {
+    // background: url(../images/pattern.png)center repeat;
+    padding: 15px 0;
+    z-index: 1;
+    position: relative;
+    margin-top: 50px;
+}
+
+.zoom {
+    padding: 50px;
+    background-color: transparent;
+    transition: transform .2s; /* Animation */
+    margin: 0 auto;
+  }
+  
+  .zoom:hover {
+    transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+
+  .container {
+    max-width: 1270px;
+    width: 94%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+.restaurant-wrap {
+    border: 1px solid #eaebeb;
+    border-radius: 3px;
+    padding: 15px;
+    background: #ffffff;
+    float: left;
+    width: 100%;
+}
+
+.single-restaurant {
+    margin-bottom: 30px;
+}
