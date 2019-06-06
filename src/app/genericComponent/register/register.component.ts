@@ -10,6 +10,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
     submitted = false;
+    
+    City: any = ['Bangalore', 'Mysore']
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -20,12 +22,24 @@ export class RegisterComponent implements OnInit {
       mobileNo: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required]
+      confirmPassword: ['', Validators.required],
+      cityName: ['', [Validators.required]]
       
   }, {
       
   });
   }
+  // changeCity(e) {
+  //   console.log(e.value)
+  //   this.cityName.setValue(e.target.value, {
+  //     onlySelf: true
+  //   })
+  // }
+
+  // // Getter method to access formcontrols
+  // get cityName() {
+  //   return this.registerForm.get('cityName');
+  // }
   get f() { return this.registerForm.controls; }
 
   onSubmit() {
@@ -38,4 +52,7 @@ export class RegisterComponent implements OnInit {
 
       alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
   }
+  
+
 }
+
