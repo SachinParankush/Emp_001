@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -13,7 +14,7 @@ export class SignInComponent implements OnInit {
   submitted = false;
 
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,private router: Router) {
 
     
     
@@ -33,11 +34,9 @@ export class SignInComponent implements OnInit {
   onSubmit() {
       this.submitted = true;
 
-      // stop here if form is invalid
-      if (this.angForm.invalid) {
+      if (this.angForm.valid) {
+        this.router.navigate(['/empire/Dashboard']);
           return;
       }
-
-      alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.angForm.value))
   }
 }

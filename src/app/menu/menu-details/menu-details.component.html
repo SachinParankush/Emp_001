@@ -1,18 +1,19 @@
 <div class="row background ">
 
-      <div class="col-md-3 ">
+      <div class="col-md-3 " style="border-right: 1px solid #e9e9eb;">
          <h4 class="pl-4 pt-3 text-right">Recommended</h4>
          <ul style="list-style-type:none; margin-left: -18px; margin-bottom: 0.3rem;"
             *ngFor="let data of ELEMENT_DATA; let i = index;" class="text-right categoryMnuStyle">
             <li><a class="a" (click)="triggerScrollTo(data)">{{data.MainCourse}}</a></li>
          </ul>
       </div>
+      
    
       <div class="col-md-6 ">
    
          <div class="menu-body__">
             <div class="ScrollStyle">
-               <div *ngFor="let data of ELEMENT_DATA; let i = index;" class="menu-section">
+               <div *ngFor="let data of ELEMENT_DATA; let i = index;" class="menu-section" style="border-bottom: 3px solid;">
                   <h6 class="menu-section-title">
                      <h2 class="halfLine" id={{data.MainCourse}}><b>{{data.MainCourse}}</b></h2>
                   </h6>
@@ -33,24 +34,22 @@
                         <div class="col-sm-4">
                            <div class="menu-item-description">
                               <h5 class="jTy8b">{{subData.dish_name}}</h5>
-                              <h5 class="description">Yummy and delicious</h5>
+                              <h5 class="description">{{subData.item_discription}}</h5>
                               <span class="_12lpv">₹{{subData.dish_price}}</span>
                            </div>
                         </div>
-   
-                        <div class="col-sm-4" style="text-align: center;padding-top: 27px;">
-                           <div class="_1G3G4 _3L1X9">
-                              <div class="_1RPOp">ADD</div>
-                              <!-- <div class="_1ds9T _2WdfZ _4aKW6">+</div>
-                              <div class="_29Y5Z"></div>
-                              <div class="_29Y5Z _20vNm _4aKW6">
-                              </div>
-                              <div class="_2zAXs _2quy- _4aKW6">0</div> -->
-                           </div>
+                     <div class="col-sm-4" style="text-align: center;padding-top: 27px;">
+                        <div class="_1G3G4 _3L1X9" *ngIf = "!subData.addToCart">
+                           <div class="_1RPOp" (click)="addtocart(data,subData,i,ij)">ADD</div>
                         </div>
-   
+                        <div class="_1G3G4 _3L1X9" *ngIf = "subData.addToCart">
+                           <div class="_1ds9T _2Thnf" (click)="addItem(data,subData,i,ij)">+</div>
+                           <div class="_29Y5Z _2od4M" (click)="removeItem(data,subData,i,ij)"></div>
+                           <div class="_2zAXs _18lJJ">{{subData.itemCount}}</div>
+                        </div>
                      </div>
-                     <div _ngcontent-c3="" class="_1Accg"></div>
+                     </div>
+                     <div _ngcontent-c3="" class="_1Accg" *ngIf="ij != data.Subcourse.length-1"></div>
                   </div>
                </div>
             </div>
@@ -58,91 +57,87 @@
       </div>
    
       <div class="col-md-3">
-            <div class="container">
-         <div class="_2uq6N">Cart
-            <div class="_1XFmX">1 Items</div>
-         </div>
-      <div class="_1t-Al _1XUXj">
-         <div class="_3YMqW"></div>
-         <div class="_2ObNr _2qOpI">
-            <div>
-               <div class="_2zsON"></div>
-               <div class="MGAj1">
-                  <div class="_2bXOy">
-                     <div class="_3SG03">
-                        <div class="_2MJB6"><img src="../../../assets/img/veg.png" class="category_img" />
-                        </div>
-                        <div class="_33KRy">South Indian Meals</div>
-                     </div>
-                     <div class="_2bWmk">
-                        <div class="_1yTZI">
-                           <!-- <div class="_29ugw _3L1X9">
-                              <div class="_1RPOp _36fT9 _4aKW6">ADD</div>
-                              <div class="_1ds9T">+</div>
-                              <div class="_29Y5Z"></div>
-                              <div class="_2zAXs">1</div>
-                           </div> -->
-                           <div class="_1mx0r"><span class="_2W2U4">80</span></div>
-                        </div>
-                     </div>
-                  </div>
+            <div class="container" *ngIf="cart_Count != 0 ">
+               <div class="_2uq6N">Cart
+                  <div class="_1XFmX">{{cart_Count}} Items</div>
                </div>
-               <div class="_3DPdG"></div>
-            </div>
-         </div>
-         <div class="_1v28S"></div>
-      </div>
-      <div class="EEeV3">
-         <div class="_161V3">
-            <div class="_1DWmI">Subtotal</div>
-            <div><span>₹ 80</span></div>
-         </div>
-         <div class="_3PZFF">
-            <div class="_3e0Qi">Bill Details</div>
-            <div class="_3rlIu">
-               <div class="_2VV4a"><span>Item Total</span></div>
-               <div class="_1I8bA"><span class=""><span></span><span class="ZH2UW">80</span></span></div>
-            </div>
-            <div class="_3rlIu">
-               <div class="_2VV4a"><span>CGST</span></div>
-               <div class="_1I8bA"><span class=""><span></span><span class="ZH2UW">10</span></span></div>
-            </div>
-            <div class="_3rlIu">
-               <div class="_2VV4a"><span>SGST</span></div>
-               <div class="_1I8bA"><span class=""><span></span><span class="ZH2UW">10</span></span></div>
-            </div>
-            <div class="_1Accg"></div>
-            <div class="_3rlIu">
-               <div class="_2VV4a">Delivery Fee<div class="_3sNvC">
-                     <div class="_28dQ0">
-                        <div class="_1p8D9" style="width: 290px;">
-                           <div class="_255F-">
-                              <div class="_3PZFF">
-                                 <div class="_3e0Qi">Delivery fee breakup for this order</div>
-                                 <div class="_3rlIu">
-                                    <div class="_2VV4a">
-                                       <div>Standard Fee</div>
-                                       <div class="MOQEt">Rs. 35.0 on orders till Rs. 98.0 &amp; Rs. 25.0 on orders over Rs. 98.0
+               <div class="_1t-Al _1XUXj">
+                  <div class="_3YMqW"></div>
+                  <div class="_2ObNr _2qOpI">
+                     <div *ngFor="let data of ELEMENT_DATA; let i = index;">
+                        <div class="_2zsON"></div>
+                        <div class="MGAj1" *ngFor="let subData of data.Subcourse; let ij = index;">
+                           <div class="_2bXOy" *ngIf="subData.addToCart">
+                              <div class="_3SG03">
+                                 <div class="_2MJB6"><img src="../../../assets/img/veg.png" class="category_img" />
+                                 </div>
+                                 <div class="_33KRy">{{subData.dish_name}}</div>
+                              </div>
+                              <div class="_2bWmk">
+                                 <div class="_1yTZI">
+                                    <div class="_2bWmk">
+                                       <div class="_1yTZI">
+                                          <div class="_29ugw">
+                                             <!-- <div class="_1RPOp _36fT9 _4aKW6">ADD</div> -->
+                                             <div class="_1ds9T" (click)="addItem(data,subData,i,ij)">+</div>
+                                             <div class="_29Y5Z" (click)="removeItem(data,subData,i,ij)"></div>
+                                             <div class="_2zAXs">{{subData.itemCount}}</div>
+                                          </div>
+                                          <div class="_1mx0r"><span class="_2W2U4">{{subData.item_total_price}}</span>
+                                          </div>
                                        </div>
                                     </div>
-                                    <div class="_1I8bA"><span class=""><span></span><span class="ZH2UW">25.00</span></span></div>
+                                    <!-- <div class="_1mx0r"><span class="_2W2U4">80</span></div> -->
                                  </div>
                               </div>
                            </div>
                         </div>
+                        <div class="_3DPdG"></div>
                      </div>
                   </div>
+                  <div class="_1v28S"></div>
                </div>
-               <div class="_1I8bA"><span class=""><span></span><span class="ZH2UW">25</span></span></div>
+               <div class="EEeV3">
+                  <div class="_161V3">
+                     <div class="_1DWmI">Subtotal</div>
+                     <div><span>₹ {{subTotal}}</span></div>
+                  </div>
+                  <div class="_3PZFF">
+                     <div class="_3e0Qi">Bill Details</div>
+                     <div class="_3rlIu">
+                        <div class="_2VV4a"><span>Item Total</span></div>
+                        <div class="_1I8bA"><span class=""><span></span><span class="ZH2UW">{{subTotal}}</span></span></div>
+                     </div>
+                     <div class="_3rlIu">
+                        <div class="_2VV4a"><span>CGST</span></div>
+                        <div class="_1I8bA"><span class=""><span></span><span class="ZH2UW">{{cgst}}</span></span></div>
+                     </div>
+                     <div class="_3rlIu">
+                        <div class="_2VV4a"><span>SGST</span></div>
+                        <div class="_1I8bA"><span class=""><span></span><span class="ZH2UW">{{sgst}}</span></span></div>
+                     </div>
+                     <div class="_1Accg"></div>
+                     <div class="_3rlIu">
+                        <div class="_2VV4a">Delivery Fee<div class="_3sNvC">
+                           </div>
+                        </div>
+                        <div class="_1I8bA"><span class=""><span></span><span class="ZH2UW">{{deliver_Charges}}</span></span></div>
+                     </div>
+                  </div>
+                  <div class="ZBf6d">
+                     <div>TO PAY</div>
+                     <div class="_3ZAW1">{{grand_total}}</div>
+                  </div>
+                  <div class="_1gPB7">Checkout →</div>
+               </div>
+            
             </div>
-         </div>
-         <div class="ZBf6d">
-            <div>TO PAY</div>
-            <div class="_3ZAW1">115</div>
-         </div>
-         <div class="_1gPB7">Checkout →</div>
+            <div class="container _1cl2U" *ngIf="cart_Count === 0 ">
+               <div class="_1pKFz Tqef9">Cart Empty</div><img
+                  src="../../../assets/img/emptyCart.PNG"
+                  style="height: 150px;"
+                  class="_3mSQq">
+               <div class="_1Qxa0">Good food is always cooking! Go ahead, order some yummy items from the menu.</div>
+            </div>
       </div>
-   
-   </div>
-   </div>
 </div>
