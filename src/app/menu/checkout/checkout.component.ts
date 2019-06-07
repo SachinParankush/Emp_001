@@ -32,5 +32,4 @@ export class CheckoutComponent implements OnInit {
   aaaa(){
     this.a = false;
   }
-
 }
