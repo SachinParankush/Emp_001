@@ -2,12 +2,13 @@ import { Routes, RouterModule }  from '@angular/router';
 import { menuComponent } from './menu.component';
 import { LayoutComponent } from '../layout/layout.component';
 import { MenuDetailsComponent } from './menu-details/menu-details.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const menuRoutes: Routes = [     
             { path: '', component: LayoutComponent, canActivate: [], children: [    
             { path: '', redirectTo: 'menu', pathMatch: 'full' },
             { path: 'menu', component:MenuDetailsComponent},
-            // { path: 'preparingOrder', component:PreparingOrderComponent},
+            { path: 'checkout', component:CheckoutComponent},
             // { path: 'readyOrders', component:ReadyOrdersComponent},
             // { path: 'PastOrders', component:PastOrdersComponent},
 

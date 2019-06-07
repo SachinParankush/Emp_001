@@ -205,4 +205,8 @@ export class MenuDetailsComponent implements OnInit {
     this.grand_total = this.subTotal + this.cgst + this.sgst + this.deliver_Charges;
   }
 
+  checkOut(){
+    this.router.navigate(['/menuDetails/checkout']);
+  }
+
 }
