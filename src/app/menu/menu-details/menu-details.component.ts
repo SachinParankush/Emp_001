@@ -154,14 +154,14 @@ export class MenuDetailsComponent implements OnInit {
     this._scrollToService.scrollTo(config);
   }
 
-  device: number = 1;
-  onChange(e) {
-    if (e.checked == true) {
-      this.device = 1;
-    } else {
-      this.device = 0;
-    }
-  }
+  // device: number = 1;
+  // onChange(e) {
+  //   if (e.checked == true) {
+  //     this.device = 1;
+  //   } else {
+  //     this.device = 0;
+  //   }
+  // }
 
   addtocart(data, data1, index, index1) {
     this.ELEMENT_DATA[index].Subcourse[index1].addToCart = true;

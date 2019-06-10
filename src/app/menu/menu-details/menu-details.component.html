@@ -78,7 +78,6 @@
                                     <div class="_2bWmk">
                                        <div class="_1yTZI">
                                           <div class="_29ugw">
-                                             <!-- <div class="_1RPOp _36fT9 _4aKW6">ADD</div> -->
                                              <div class="_1ds9T" (click)="addItem(data,subData,i,ij)">+</div>
                                              <div class="_29Y5Z" (click)="removeItem(data,subData,i,ij)"></div>
                                              <div class="_2zAXs">{{subData.itemCount}}</div>
@@ -87,7 +86,6 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <!-- <div class="_1mx0r"><span class="_2W2U4">80</span></div> -->
                                  </div>
                               </div>
                            </div>
@@ -132,7 +130,7 @@
                </div>
             
             </div>
-            <div class="container _1cl2U" *ngIf="cart_Count === 0 ">
+            <div class="container _1cl2U" *ngIf="cart_Count == 0 ">
                <div class="_1pKFz Tqef9">Cart Empty</div><img
                   src="../../../assets/img/emptyCart.PNG"
                   style="height: 150px;"

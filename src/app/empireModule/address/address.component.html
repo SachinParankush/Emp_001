@@ -5,8 +5,40 @@
         <div class="F8Sye">
           <div class="_2YrH-">Select delivery address</div>
         </div>
+
+        <div class="-brc1">
+            <div class="_2nd--" *ngFor="let data of cardDetails; let i = index;" >
+              <div class="_3p8Mf">
+                <div class="WtfuC"><img src="../../../assets/img/location-1.PNG"></div>
+                <div>
+                  <div class="_2xgU6">Home</div>
+                  <div class="KYAcN">29/A, Lakshmikanth Nagar Main Rd, Lakshmikanth Nagar, Hebbal 1st Stage, Mysuru, Karnataka
+                    570017, India</div>
+                  <div class="_3w1k-">34 MINS</div>
+                  <div class="_3dNWs">Deliver Here</div>
+                </div>
+              </div>
+            </div>
+            <div class="-brc1">
+              <div class="_2nd--">
+                <div class="_3p8Mf Ldi91">
+                  <div class="WtfuC _3mJDe">
+                    <img src="../../../assets/img/location.PNG">
+                    <!-- <div class="_2_VIS">+</div> -->
+                  </div>
+                  <div>
+                    <div class="_2xgU6">Add new Address</div>
+                    <!-- <div class="KYAcN">121, 321rd Main Rd, fff, Mysuru, Karnataka 570012, India
+                                </div> -->
+                    <div class="_3dNWs _1AS3P" (click)="addNewAdrs()">Add New</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
   
-        <div>
+        <!-- <div>
           <span class="_38EYL">You have a saved address in this location</span>
           <div class="-brc1">
             <div class="_2nd--">
@@ -21,7 +53,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4">

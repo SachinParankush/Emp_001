@@ -38,6 +38,8 @@ export class DashboardComponent implements OnInit {
     "image":"../../../assets/img/empire-hotel.png"
   },
   ]
+  
+  
   constructor(private router: Router) { }
 
   ngOnInit() {

@@ -272,3 +272,226 @@
 .icon-location:before {
    content: "\E911";
 }
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////@at-root
+
+
+.graph{
+   height: 185px;
+   width: 360px;
+}
+
+
+.days-sidebar {
+   width: 20%;
+}
+
+.days-sidebar li {
+   border: 1px solid #ddd;
+   // border-bottom: 0;
+   font-weight: 400;
+   font-size: 14px;
+   padding: 15px;
+   cursor: pointer;
+}
+
+li, ol, ul {
+   list-style: none;
+}
+
+.active{
+   background-color: white !important;
+   border-right-color: rgb(255, 255, 255) !important;
+}
+
+.days-sidebar li.active {
+   background-color: #fff;
+   // color: #f5861f;
+   border-right: 0;
+   font-weight: 600;
+    color: #282c3f;
+    font-size: 18px;
+    transition: color .25s ease-in-out;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+::ng-deep .bg-info {
+   background: linear-gradient(to right,#0375a7, #a3f6ff);
+}
+
+::ng-deep .progress {
+   width: 65%;
+}
+
+.txtmargin{
+   margin-top: 22px;
+}
+
+.status{
+   background-color: #f2f6fc;
+   margin: 15px;
+}
+
+.bkcolor{
+   background: white;
+   height: -webkit-fill-available - 105px;
+}
+
+.foodpressed{
+   position: relative; 
+   background-color: #f2f6fc; 
+   display: flex; padding: 16px;
+    width: 551px;
+}
+.foodcorrect{
+   height: 100%; 
+   width: 1px; 
+   background-color: #ccc;
+   margin-right: 24px;
+   margin-left: 24px;
+}
+.foodearly{
+   flex: 1; 
+   align-self: center;
+}
+
+.foodcorrectcolor{
+   background-color: #9078d6;
+}
+.foodearlycolor{
+   background-color: #fbc02d;
+}
+
+
+.foodnotprocessedcolor{
+   background-color: #fa4a5b;
+}
+
+
+.food-ready-metrics-legend-red {
+   font-size: 12px;
+   font-weight: 600;
+   color: #cd394b;
+}
+
+.food-ready-metrics-legend-dark {
+   font-size: 12px;
+   font-weight: 600;
+   color: #282c3f;
+}
+
+.food-ready-metrics-legend-dark {
+   font-size: 12px;
+   font-weight: 600;
+   color: #282c3f;
+}
+
+.food-ready-legend-oval {
+   height: 8px;
+   width: 8px;
+   border-radius: 8px;
+   display: inline-block;
+}
+
+.food-ready-metrics-count-red {
+   font-size: 18px;
+   font-weight: 700;
+   color: #cd394b;
+   margin-left: 5px;
+}
+
+.food-ready-metrics-count-dark {
+   font-size: 18px;
+   font-weight: 700;
+   color: #282c3f;
+   margin-left: 5px;
+}
+
+.food-ready-metrics-count-dark {
+   font-size: 18px;
+   font-weight: 700;
+   color: #282c3f;
+   margin-left: 5px;
+}
+.margin_left_15px{
+   margin: 0px 0px 0px 15px;
+}
+
+a.see-details-text {
+   text-decoration: none;
+   font-size: 14px;
+   font-weight: 700;
+   text-transform: uppercase;
+}
+
+.metrics-section-text {
+   font-size: 14px;
+   font-weight: 700;
+   color: #282c3f;
+   text-transform: uppercase;
+   margin-right: 14px;
+   padding-left: 15px;
+}
+
+.top-insight-numerator {
+   font-size: 56px;
+   font-weight: 500;
+   color: #282c3f;
+}
+.top-insight-denominator {
+   font-size: 28px;
+   font-weight: 500;
+   color: #7e808c;
+}
+
+.top-insight-label {
+   font-size: 18px;
+   font-weight: 700;
+   color: #282c3f;
+   text-transform: uppercase;
+}
+
+.daily-selected-date {
+   font-size: 14px;
+   font-weight: 700;
+   color: #7e808c;
+}
+
+.ops-metric-card {
+   width: 310px;
+   margin-top: 32px;
+   margin-left: 36px;
+   border-radius: 2px;
+   box-shadow: 0 2px 2px 0 rgba(0,0,0,.1);
+   border: .5px solid #d8d8d8;
+   position: relative;
+   padding: 12px 20px;
+   margin-bottom: 21px;
+}
+
+.ops-metric-card-label {
+   font-size: 16px;
+   font-weight: 600;
+   color: #282c3f;
+   // margin-bottom: 21px;
+}
+
+.ops-metric-value {
+   font-size: 30px;
+   font-weight: 700;
+   color: #282c3f;
+}
+
+.insights-overview-title {
+   font-size: 30px;
+   font-weight: 600;
+   color: #0d1325;
+   padding: 15px 0px 15px 40px;
+}
+
+/////////////////////@at-root
