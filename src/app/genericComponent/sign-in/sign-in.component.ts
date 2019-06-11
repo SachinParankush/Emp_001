@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { empireApiService } from '../../empire-api-service';
 
 @Component({
   selector: 'app-sign-in',
@@ -14,17 +15,15 @@ export class SignInComponent implements OnInit {
   submitted = false;
 
 
-  constructor(private fb: FormBuilder,private router: Router) {
-
-    
+  constructor(private fb: FormBuilder,private router: Router, private EmpireApiService:empireApiService) {
     
   }
 
   ngOnInit() {
     this.angForm = this.fb.group({
       
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      mobile_no: ['', [Validators.required]],
+      password: ['', [Validators.required]],
       
    });
 
@@ -35,8 +34,16 @@ export class SignInComponent implements OnInit {
       this.submitted = true;
 
       if (this.angForm.valid) {
-        this.router.navigate(['/empire/Dashboard']);
-          return;
+        var params = {
+          "mobile_no": this.angForm.value.mobile_no,
+          "password": this.angForm.value.password,
+        }
+        this.EmpireApiService.signIn(params).subscribe(
+          (res: any) => {  
+            if (res.code == '200') {
+              this.router.navigate(['/empire/Dashboard']);
+            }
+          })
       }
   }
 }
