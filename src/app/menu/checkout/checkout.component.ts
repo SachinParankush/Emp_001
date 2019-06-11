@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Chart } from 'chart.js';
-var moment = require('moment');
+import { Component, OnInit, ViewChild,ChangeDetectorRef } from '@angular/core';
+import { ExternalLibraryService } from './util';
+import { runInNewContext } from 'vm';
+
+declare let Razorpay: any;
 
 @Component({
   selector: 'app-checkout',
@@ -9,183 +11,87 @@ var moment = require('moment');
 })
 export class CheckoutComponent implements OnInit {
 
-  @ViewChild('lineChart') private chartRef;
-  chart: any;
-  a = ["Food Ready Correct","Food Ready Pressed Early"];
-  b = [0, 0];
   dynamicClass1;
   dynamicClass2;
-  dynamicClass3;
-  dynamicClass4;
-  dynamicClass5;
-  dynamicClass6;
-  dynamicClass7;
-  date;
+  cod = true;
+  rpay = false;
 
-  now = moment().format('dddd');
-  now1 = moment().subtract(1, 'days').format('dddd');
-  now2 = moment().subtract(2, 'days').format('dddd');
-  now3 = moment().subtract(3, 'days').format('dddd');
-  now4 = moment().subtract(4, 'days').format('dddd');
-  now5 = moment().subtract(5, 'days').format('dddd');
-  now6 = moment().subtract(6, 'days').format('dddd');
-
-  orderEdits = 10;
-  cancelledOrders = 0;
-  acceptedOrders = 90.65;
-  goodFoodReady = 99;
-
-  num = 10;
-  den = 58;
-
-
-  constructor() { 
-    this.report(1)
-   }
 
   ngOnInit() {
-    this.chart = new Chart(this.chartRef.nativeElement, {
-      type: 'doughnut',
-      data: {
-        labels: this.a,
-        datasets: [
-          {
-            label: "Population (millions)",
-            backgroundColor: ["#0375A7", "#28C3D5"],
-            data: this.b
-          }
-        ]
-      },
-      options: {
-        title: {
-          display: true,
-          text: ''
-        }
-      }
-    });
+
+    this.razorpayService
+      .lazyLoadLibrary('https://checkout.razorpay.com/v1/checkout.js')
+      .subscribe();
   }
 
+  
+  constructor(private razorpayService: ExternalLibraryService, private cd:  ChangeDetectorRef) {
+    this.report(1)
+   }
+  name = 'Angular';
+  response;
+  razorpayResponse;
+  showModal = false;
+
+  RAZORPAY_OPTIONS = {
+    "key": "rzp_test_RS9FYe5RzsB5ll",
+    "amount": "",
+    "name": "Empire",
+    "order_id": "",
+    "description": "Bill Payment",
+    "image": "https://livestatic.novopay.in/resources/img/nodeapp/img/Logo_NP.jpg",
+    "prefill": {
+      "name": "",
+      "email": "",
+      "contact": "",
+      "method": ""
+    },
+    "modal": {},
+    "theme": {
+      "color": "#0096C5"
+    }
+  };
+
+  public proceed() {
+    this.RAZORPAY_OPTIONS.amount = 100 + '00';
+
+    // binding this object to both success and dismiss handler
+    this.RAZORPAY_OPTIONS['handler'] = this.razorPaySuccessHandler.bind(this);
+
+    // this.showPopup();
+
+    let razorpay = new Razorpay(this.RAZORPAY_OPTIONS)
+    razorpay.open();
+  }
+
+  public razorPaySuccessHandler(response) {
+    console.log(response);
+    this.razorpayResponse = `Razorpay Response`;
+    this.showModal = true;
+    this.cd.detectChanges()
+    document.getElementById('razorpay-response').style.display = 'block';
+  }
+
+  // public test() {
+  //   document.getElementById('response-modal').style.display = 'block';
+  //   this.response = `dummy text`;
+  // }
+
   report(index){
-    this.b = [];
       if(index == 1){
         this.dynamicClass1 = 'active';
         this.dynamicClass2 = '';
-        this.dynamicClass3 = '';
-        this.dynamicClass4 = '';
-        this.dynamicClass5 = '';
-        this.dynamicClass6 = '';
-        this.dynamicClass7 = '';
-        this.date = moment().format('ddd, DD MMM');
-        this.orderEdits = 0;
-        this.cancelledOrders = 1;
-        this.acceptedOrders = 80.65;
-        this.goodFoodReady = 90;
-        this.b = [456, 533];
-        this.num = 10;
-        this.den = 58;
+        this.cod = true;
+        this.rpay = false;
+        
       }
       if(index == 2){
         this.dynamicClass2 = 'active';
         this.dynamicClass1 = '';
-        this.dynamicClass3 = '';
-        this.dynamicClass4 = '';
-        this.dynamicClass5 = '';
-        this.dynamicClass6 = '';
-        this.dynamicClass7 = '';
-        this.date = moment().subtract(1, 'days').format('ddd, DD MMM');
-        this.orderEdits = 2;
-        this.cancelledOrders = 1;
-        this.acceptedOrders = 60.65;
-        this.goodFoodReady = 79;
-        this.b = [956, 133];
-        this.num = 20;
-        this.den = 58;
+        this.cod = false;
+        this.rpay = true;
+        
       }
-      if(index == 3){
-        this.dynamicClass3 = 'active';
-        this.dynamicClass1 = '';
-        this.dynamicClass2 = '';
-        this.dynamicClass4 = '';
-        this.dynamicClass5 = '';
-        this.dynamicClass6 = '';
-        this.dynamicClass7 = '';
-        this.date = moment().subtract(2 ,'days').format('ddd, DD MMM');
-        this.orderEdits = 19;
-        this.cancelledOrders = 0;
-        this.acceptedOrders = 96.65;
-        this.goodFoodReady = 99;
-        this.b = [226, 253];
-        this.num = 30;
-        this.den = 58;
-      }
-      if(index == 4){
-        this.dynamicClass4 = 'active';
-        this.dynamicClass1 = '';
-        this.dynamicClass2 = '';
-        this.dynamicClass3 = '';
-        this.dynamicClass5 = '';
-        this.dynamicClass6 = '';
-        this.dynamicClass7 = '';
-        this.date = moment().subtract(3, 'days').format('ddd, DD MMM');
-        this.orderEdits = 50;
-        this.cancelledOrders = 0;
-        this.acceptedOrders = 90.65;
-        this.goodFoodReady = 99;
-        this.b = [826, 353];
-        this.num = 40;
-        this.den = 58;
-      }
-      if(index == 5){
-        this.dynamicClass5 = 'active';
-        this.dynamicClass1 = '';
-        this.dynamicClass2 = '';
-        this.dynamicClass3 = '';
-        this.dynamicClass4 = '';
-        this.dynamicClass6 = '';
-        this.dynamicClass7 = '';
-        this.date = moment().subtract(4, 'days').format('ddd, DD MMM');
-        this.orderEdits = 10;
-        this.cancelledOrders = 0;
-        this.acceptedOrders = 70.65;
-        this.goodFoodReady = 90;
-        this.b = [26,553];
-        this.num = 50;
-        this.den = 58;
-      }
-      if(index == 6){
-        this.dynamicClass6 = 'active';
-        this.dynamicClass1 = '';
-        this.dynamicClass2 = '';
-        this.dynamicClass3 = '';
-        this.dynamicClass4 = '';
-        this.dynamicClass5 = '';
-        this.dynamicClass7 = '';
-        this.date = moment().subtract(5, 'days').format('ddd, DD MMM');
-        this.orderEdits = 20;
-        this.cancelledOrders = 0;
-        this.acceptedOrders = 60.65;
-        this.goodFoodReady = 99;
-        this.b = [626,223];
-        this.num = 45;
-        this.den = 58;
-      }
-      if(index == 7){
-        this.dynamicClass7 = 'active';
-        this.dynamicClass1 = '';
-        this.dynamicClass2 = '';
-        this.dynamicClass3 = '';
-        this.dynamicClass4 = '';
-        this.dynamicClass5 = '';
-        this.dynamicClass6 = '';
-        this.date = moment().subtract(6, 'days').format('ddd, DD MMM');
-        this.orderEdits = 1;
-        this.cancelledOrders = 0;
-        this.acceptedOrders = 60.65;
-        this.goodFoodReady = 89;
-        this.b = [526,653];
-        this.num = 55;
-        this.den = 58;
-      }
+      
   }
-
 }

@@ -18,33 +18,62 @@
     </div>
 
     <div>
-      <div class="_1rwo5">
+      <div class="_1rwo5 ">
         <div class="F8Sye _1rtRz">
           <div class="_2YrH-">Payment</div>
         </div>
-        <div style="display: flex;" >
-          <div class="days-sidebar">
+        <div style="display: flex;">
+          <div class="days-sidebar _2YnKKr _3zAnR">
             <ul>
               <li [ngClass]="dynamicClass1" (click)="report(1)">
                 Pay on Delivery
               </li>
               <li [ngClass]="dynamicClass2" (click)="report(2)">
                 Credit/Debit Cards
-              </li> 
+              </li>
             </ul>
           </div>
           <div class="insights-overview-details-content bkcolor">
-            <div class="margin_left_15px">
+            <div class="margin_left_15px" *ngIf="cod">
+
+              <!-- <div > -->
+              <div class="_2_G0K">
+                <div class="_1ISkC"><img class="_2tuBw _12_oN" width="140" height="80" alt=""
+                    src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_140,h_80/image-pay-by-cash_av6bcw">
+                </div>
+                <div class="_2gp3l _1fMbb">
+                  <div class="_2QlY5" title="Cash">Cash</div>
+                  <div class="_2YDf0 _23V-r">Please keep exact change handy to help us serve you better</div>
+                </div>
+                <div class="_2ZJ0s _2vnDb">Pay</div>
+              </div>
+              <!-- </div> -->
 
             </div>
+
+            <div class="margin_left_15px" *ngIf="rpay">
+              <div class="_1gPB7" (click)="proceed()">Pay With Razorpay</div>
+
+              <div class="novopay-response-modal modal fade" role="dialog" [ngClass]="{'show': showModal}"
+                id="response-modal" [ngStyle]="{'display': 'none'}">
+                {{response}}
+              </div>
+
+              <div class="novopay-response-modal modal fade" role="dialog" [ngClass]="{'show': showModal}"
+                id="razorpay-response" [ngStyle]="{'display': 'none'}">
+                {{razorpayResponse}}
+              </div>
+            </div>
+
+
+
           </div>
+
         </div>
         <div class="_2b4pY AuX5b">
           <img class="_1q8J4 _1UwKN" src="../../../assets/img/walet.PNG">
         </div>
       </div>
-    </div>
 
-  </div>
-  <div class="col-lg-4 col-md-4 col-sm-4"></div>
-</div>
+
+    </div>
