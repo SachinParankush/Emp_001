@@ -22,7 +22,12 @@
 
 ._2YrH- {
    margin-right: 25px;
-   margin-bottom: 25px;
+   margin-bottom: -20px;
+}
+
+._2YrH1 {
+   margin-right: 25px;
+   margin-bottom: 80px;
 }
 
 ._38EYL {
@@ -922,9 +927,10 @@ modal {
    align-items: center;
    -ms-flex-pack: center;
    justify-content: center;
-   font-size: 16px;
+   font-size: 14px;
    font-weight: 600;
-   width: 200px;
+   width: auto;
+   padding: 15px;
  }
 
  ._2b4pY1{
@@ -1426,24 +1432,6 @@ modal {
    margin-top: 2px;
  }
  
- ._1gPB7 {
-   height: 50px;
-   background-color: #60b246;
-   outline: 0;
-   cursor: pointer;
-   border: 0;
-   color: #fff;
-   // margin-top: 28px;
-   text-transform: uppercase;
-   display: -ms-flexbox;
-   display: flex;
-   -ms-flex-align: center;
-   align-items: center;
-   -ms-flex-pack: center;
-   justify-content: center;
-   font-size: 16px;
-   font-weight: 600;
- }
  
  ::ng-deep html, body {
    height: 100% !important;
