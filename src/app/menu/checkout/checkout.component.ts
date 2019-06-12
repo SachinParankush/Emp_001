@@ -43,7 +43,7 @@ export class CheckoutComponent implements OnInit {
 
   RAZORPAY_OPTIONS = {
     "key": "rzp_test_RS9FYe5RzsB5ll",
-    "amount" : "",
+    "amount" : 0,
     "name": "Empire",
     "order_id": "",
     "description": "Bill Payment",
@@ -69,7 +69,7 @@ export class CheckoutComponent implements OnInit {
     // alert(JSON.stringify(parts[0]))
     // this.grand_total = parseInt(whole + dec);
 
-    this.RAZORPAY_OPTIONS.amount = parts[0] + '00 ';
+    this.RAZORPAY_OPTIONS.amount = (this.grand_total * 100);
 
     // binding this object to both success and dismiss handler
     this.RAZORPAY_OPTIONS['handler'] = this.razorPaySuccessHandler.bind(this);
