@@ -38,12 +38,12 @@ export class SignInComponent implements OnInit {
           "mobile_no": this.angForm.value.mobile_no,
           "password": this.angForm.value.password,
         }
-        this.EmpireApiService.signIn(params).subscribe(
-          (res: any) => {  
-            if (res.code == '200') {
-              this.router.navigate(['/empire/Dashboard']);
-            }
-          })
+        // this.EmpireApiService.signIn(params).subscribe(
+        //   (res: any) => {  
+        //     if (res.code == '200') {
+              this.router.navigate(['/empire/Address']);
+            // }
+          // })
       }
   }
 }

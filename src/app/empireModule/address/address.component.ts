@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-address',
@@ -15,6 +16,7 @@ export class AddressComponent implements OnInit {
   angForm: FormGroup;
   registerForm: FormGroup;
   submitted = false;
+  flag = false;
 
   City: any = ['Bangalore', 'Mysore']
 
@@ -42,7 +44,7 @@ export class AddressComponent implements OnInit {
   },
   ]
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,private router: Router) { }
 
 
   ngOnInit() {
@@ -65,8 +67,18 @@ export class AddressComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
+  }
 
-    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
+  addNewAdrs(){
+    if(this.flag == false){
+      this.flag = true;
+    } else {
+      this.flag = false;
+    }
+  }
+
+  selectAddress(data){
+    this.router.navigate(['/empire/Dashboard']);
   }
 
 }
