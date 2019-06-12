@@ -18,7 +18,7 @@
     </div>
 
 
-    <div>
+    <div >
       <div class="_1rwo5 ">
         <div class="F8Sye _1rtRz _2YrH-">Payment</div>
         <div style="display: flex;">
@@ -42,12 +42,12 @@
                   <div class="_2QlY5" title="Cash">Cash</div>
                   <div class="_2YDf0 _23V-r">Please keep exact change handy to help us serve you better</div>
                 </div>
-                <div class="_2ZJ0s _2vnDb">Pay</div>
+                <div class="_2ZJ0s _2vnDb">Pay ₹{{grand_total}}</div>
               </div>
             </div>
 
             <div class="margin_left_15px" *ngIf="rpay">
-              <div class="_1gPB7" (click)="proceed()">Pay With Razorpay</div>
+              <div class="_1gPB7" (click)="proceed()">Pay With Razorpay ₹{{grand_total}}</div>
 
               <div class="novopay-response-modal modal fade" role="dialog" [ngClass]="{'show': showModal}"
                 id="response-modal" [ngStyle]="{'display': 'none'}">
@@ -73,17 +73,19 @@
 
     </div>
   </div>
-    <div class="col-lg-4 col-md-4 col-sm-4" style="padding-top: 45px;padding-left: 45px;">
-      <div class="container" *ngIf="cart_Count != 0 ">
+
+    <div class="col-lg-3 col-md-3 col-sm-3 " style="padding-top: 45px;padding-left: 45px;">
+      <div class="container background" *ngIf="cart_Count != 0 ">
         <div class="_2uq6N">Cart
            <div class="_1XFmX">{{cart_Count}} Items</div>
         </div>
+        <div class="ScrollStyle1">
         <div class="_1t-Al _1XUXj">
            <div class="_3YMqW"></div>
            <div class="_2ObNr _2qOpI">
-              <div *ngFor="let data of ELEMENT_DATA; let i = index;">
+              <div >
                  <div class="_2zsON"></div>
-                 <div class="MGAj1" *ngFor="let subData of data.Subcourse; let ij = index;">
+                 <div class="MGAj1" *ngFor="let subData of cartItems; let ij = index;">
                     <div class="_2bXOy" *ngIf="subData.addToCart">
                        <div class="_3SG03">
                           <div class="_2MJB6"><img src="../../../assets/img/veg.png" class="category_img" />
@@ -139,11 +141,13 @@
                  <div class="_1I8bA"><span class="ZH2UW">{{deliver_Charges}}</span></div>
               </div>
            </div>
+          </div>
+        </div>
            <div class="ZBf6d">
               <div>TO PAY</div>
               <div class="_3ZAW1">{{grand_total}}</div>
            </div>
-        </div>
+        
      
      </div>
 

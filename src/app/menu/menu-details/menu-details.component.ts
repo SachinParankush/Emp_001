@@ -4,6 +4,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scroll-to';
+import { AppState } from "../../app.service";
 
 @Component({
   selector: 'app-menu-details',
@@ -22,8 +23,8 @@ export class MenuDetailsComponent implements OnInit {
   data: Date = new Date();
   cart_Count = 0;
   subTotal = 0;
-  cgst = 5;
-  sgst = 5;
+  cgst =0;
+  sgst = 0;
   deliver_Charges = 20;
   grand_total = 0;
 
@@ -128,7 +129,7 @@ export class MenuDetailsComponent implements OnInit {
 
   cart_Data = [];
 
-  constructor(private _scrollToService: ScrollToService, private empireApiService: empireApiService, private modalService: BsModalService, private fb: FormBuilder, private router: Router) {
+  constructor(private empireAppState: AppState,private _scrollToService: ScrollToService, private empireApiService: empireApiService, private modalService: BsModalService, private fb: FormBuilder, private router: Router) {
   }
 
   ngOnInit() {
@@ -195,17 +196,52 @@ export class MenuDetailsComponent implements OnInit {
     this.subTotal = 0;
     this.grand_total = 0;
     this.cart_Count = 0;
+    this.cgst = 0;
+    this.sgst = 0;
     for(let i in this.ELEMENT_DATA){
       for(let j in this.ELEMENT_DATA[i].Subcourse)
         if(this.ELEMENT_DATA[i].Subcourse[j].addToCart == true){
           this.cart_Count = this.cart_Count + 1;
           this.subTotal =  this.subTotal + this.ELEMENT_DATA[i].Subcourse[j].item_total_price;
+          this.cgst = (this.subTotal*2.5)/100;
+          this.sgst = (this.subTotal*2.5)/100;
+          // this.empireAppState.checkOutData.cart_Data.push(this.ELEMENT_DATA[i].Subcourse[j]);
+
         }
     }
     this.grand_total = this.subTotal + this.cgst + this.sgst + this.deliver_Charges;
+    // this.empireAppState.checkOutData.CGST = this.cgst
+    // this.empireAppState.checkOutData.SGST = this.sgst
+    // this.empireAppState.checkOutData.itemTotal = this.subTotal
+    // this.empireAppState.checkOutData.grandTotal = this.grand_total
+    // this.empireAppState.checkOutData.itemCount = this.cart_Count
   }
 
   checkOut(){
+    this.subTotal = 0;
+    this.grand_total = 0;
+    this.cart_Count = 0;
+    this.cgst = 0;
+    this.sgst = 0;
+
+    for(let i in this.ELEMENT_DATA){
+      for(let j in this.ELEMENT_DATA[i].Subcourse)
+        if(this.ELEMENT_DATA[i].Subcourse[j].addToCart == true){
+          this.cart_Count = this.cart_Count + 1;
+          this.subTotal =  this.subTotal + this.ELEMENT_DATA[i].Subcourse[j].item_total_price;
+          this.cgst = (this.subTotal*2.5)/100;
+          this.sgst = (this.subTotal*2.5)/100;
+          this.empireAppState.checkOutData.cart_Data.push(this.ELEMENT_DATA[i].Subcourse[j]);
+
+        }
+    }
+    
+    this.grand_total = this.subTotal + this.cgst + this.sgst + this.deliver_Charges;
+    this.empireAppState.checkOutData.CGST = this.cgst
+    this.empireAppState.checkOutData.SGST = this.sgst
+    this.empireAppState.checkOutData.itemTotal = this.subTotal
+    this.empireAppState.checkOutData.grandTotal = this.grand_total
+    this.empireAppState.checkOutData.itemCount = this.cart_Count
     this.router.navigate(['/menuDetails/checkout']);
   }
 

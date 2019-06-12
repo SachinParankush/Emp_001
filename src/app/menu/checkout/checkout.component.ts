@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild,ChangeDetectorRef } from '@angular/core';
 import { ExternalLibraryService } from './util';
+import { AppState } from "../../app.service";
 
 declare let Razorpay: any;
 
@@ -14,12 +15,13 @@ export class CheckoutComponent implements OnInit {
   dynamicClass2;
   cod = true;
   rpay = false;
-  cart_Count = 1;
+  cart_Count = 0;
   subTotal = 0;
-  cgst = 5;
-  sgst = 5;
-  deliver_Charges = 20;
+  cgst = 0;
+  sgst = 0;
+  deliver_Charges = 0;
   grand_total = 0;
+  cartItems :any;
 
   ngOnInit() {
 
@@ -29,7 +31,9 @@ export class CheckoutComponent implements OnInit {
   }
 
   
-  constructor(private razorpayService: ExternalLibraryService, private cd:  ChangeDetectorRef) {
+  constructor(private razorpayService: ExternalLibraryService, private cd:  ChangeDetectorRef,private empireAppState: AppState) {
+    // this.cart_Count = this.empireAppState.checkOutData.itemCount;
+    this.cartData()
     this.report(1)
    }
   name = 'Angular';
@@ -39,7 +43,7 @@ export class CheckoutComponent implements OnInit {
 
   RAZORPAY_OPTIONS = {
     "key": "rzp_test_RS9FYe5RzsB5ll",
-    "amount": "",
+    "amount" : "",
     "name": "Empire",
     "order_id": "",
     "description": "Bill Payment",
@@ -58,7 +62,14 @@ export class CheckoutComponent implements OnInit {
 
 
   public proceed() {
-    this.RAZORPAY_OPTIONS.amount = 100 + '00';
+
+    var parts = this.grand_total.toString().split('.');
+    var whole = parts[0];
+    var dec = parts[1]
+    // alert(JSON.stringify(parts[0]))
+    // this.grand_total = parseInt(whole + dec);
+
+    this.RAZORPAY_OPTIONS.amount = parts[0] + '00 ';
 
     // binding this object to both success and dismiss handler
     this.RAZORPAY_OPTIONS['handler'] = this.razorPaySuccessHandler.bind(this);
@@ -77,113 +88,7 @@ export class CheckoutComponent implements OnInit {
     document.getElementById('razorpay-response').style.display = 'block';
   }
 
-  // public test() {
-  //   document.getElementById('response-modal').style.display = 'block';
-  //   this.response = `dummy text`;
-  // }
 
-
-  
-  ELEMENT_DATA = [
-    {
-      "MainCourse": "Quick Bites",
-      "Subcourse":
-        [
-          {
-            "dish_name": "Pulav",
-            "dish_price": "55",
-            "item_discription": "Its Made with Love",
-            "item_category": "veg",
-            "addToCart": false,
-            "itemCount": 0,
-            "item_total_price":0
-          },
-          {
-            "dish_name": "Rice Bath",
-            "dish_price": "75",
-            "item_discription": "Its Made with Love and Care",
-            "item_category": "veg",
-            "addToCart": false,
-            "itemCount": 0,
-            "item_total_price":0
-          }
-        ]
-    },
-    {
-      "MainCourse": "Salads",
-      "Subcourse":
-        [
-          {
-            "dish_name": "Veg Salad",
-            "dish_price": "55",
-            "item_discription": "Its Made with Love",
-            "item_category": "veg",
-            "addToCart": false,
-            "itemCount": 0,
-            "item_total_price":0
-          },
-          {
-            "dish_name": "Non-Veg Salad",
-            "dish_price": "75",
-            "item_discription": "Its Made with Love and Care",
-            "item_category": "nonveg",
-            "addToCart": false,
-            "itemCount": 0,
-            "item_total_price":0
-          }
-        ]
-    },
-    {
-      "MainCourse": "Soups",
-      "Subcourse":
-        [
-          {
-            "dish_name": "Veg Soup",
-            "dish_price": "55",
-            "item_discription": "Its Made with Love",
-            "item_category": "veg",
-            "addToCart": false,
-            "itemCount": 0,
-            "item_total_price":0
-          },
-          {
-            "dish_name": "Non-Veg Soup",
-            "dish_price": "75",
-            "item_discription": "Its Made with Love and Care",
-            "item_category": "nonveg",
-            "addToCart": false,
-            "itemCount": 0,
-            "item_total_price":0
-          }
-        ]
-    },
-    {
-      "MainCourse": "Indian",
-      "Subcourse":
-        [
-          {
-            "dish_name": "Rotii",
-            "dish_price": "55",
-            "item_discription": "Its Made with Love",
-            "item_category": "veg",
-            "addToCart": false,
-            "itemCount": 0,
-            "item_total_price":0
-          },
-          {
-            "dish_name": "Curry",
-            "dish_price": "75",
-            "item_discription": "Its Made with Love and Care",
-            "item_category": "nonveg",
-            "addToCart": false,
-            "itemCount": 0,
-            "item_total_price":0
-          }
-        ]
-    }
-  ];
-
-  cart_Data = [];
 
   report(index){
       if(index == 1){
@@ -203,47 +108,17 @@ export class CheckoutComponent implements OnInit {
       
   }
 
+cartData(){
 
-  addtocart(data, data1, index, index1) {
-    this.ELEMENT_DATA[index].Subcourse[index1].addToCart = true;
-    this.ELEMENT_DATA[index].Subcourse[index1].itemCount = this.ELEMENT_DATA[index].Subcourse[index1].itemCount + 1;  
-    this.ELEMENT_DATA[index].Subcourse[index1].item_total_price = parseInt(this.ELEMENT_DATA[index].Subcourse[index1].dish_price) *  this.ELEMENT_DATA[index].Subcourse[index1].itemCount; 
-    this.cart_Data.push(data1);
-    this.total_Amount_Cal();
-  }
+  this.cartItems = this.empireAppState.checkOutData.cart_Data;
+  this.cart_Count = this.empireAppState.checkOutData.itemCount;
+  this.subTotal = this.empireAppState.checkOutData.itemTotal;
+  this.grand_total = this.empireAppState.checkOutData.grandTotal;
+  this.cgst = this.empireAppState.checkOutData.CGST;
+  this.sgst = this.empireAppState.checkOutData.SGST;
+  this.deliver_Charges = this.empireAppState.checkOutData.deliveryPrice;
+}
 
-  addItem(data, data1, index, index1) {
-    this.ELEMENT_DATA[index].Subcourse[index1].itemCount = this.ELEMENT_DATA[index].Subcourse[index1].itemCount + 1;
-    this.ELEMENT_DATA[index].Subcourse[index1].item_total_price = parseInt(this.ELEMENT_DATA[index].Subcourse[index1].dish_price) *  this.ELEMENT_DATA[index].Subcourse[index1].itemCount;
-    this.total_Amount_Cal();
-  }
 
-  removeItem(data, data1, index, index1) {
-    if (this.ELEMENT_DATA[index].Subcourse[index1].itemCount == 1) {
-      this.ELEMENT_DATA[index].Subcourse[index1].addToCart = false;
-      this.ELEMENT_DATA[index].Subcourse[index1].itemCount = 0;
-      this.ELEMENT_DATA[index].Subcourse[index1].item_total_price = 0;
-      this.total_Amount_Cal();
-    }
-    else {
-      this.ELEMENT_DATA[index].Subcourse[index1].itemCount = this.ELEMENT_DATA[index].Subcourse[index1].itemCount - 1;
-      this.ELEMENT_DATA[index].Subcourse[index1].item_total_price = parseInt(this.ELEMENT_DATA[index].Subcourse[index1].dish_price) *  this.ELEMENT_DATA[index].Subcourse[index1].itemCount;
-      this.total_Amount_Cal();
-    }
-  }
-
-  total_Amount_Cal(){
-    this.subTotal = 0;
-    this.grand_total = 0;
-    this.cart_Count = 0;
-    for(let i in this.ELEMENT_DATA){
-      for(let j in this.ELEMENT_DATA[i].Subcourse)
-        if(this.ELEMENT_DATA[i].Subcourse[j].addToCart == true){
-          this.cart_Count = this.cart_Count + 1;
-          this.subTotal =  this.subTotal + this.ELEMENT_DATA[i].Subcourse[j].item_total_price;
-        }
-    }
-    this.grand_total = this.subTotal + this.cgst + this.sgst + this.deliver_Charges;
-  }
 
 }

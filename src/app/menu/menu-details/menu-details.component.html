@@ -61,6 +61,7 @@
                <div class="_2uq6N">Cart
                   <div class="_1XFmX">{{cart_Count}} Items</div>
                </div>
+               <div class="ScrollStyle1">
                <div class="_1t-Al _1XUXj">
                   <div class="_3YMqW"></div>
                   <div class="_2ObNr _2qOpI">
@@ -122,12 +123,14 @@
                         <div class="_1I8bA"><span class=""><span></span><span class="ZH2UW">{{deliver_Charges}}</span></span></div>
                      </div>
                   </div>
+               </div>
+            </div>
                   <div class="ZBf6d">
                      <div>TO PAY</div>
                      <div class="_3ZAW1">{{grand_total}}</div>
                   </div>
                   <div class="_1gPB7" (click)="checkOut()">Checkout →</div>
-               </div>
+               
             
             </div>
             <div class="container _1cl2U" *ngIf="cart_Count == 0 ">

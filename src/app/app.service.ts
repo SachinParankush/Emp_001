@@ -8,13 +8,14 @@ export class AppState {
   // -----------------------------------------------------------------------
   
   // To hold login profile related information
-  globalLoginData = {    
-    
-    "brand_name":"",    
-    "organisation_name": "",
-    "bid": "",
-    "user_id":"" ,
-    "no_org": "" 
+  checkOutData = {    
+    "itemCount": 0,
+    "itemTotal": 0,
+    "grandTotal": 0,
+    "CGST": 0,
+    "SGST":0,
+    "deliveryPrice":0,
+    "cart_Data" : []
     
   }
 

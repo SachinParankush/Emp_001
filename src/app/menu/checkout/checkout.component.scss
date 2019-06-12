@@ -1041,7 +1041,7 @@ modal {
    .menu-item-name{
      font-family: helvetica;
      font-weight: bold;
-     border-bottom: 1px dotted rgb(213, 213, 213);
+     // border-bottom: 1px dotted rgb(213, 213, 213);
    }
     
  .menu-item-name b{
@@ -1095,12 +1095,23 @@ modal {
   
    .ScrollStyle
  {
-     height:-webkit-fill-available !important;
+     // height:-webkit-fill-available !important;
      max-height: 680px;    
      overflow-y: scroll;
  }
  
+ .ScrollStyle1
+ {
+     // height:-webkit-fill-available !important;
+     max-height: 450px;    
+     overflow-y: scroll;
+ }
+ 
  .ScrollStyle::-webkit-scrollbar { 
+   display: none; 
+ }
+ 
+ .ScrollStyle1::-webkit-scrollbar { 
    display: none; 
  }
  
@@ -1422,7 +1433,7 @@ modal {
    cursor: pointer;
    border: 0;
    color: #fff;
-   margin-top: 28px;
+   // margin-top: 28px;
    text-transform: uppercase;
    display: -ms-flexbox;
    display: flex;
@@ -1601,6 +1612,7 @@ modal {
    color: #282c3f;
    padding: 0 30px;
    z-index: 1;
+   border-top: 2px solid #282c3f;
  }
  
  ._3ZAW1 {
@@ -1632,6 +1644,7 @@ modal {
  
  .container{
    padding-top: 15px !important;
+   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
  }
  
  .description {
@@ -1757,5 +1770,6 @@ modal {
    font-weight: 300;
    max-width: 218px;
  }
+ 
  
  
