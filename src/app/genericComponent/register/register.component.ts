@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { empireApiService } from '../../empire-api-service';
 
 
 @Component({
@@ -12,49 +13,43 @@ export class RegisterComponent implements OnInit {
     submitted = false;
     
     City: any = ['Bangalore', 'Mysore']
+    SearchCity: any = ['Bangalore', 'Mysore']
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,public EmpireApiService:empireApiService) { 
+    this.registerForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      mobileNumber: ['', [Validators.required, Validators.minLength(10)]],
+      emailId: ['', [Validators.required, ]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      city: ['', [Validators.required]],
+      area: ['', [Validators.required]],
+      street: ['', Validators.required],
+      doorNumber: ['', Validators.required],
+      landMark: ['', Validators.required],
+      fullAddress: ['', Validators.required],
+    });
+  }
 
   ngOnInit() {
 
-    this.registerForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      mobileNo: ['', [Validators.required, Validators.minLength(10)]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required],
-      cityName: ['', [Validators.required]],
-      Street: ['', Validators.required],
-      DoorNo: ['', Validators.required],
-      Landmark: ['', Validators.required],
-      Address: ['', Validators.required],
-      
-  }, {
-      
-  });
+  
   }
-  // changeCity(e) {
-  //   console.log(e.value)
-  //   this.cityName.setValue(e.target.value, {
-  //     onlySelf: true
-  //   })
-  // }
-
-  // // Getter method to access formcontrols
-  // get cityName() {
-  //   return this.registerForm.get('cityName');
-  // }
-  get f() { return this.registerForm.controls; }
 
   onSubmit() {
-      this.submitted = true;
-
-      // stop here if form is invalid
-      if (this.registerForm.invalid) {
-          return;
+    if (this.registerForm.valid) {
+      this.EmpireApiService.register(this.registerForm.value).subscribe(
+        (res: any) => {
+          console.log(JSON.stringify(res))
+        });
+    }
+    else {
+      for (let c in this.registerForm.controls) {
+        this.registerForm.controls[c].markAsTouched();
+        alert(JSON.stringify(c))
       }
-
-      alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
+      // alert("4545454545")
+    }
+    
   }
   
 

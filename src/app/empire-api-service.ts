@@ -181,6 +181,20 @@ export class empireApiService {
             );
     }
 
+      /* ----------------------------------------------------------------------------------
+    **  Http call to create register data 
+    ------------------------------------------------------------------------------------*/
+    register(createRegisterTable): Observable<any> {
+        var url = this.getUrl(config.SERVERTYPE,config.REGISTER);
+        console.log("calling register method");
+        return this.http.post(url,
+            JSON.stringify(createRegisterTable),
+            this.options)
+            .map(res => res.json()
+            );
+    }
+
+
     // API is get the Apiendpoint url based on the parameter passed handling both Web and Device
    getUrl(type, keyUrl : any) : string {
    // var url
