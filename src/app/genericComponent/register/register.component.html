@@ -106,9 +106,9 @@
 
                                 <label>Choose City *</label>
 
-                                <select class="custom-select" formControlName="city">
+                                <select class="custom-select" formControlName="city"  (change)="setArea()" >
                                     <option value="">Choose your city</option>
-                                    <option *ngFor="let city of City" value={{city}}>{{city}}</option>
+                                    <option *ngFor="let city of City" value={{city.city_id}}>{{city.city_name}}</option>
                                 </select>
                                 <span class="text-danger"
                                     *ngIf="registerForm.controls['city'].hasError('required')&&(registerForm.controls['city'].dirty || registerForm.controls['city'].touched)">This
@@ -123,7 +123,7 @@
 
                                 <select class="custom-select" formControlName="area">
                                     <option value="">Choose your Area</option>
-                                    <option *ngFor="let ciity of SearchCity" value={{ciity}}>{{ciity}}</option>
+                                    <option *ngFor="let ciity of SearchCity" value={{ciity.area_id}}>{{ciity.area_name}}</option>
                                 </select>
                                 <span class="text-danger"
                                     *ngIf="registerForm.controls['area'].hasError('required')&&(registerForm.controls['area'].dirty || registerForm.controls['area'].touched)">This

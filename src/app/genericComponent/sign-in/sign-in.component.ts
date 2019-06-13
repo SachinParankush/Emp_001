@@ -38,12 +38,22 @@ export class SignInComponent implements OnInit {
           "mobile_no": this.angForm.value.mobile_no,
           "password": this.angForm.value.password,
         }
-        // this.EmpireApiService.signIn(params).subscribe(
-        //   (res: any) => {  
-        //     if (res.code == '200') {
-              this.router.navigate(['/empire/Address']);
-            // }
-          // })
+        this.EmpireApiService.signIn(params).subscribe(
+          (res: any) => { 
+            alert(JSON.stringify(res)) 
+            var paramsData= {
+              "mobile_no":res.mobile_no,
+              "user_id":res.user_id
+            }
+            if (res.code == '200') {
+              this.EmpireApiService.getAddressData(paramsData).subscribe(
+                (resp: any) => { 
+                  alert(JSON.stringify(resp))
+                })
+              // alert(JSON.stringify(res))
+              // this.router.navigate(['/empire/Address']);
+            }
+          })
       }
   }
 }

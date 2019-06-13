@@ -15,3 +15,5 @@ export const GETORDERDATA = "http://192.168.1.181:8080/empireh/angular_callcente
 export const GETORDERCOUNT = "http://192.168.1.181:8080/empireh/angular_callcenter_api/get_status_count";
 export const DELETEDATA = "/api/mysqlDb/deleteData";
 export const REGISTER = "http://192.168.1.181:5000/register";
+export const GETALLADDRESS = "http://192.168.1.181:5000/get_user_all_address";
+export const GETAREALIST = "http://192.168.1.181:5000/get_area_cities";
