@@ -3,149 +3,145 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                
+
                 <h3>Register</h3>
                 <p>Create your own account</p>
-                
-                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-                        <div class="row">
-                                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label>Customer Name *</label>
-                        <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
-                        <!-- <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                            <div *ngIf="f.name.errors.required">Customer Name is required</div>
-                        </div> -->
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label>Mobile No *</label>
-                        <input type="text" formControlName="mobileNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mobileNumber.errors }" />
-                        <!-- <div *ngIf="submitted && f.mobileNumber.errors" class="invalid-feedback">
-                            <div *ngIf="f.mobileNumber.errors.required">Mobile No is required</div>
-                        </div> -->
-                    </div>
-                </div>
-            </div>
 
-            <div class="row">
-                    <div class="col-sm-6">
-                    <div class="form-group">
-                        <label>Email Address *</label>
-                        <input type="text" formControlName="emailId" class="form-control"/>
-                        <!-- <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                            <div *ngIf="f.email.errors.required">Email Address is required</div>
-                            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
-                        </div> -->
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Customer Name *</label>
+                                <input type="text" formControlName="name" class="form-control" />
+                                <span class="text-danger"
+                                    *ngIf="registerForm.controls['name'].hasError('required')&&(registerForm.controls['name'].dirty || registerForm.controls['name'].touched)">This
+                                    field is required</span>
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Mobile No *</label>
+                                <input type="text" formControlName="mobileNumber" class="form-control" />
+                                <span class="text-danger"
+                                    *ngIf="registerForm.controls['mobileNumber'].hasError('required')&&(registerForm.controls['mobileNumber'].dirty || registerForm.controls['mobileNumber'].touched)">This
+                                    field is required</span>
+
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Email Address *</label>
+                                <input type="text" formControlName="emailId" class="form-control" />
+
+                                <span class="text-danger"
+                                    *ngIf="registerForm.controls['emailId'].hasError('required')&&(registerForm.controls['emailId'].dirty || registerForm.controls['emailId'].touched)">This
+                                    field is required</span>
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Password *</label>
+                                <input type="password" formControlName="password" class="form-control" />
+                                <span class="text-danger"
+                                    *ngIf="registerForm.controls['password'].hasError('required')&&(registerForm.controls['password'].dirty || registerForm.controls['password'].touched)">This
+                                    field is required</span>
+
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-sm-6">
-                    <div class="form-group">
-                        <label>Password *</label>
-                        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                        <!-- <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                            <div *ngIf="f.password.errors.required">Password is required</div>
-                            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-                        </div> -->
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Door No *</label>
+                                <input type="text" formControlName="doorNumber" class="form-control" />
+                                <span class="text-danger"
+                                    *ngIf="registerForm.controls['doorNumber'].hasError('required')&&(registerForm.controls['doorNumber'].dirty || registerForm.controls['doorNumber'].touched)">This
+                                    field is required</span>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Street *</label>
+                                <input type="text" formControlName="street" class="form-control" />
+                                <span class="text-danger"
+                                    *ngIf="registerForm.controls['street'].hasError('required')&&(registerForm.controls['street'].dirty || registerForm.controls['street'].touched)">This
+                                    field is required</span>
+
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                    <div class="col-sm-6">
-                    <div class="form-group">
-                        <label>Door No *</label>
-                        <input type="text" formControlName="doorNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.doorNumber.errors }" />
-                        <!-- <div *ngIf="submitted && f.doorNumber.errors" class="invalid-feedback">
-                            <div *ngIf="f.doorNumber.errors.required">Door No is required</div>
-                            
-                        </div> -->
-                    </div>
-                    </div>
-                    <div class="col-sm-6">
-                    <div class="form-group">
-                        <label>Street *</label>
-                        <input type="text" formControlName="street" class="form-control" />
-                        <!-- <div *ngIf="submitted && f.Street.errors" class="invalid-feedback">
-                            <div *ngIf="f.Street.errors.required">Street is required</div>
-                        </div> -->
-                    </div>
-                </div>
-            </div>
 
                     <div class="form-group">
                         <label>Landmark *</label>
                         <input type="text" formControlName="landMark" class="form-control" />
-                        <!-- <div *ngIf="submitted && f.Landmark.errors" class="invalid-feedback">
-                            <div *ngIf="f.Landmark.errors.required">Landmark is required</div>
-                        </div> -->
+                        <span class="text-danger"
+                            *ngIf="registerForm.controls['landMark'].hasError('required')&&(registerForm.controls['landMark'].dirty || registerForm.controls['landMark'].touched)">This
+                            field is required</span>
+
                     </div>
 
                     <div class="form-group">
                         <label>Full Address *</label>
-                        <input type="text" formControlName="fullAddress" class="form-control"  />
-                        <!-- <div *ngIf="submitted && f.Address.errors" class="invalid-feedback">
-                            <div *ngIf="f.Address.errors.required">Full Address is required</div>
-                            <div *ngIf="f.Address.errors.minlength">Password must be at least 6 characters</div>
-                        </div> -->
+                        <input type="text" formControlName="fullAddress" class="form-control" />
+                        <span class="text-danger"
+                            *ngIf="registerForm.controls['fullAddress'].hasError('required')&&(registerForm.controls['fullAddress'].dirty || registerForm.controls['fullAddress'].touched)">This
+                            field is required</span>
+
                     </div>
 
-                   <div class="row">
-                    <div class="col-sm-6">
-                    <div class="form-group">
-                            
-                                  
-                        <label>Choose City *</label>
-                        
-                        <select class="custom-select" formControlName="city">
-                            <option value="">Choose your city</option>
-                            <option *ngFor="let city of City"  value={{city}}>{{city}}</option>
-                        </select>
-                              <!-- <div class="invalid-feedback" *ngIf="Submitted && cityName.errors?.required">
-                                    <sup>*</sup>Please enter your city name
-                                  </div> -->
-                       
-                        <!-- <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/> -->
-                        
-                        <!-- <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                                
-                            <div *ngIf="f.password.errors.required">Choose City is required</div>
-                            
-                        </div> -->
-                        
-                    </div>
-                    </div>
-                    <div class="col-sm-6">
-                    <div class="form-group">
-                        <label>Search Area *</label>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
 
-                        <select class="custom-select" formControlName="area">
-                            <option value="">Choose your city</option>
-                            <option *ngFor="let ciity of SearchCity"  value={{ciity}}>{{ciity}}</option>
-                        </select>
-                        <!-- <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" /> -->
-                        <!-- <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                            <div *ngIf="f.password.errors.required">Search Area is required</div>
-                        </div> -->
+
+                                <label>Choose City *</label>
+
+                                <select class="custom-select" formControlName="city">
+                                    <option value="">Choose your city</option>
+                                    <option *ngFor="let city of City" value={{city}}>{{city}}</option>
+                                </select>
+                                <span class="text-danger"
+                                    *ngIf="registerForm.controls['city'].hasError('required')&&(registerForm.controls['city'].dirty || registerForm.controls['city'].touched)">This
+                                    field is required</span>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Search Area *</label>
+
+                                <select class="custom-select" formControlName="area">
+                                    <option value="">Choose your Area</option>
+                                    <option *ngFor="let ciity of SearchCity" value={{ciity}}>{{ciity}}</option>
+                                </select>
+                                <span class="text-danger"
+                                    *ngIf="registerForm.controls['area'].hasError('required')&&(registerForm.controls['area'].dirty || registerForm.controls['area'].touched)">This
+                                    field is required</span>
+
+                            </div>
+                        </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-5">
+
+
+                            <button class="submit">Register</button>
+
+                        </div>
                     </div>
-                   </div>
-                   <div class="row">
-                   <div class="col-md-5">
-                   
-                   
-                        <button class="submit" >Register</button>
-                    
-                </div>
-            </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
-
-
-
-
-
