@@ -69,7 +69,7 @@
 .img-rounded {
     border-radius: 2px;
     height: 95px !important;
-    width: 95px !important;
+    width: 145px !important;
 }
 
 img {
@@ -240,4 +240,13 @@ footer {
     margin-bottom: 30px;
 }
 
+.outLetNotFound {
+    border: 1px solid #eaebeb;
+    border-radius: 3px;
+    padding: 25px;
+    background: #ffffff;
+    text-align: center;
+    cursor: pointer;
+    margin: 100px;
+}
 

@@ -10,6 +10,7 @@ const empireRoutes: Routes = [
             { path: '', redirectTo: 'Landing', pathMatch: 'full' },
             { path: 'Landing', component:LandingComponent},
             { path: 'Dashboard', component:DashboardComponent},
+            { path: 'Dashboard/:id', component:DashboardComponent},
             { path: 'Address', component:AddressComponent},
 
             // Not found

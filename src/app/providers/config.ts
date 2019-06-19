@@ -17,3 +17,6 @@ export const DELETEDATA = "/api/mysqlDb/deleteData";
 export const REGISTER = "http://192.168.1.181:5000/register";
 export const GETALLADDRESS = "http://192.168.1.181:5000/get_user_all_address";
 export const GETAREALIST = "http://192.168.1.181:5000/get_area_cities";
+export const ADD_MULTIPLE_ADDRESS = "http://192.168.1.181:5000/add_multiple_addess";
+export const GET_BRANCH_DETAILS = "http://192.168.1.181:5000/get_branhes_on_area_id";
+export const GET_OUTLET_MENU = "http://192.168.1.181:5000/get_outlet_menu";

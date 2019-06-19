@@ -45,15 +45,15 @@
 
   <h1 class="center">CHOOSE OUR FOOD</h1>
   <div class="row center container">
-    <div class="col-sm-4 col center">
+    <div class="col-sm-4 col center" (click)="cardFilter('Empire')">
       <img src="../../../assets/img/empire-hotel.png" class="zoom" width="100%">
       <div class="clearfix"></div><br>
     </div>
-    <div class="col-sm-4 center">
+    <div class="col-sm-4 center" (click)="cardFilter('Karama')">
       <img src="../../../assets/img/karama.png" class="zoom" width="100%">
       <div class="clearfix"></div><br>
     </div>
-    <div class="col-sm-4 col center">
+    <div class="col-sm-4 col center" (click)="cardFilter('VegetArea')">
       <img src="../../../assets/img/vegetarea.png" class="zoom" width="100%">
       <div class="clearfix"></div><br>
     </div>
@@ -61,17 +61,17 @@
 
   <div class="row center container">
     <div class="col-xs-12 col-sm-12 col-md-6 single-restaurant" style="display: block;"  *ngFor="let data of cardDetails; let i = index;" >
-      <div class="restaurant-wrap" (click)="getMenu(data.id)">
+      <div class="restaurant-wrap" (click)="getMenu(data.branch_id)" *ngIf="cardDetails">
         <div class="row">
           <div class="col-xs-12 col-sm-3 col-md-12 col-lg-3 text-xs-center">
             <a class="restaurant-logo" href="#"> <img class="img-rounded"
-                src={{data.image}}
+                src={{data.img}}
                 alt="Restaurant logo"> </a>
           </div>
           <!--end:col -->
           <div class="col-xs-12 col-sm-9 col-md-12 col-lg-9">
-            <h5>{{data.HotelName}}<span class="small_loc">({{data.location}})</span></h5>
-            <span class="bottom-part">{{data.Address}}</span>
+            <h5>{{data.brand_name}}<span class="small_loc">({{data.outlet_fullname}})</span></h5>
+            <span class="bottom-part">{{data.address}}</span>
             <!-- <div class="bottom-part">
               <a href="http://studiohash.co.in/projects/lochi/restaurant?r=1" class="btn theme-btn btn-sm">VIEW MENU</a>
             </div> -->
@@ -80,7 +80,13 @@
         </div>
         <!-- end:row -->
       </div>
+      
     </div>
+    
+  </div>
+  <div class="outLetNotFound" *ngIf="cardDetails.length == 0">
+    <h2>No Outlet Found</h2>
+    <img src="../../../assets/img/no-outlet.png" style="width: 15%;" >
   </div>
   
 </div>

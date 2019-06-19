@@ -15,9 +15,13 @@ export class AppState {
     "CGST": 0,
     "SGST":0,
     "deliveryPrice":0,
-    "cart_Data" : []
-    
+    "cart_Data" : []    
   }
+
+  mobile_no;
+  user_id;
+
+  get_Address_Data : any;
 
   outLetArray: any;
 

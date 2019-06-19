@@ -1,171 +1,25 @@
+<div>
+  <!-- <div class="breadcrumb">
+    <a class="active">Browse</a>
+    <a>Compare</a>
+    <a>Order Confirmation</a>
+    <a>Checkout</a>
+  </div> -->
 
-
-<!-- <form >
- 
-  <div class="container">
-   <div class="row">  
-     <div class="col-md-3"> 
-    <button type="submit">LOGIN</button>
-
-    
-  </div> 
-  <div class="col-md-3"> 
-      <button type="submit">REGISTER</button>
-    </div> 
-  </div> 
-    <label for="uname"><b>Username(Mobile)</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-        
-    <button type="submit">SUBMIT</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
+  <div class="breadcrumb flat">
+    <a class="active">Browse</a>
+    <a>Compare</a>
+    <a>Order Confirmation</a>
+    <a>Checkout</a>
   </div>
+</div>
+<!-- <script src="http://thecodeplayer.com/uploads/js/prefixfree-1.0.7.js" type="text/javascript" type="text/javascript"></script> -->
 
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
-</form> -->
-
-
-
-
-<!-- <div class="container">
-  <div class="border">
-    <div class="border1">
-    <div class="row"> 
-      
-        <div class="col-md-3"> 
-            <button class="login1" type="submit">LOGIN</button>
-          </div> 
-          <div class="col-md-3"> 
-              <button class="register1" type="submit">REGISTER</button>
-            </div> 
-          </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-5">
-    <form [formGroup]="angForm" novalidate>
-      
-          <div class="form-group">
-              <label style="color:darkblue">UserName(Mobile)*</label>
-              <input class="form-control" formControlName="name" type="text">
-          </div><br/>
-          <div class="padd"  *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert">
-              <div *ngIf="angForm.controls['name'].errors.required" style="color:red">
-                Name is required.
-              </div><br/>
-          </div>
-           <div class="form-group">
-              <label style="color:darkblue">Password*</label>
-              <input class="form-control" formControlName="address" type="text">
-          </div><br/>
-          <div *ngIf="angForm.controls['address'].invalid && (angForm.controls['address'].dirty || angForm.controls['address'].touched)" class="alert">
-              <div *ngIf="angForm.controls['address'].errors.required" style="color:red">
-                password is required.
-              </div><br/>
-          </div><br/>
-           <button type="submit"
-              [disabled]="angForm.pristine || angForm.invalid" class="btn btn-success" style="color:darkgreen">
-              SUBMIT
-          </button> -->
-          <!-- <button class="submit" type="submit">SUBMIT</button>
-        
-
-    </form>
-  </div>
-  </div>
-    <br />
-  </div>
-  </div> --> 
-
-
-
-  <div class="jumbotron">
-      <div class="container">
-        
-          <div class="row">
-              <div class="col-md-6 offset-md-3">
-                  <h2 class="header">Recover Password</h2>
-                  <p>Enter Valid Information to Recover your Password.</p>
-  <form [formGroup]="angForm" (ngSubmit)="onSubmit()">
-      
-          
-          <div class="form-group">
-
-              <label>Email Address *</label>
-              <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                  <div *ngIf="f.email.errors.required">Email Address is required</div>
-                  <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
-              </div>
-          </div>
-          
-          
-          <div class="form-group">
-              <label>Password *</label>
-              <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                  <div *ngIf="f.password.errors.required">Password is required</div>
-                  <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-              </div>
-          </div>
-          <div class="col-md-5">
-          <button class="submit1" type="submit">Send OTP</button>
-        </div>
-  
-          
-  </form>
-              </div>
-              </div>
-      </div>
-   
-
-
-
-  
-      <div class="container">
-        
-          <div class="row">
-              <div class="col-md-6 offset-md-3">
-                  
-  <form [formGroup]="angForm" (ngSubmit)="onSubmit()">
-      
-          
-          <div class="form-group">
-              <label>Enter OTP *</label>
-              <input type="text" formControlName="OTP" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.OTP.errors }" />
-              <div *ngIf="submitted && f.OTP.errors" class="invalid-feedback">
-                  <div *ngIf="f.OTP.errors.required">OTP is required</div>
-                  
-              </div>
-          </div>
-          
-          
-          <div class="form-group">
-              <label>Password *</label>
-              <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                  <div *ngIf="f.password.errors.required">Password is required</div>
-                  <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-              </div>
-          </div>
-          <div class="col-md-5">
-          <button class="submit1" type="submit">SUBMIT</button>
-        </div>
-  
-          
-  </form>
-              </div>
-              </div>
-      </div>
-
-    </div>
-    
-
-  
+<!-- <br /><br /> -->
+<!-- another version - flat style with animated hover effect -->
+<!-- <div class="breadcrumb flat">
+	<a href="#" class="active">Browse</a>
+	<a href="#">Compare</a>
+	<a href="#">Order Confirmation</a>
+	<a href="#">Checkout</a>
+</div> -->

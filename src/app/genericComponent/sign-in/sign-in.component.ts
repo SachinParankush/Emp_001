@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { empireApiService } from '../../empire-api-service';
+import { AppState } from '../../app.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -15,7 +16,7 @@ export class SignInComponent implements OnInit {
   submitted = false;
 
 
-  constructor(private fb: FormBuilder,private router: Router, private EmpireApiService:empireApiService) {
+  constructor(private fb: FormBuilder,private router: Router, private EmpireApiService:empireApiService,private EmpireAppState: AppState) {
     
   }
 
@@ -40,19 +41,22 @@ export class SignInComponent implements OnInit {
         }
         this.EmpireApiService.signIn(params).subscribe(
           (res: any) => { 
-            alert(JSON.stringify(res)) 
-            var paramsData= {
-              "mobile_no":res.mobile_no,
-              "user_id":res.user_id
-            }
-            if (res.code == '200') {
-              this.EmpireApiService.getAddressData(paramsData).subscribe(
-                (resp: any) => { 
-                  alert(JSON.stringify(resp))
-                })
-              // alert(JSON.stringify(res))
-              // this.router.navigate(['/empire/Address']);
-            }
+            this.EmpireAppState.user_id = res.user_id.toString();
+            this.EmpireAppState.mobile_no = res.mobile_no;
+            this.router.navigate(['/empire/Address']);
+            // alert(JSON.stringify(res)) 
+            // var paramsData= {
+            //   "mobile_no":res.mobile_no,
+            //   "user_id":res.user_id.toString()
+            // }
+            // if (res.code == '200') {
+            //   this.EmpireApiService.getAddressData(paramsData).subscribe(
+            //     (resp: any) => { 
+            //       this.EmpireAppState.get_Address_Data = resp;
+            //       // alert(JSON.stringify(this.EmpireAppState.get_Address_Data))
+            //       this.router.navigate(['/empire/Address']);
+            //     })                
+            // }
           })
       }
   }

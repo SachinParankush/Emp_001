@@ -1,137 +1,130 @@
 <div class="row">
-    <div class="col-lg-8 col-md-8 col-sm-8" style="padding-top: 45px;padding-left: 45px;">
-      <div class="_1rwo5 " >
-  
-        <div class="F8Sye">
-          <div class="_2YrH-">Select delivery address</div>
-        </div>
+  <div class="col-lg-8 col-md-8 col-sm-8" style="padding-top: 45px;padding-left: 45px;">
+    <div class="_1rwo5 ">
 
-        <div class="-brc1">
-            <div class="_2nd--" *ngFor="let data of cardDetails; let i = index;" >
-              <div class="_3p8Mf" (click)="selectAddress(data)">
-                <div class="WtfuC"><img src="../../../assets/img/location-1.PNG"></div>
-                <div>
-                  <div class="_2xgU6">Home</div>
-                  <div class="KYAcN">29/A, Lakshmikanth Nagar Main Rd, Lakshmikanth Nagar, Hebbal 1st Stage, Mysuru, Karnataka
-                    570017, India</div>
-                  <div class="_3w1k-">34 MINS</div>
-                  <div class="_3dNWs">Deliver Here</div>
-                </div>
-              </div>
-            </div>
-            <div class="-brc1">
-              <div class="_2nd--">
-                <div class="_3p8Mf Ldi91">
-                  <div class="WtfuC _3mJDe">
-                    <img src="../../../assets/img/location.PNG">
-                    <!-- <div class="_2_VIS">+</div> -->
-                  </div>
-                  <div>
-                    <div class="_2xgU6">Add new Address</div>
-                    <!-- <div class="KYAcN">121, 321rd Main Rd, fff, Mysuru, Karnataka 570012, India
-                                </div> -->
-                    <div class="_3dNWs _1AS3P" (click)="addNewAdrs()">Add New</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="F8Sye">
+        <div class="_2YrH-">Select delivery address</div>
       </div>
-    </div>
-    <div class="col-lg-4 col-md-4 col-sm-4">
-      <div class="container" style="padding-top: 45px;padding-right: 45px;" *ngIf="flag" >
-        <div class="_2sMsA">
-          <div class="F8Sye">
-            <div class="_2YrH-">Add New Address</div>
+
+      <div class="-brc1">
+        <div class="_2nd--" *ngFor="let data of location_Details; let i = index;">
+          <div class="_3p8Mf" (click)="selectAddress(data)">
+            <div class="WtfuC"><img src="../../../assets/img/location-1.PNG"></div>
+            <div>
+              <div class="_2xgU6">{{data.door_no}}</div>
+              <div class="KYAcN">{{data.full_address}}</div>
+              <div class="_3w1k-">{{data.cust_landmark}}</div>
+              <div class="_3w1k-">{{data.street}}</div>
+              <div class="_3dNWs">Deliver Here</div>
+            </div>
           </div>
-          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="form-group">
-                  <label>Door No *</label>
-                  <input type="text" formControlName="DoorNo" class="form-control"
-                    [ngClass]="{ 'is-invalid': submitted && f.DoorNo.errors }" />
-                  <div *ngIf="submitted && f.DoorNo.errors" class="invalid-feedback">
-                    <div *ngIf="f.DoorNo.errors.required">Door No is required</div>
-  
-                  </div>
-                </div>
+        </div>
+        <div class="-brc1">
+          <div class="_2nd--">
+            <div class="_3p8Mf Ldi91">
+              <div class="WtfuC _3mJDe">
+                <img src="../../../assets/img/location.PNG">
+                <!-- <div class="_2_VIS">+</div> -->
               </div>
-              <div class="col-sm-12">
-                <div class="form-group">
-                  <label>Street *</label>
-                  <input type="text" formControlName="Street" class="form-control"
-                    [ngClass]="{ 'is-invalid': submitted && f.Street.errors }" />
-                  <div *ngIf="submitted && f.Street.errors" class="invalid-feedback">
-                    <div *ngIf="f.Street.errors.required">Street is required</div>
-                  </div>
-                </div>
+              <div>
+                <div class="_2xgU6">Add new Address</div>
+                <!-- <div class="KYAcN">121, 321rd Main Rd, fff, Mysuru, Karnataka 570012, India
+                                </div> -->
+                <div class="_3dNWs _1AS3P" (click)="addNewAdrs()">Add New</div>
               </div>
             </div>
-  
-            <div class="form-group">
-              <label>Landmark *</label>
-              <input type="text" formControlName="Landmark" class="form-control"
-                [ngClass]="{ 'is-invalid': submitted && f.Landmark.errors }" />
-              <div *ngIf="submitted && f.Landmark.errors" class="invalid-feedback">
-                <div *ngIf="f.Landmark.errors.required">Landmark is required</div>
-              </div>
-            </div>
-  
-            <div class="form-group">
-              <label>Full Address *</label>
-              <input type="text" formControlName="Address" class="form-control"
-                [ngClass]="{ 'is-invalid': submitted && f.Address.errors }" />
-              <div *ngIf="submitted && f.Address.errors" class="invalid-feedback">
-                <div *ngIf="f.Address.errors.required">Full Address is required</div>
-                <div *ngIf="f.Address.errors.minlength">Password must be at least 12 characters</div>
-              </div>
-            </div>
-  
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="form-group">
-  
-  
-                  <label>Choose City *</label>
-  
-                  <select class="custom-select" (change)="changeCity($event)" formControlName="cityName">
-                    <option value="">Choose your city</option>
-                    <option *ngFor="let city of City" [ngValue]="city">{{city}}</option>
-                  </select>
-  
-                  <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-  
-                    <div *ngIf="f.password.errors.required">Choose City is required</div>
-  
-                  </div>
-  
-                </div>
-              </div>
-              <div class="col-sm-12">
-                <div class="form-group">
-                  <label>Search Area *</label>
-  
-                  <select class="custom-select" (change)="changeCity($event)" formControlName="cityName">
-                    <option value="">Select area</option>
-                    <option *ngFor="let city of City" [ngValue]="city">{{city}}</option>
-                  </select>
-                  <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                    <div *ngIf="f.password.errors.required">Search Area is required</div>
-                  </div>
-                </div>
-              </div>
-            </div>          
-          </form>
-          <div class="row">
-              <div class="col-md-6">
-                <button class="newAddress" (click)="addNewAdrs()">Add New Address</button>
-              </div>
-              <div class="col-md-6">
-                  <button class="cancel" (click)="addNewAdrs()">Close</button>
-                </div>
-            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+  <div class="col-lg-4 col-md-4 col-sm-4">
+    <div class="container" style="padding-top: 45px;padding-right: 45px;" *ngIf="flag">
+      <div class="_2sMsA">
+        <div class="F8Sye">
+          <div class="_2YrH-">Add New Address</div>
+        </div>
+        <form [formGroup]="registerForm">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>Door No *</label>
+                <input type="text" formControlName="doorNumber" class="form-control" />
+                <!-- <div *ngIf="submitted && f.DoorNo.errors" class="invalid-feedback">
+                    <div *ngIf="f.DoorNo.errors.required">Door No is required</div>
+  
+                  </div> -->
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>Street *</label>
+                <input type="text" formControlName="street" class="form-control" />
+                <!-- <div *ngIf="submitted && f.Street.errors" class="invalid-feedback">
+                    <div *ngIf="f.Street.errors.required">Street is required</div>
+                  </div> -->
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Landmark *</label>
+            <input type="text" formControlName="landMark" class="form-control" />
+            <!-- <div *ngIf="submitted && f.Landmark.errors" class="invalid-feedback">
+                <div *ngIf="f.Landmark.errors.required">Landmark is required</div>
+              </div> -->
+          </div>
+
+          <div class="form-group">
+            <label>Full Address *</label>
+            <input type="text" formControlName="fullAddress" class="form-control" />
+            <!-- <div *ngIf="submitted && f.Address.errors" class="invalid-feedback">
+                <div *ngIf="f.Address.errors.required">Full Address is required</div>
+                <div *ngIf="f.Address.errors.minlength">Password must be at least 12 characters</div>
+              </div> -->
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+
+
+                <label>Choose City *</label>
+
+                <select class="custom-select" formControlName="city" (change)="setArea()">
+                  <option value="">Choose your city</option>
+                  <option *ngFor="let city of City" value={{city.city_id}}>{{city.city_name}}</option>
+                </select>
+
+                <!-- <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+  
+                    <div *ngIf="f.password.errors.required">Choose City is required</div>
+  
+                  </div> -->
+
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>Search Area *</label>
+
+                <select class="custom-select" formControlName="area">
+                  <option value="">Choose your Area</option>
+                  <option *ngFor="let ciity of SearchCity" value={{ciity.area_id}}>{{ciity.area_name}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="row">
+          <div class="col-md-6">
+            <button class="newAddress" (click)="onSubmit()">Add New Address</button>
+          </div>
+          <div class="col-md-6">
+            <button class="cancel" (click)="addNewAdrs()">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

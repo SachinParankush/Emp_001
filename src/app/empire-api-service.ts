@@ -217,6 +217,43 @@ export class empireApiService {
             .map(res => res.json()
             );
     }
+    /* ----------------------------------------------------------------------------------
+    **  Http call to create saveMultipleAddress data 
+    ------------------------------------------------------------------------------------*/
+    saveMultipleAddress(params): Observable<any> {
+        var url = this.getUrl(config.SERVERTYPE, config.ADD_MULTIPLE_ADDRESS);
+        console.log("calling saveMultipleAddress method");
+        return this.http.post(url,
+            JSON.stringify(params),
+            this.options)
+            .map(res => res.json()
+            );
+    }
+
+    /* ----------------------------------------------------------------------------------
+    **  Http call to get getBranchDetails data 
+    ------------------------------------------------------------------------------------*/
+    getBranchDetails(params): Observable<any> {
+        var url = this.getUrl(config.SERVERTYPE, config.GET_BRANCH_DETAILS);
+        console.log("calling getBranchDetails method");
+        return this.http.post(url,
+            JSON.stringify(params),
+            this.options)
+            .map(res => res.json()
+            );
+    }
+    /* ----------------------------------------------------------------------------------
+    **  Http call to get getMenuDetails data 
+    ------------------------------------------------------------------------------------*/
+    getMenuDetails(params): Observable<any> {
+        var url = this.getUrl(config.SERVERTYPE, config.GET_OUTLET_MENU);
+        console.log("calling getMenuDetails method");
+        return this.http.post(url,
+            JSON.stringify(params),
+            this.options)
+            .map(res => res.json()
+            );
+    }
 
 
     // API is get the Apiendpoint url based on the parameter passed handling both Web and Device

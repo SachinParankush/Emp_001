@@ -2,10 +2,12 @@
 
       <div class="col-md-3 " style="border-right: 1px solid #e9e9eb;">
          <h4 class="pl-4 pt-3 text-right">Recommended</h4>
-         <ul style="list-style-type:none; margin-left: -18px; margin-bottom: 0.3rem;"
-            *ngFor="let data of ELEMENT_DATA; let i = index;" class="text-right categoryMnuStyle">
-            <li><a class="a" (click)="triggerScrollTo(data)">{{data.MainCourse}}</a></li>
-         </ul>
+         <div class="ScrollStyle">
+            <ul style="list-style-type:none; margin-left: -18px; margin-bottom: 0.3rem;"
+               *ngFor="let data of ELEMENT_DATA; let i = index;" class="text-right categoryMnuStyle">
+               <li><a class="a" (click)="triggerScrollTo(data)">{{data.MainCourse}}</a></li>
+            </ul>
+         </div>
       </div>
       
    
@@ -39,10 +41,10 @@
                            </div>
                         </div>
                      <div class="col-sm-4" style="text-align: center;padding-top: 27px;">
-                        <div class="_1G3G4 _3L1X9" *ngIf = "!subData.addToCart">
+                        <div class="_1G3G4 _3L1X9" *ngIf = "subData.addToCart == 'false'">
                            <div class="_1RPOp" (click)="addtocart(data,subData,i,ij)">ADD</div>
                         </div>
-                        <div class="_1G3G4 _3L1X9" *ngIf = "subData.addToCart">
+                        <div class="_1G3G4 _3L1X9" *ngIf = "subData.addToCart != 'false'">
                            <div class="_1ds9T _2Thnf" (click)="addItem(data,subData,i,ij)">+</div>
                            <div class="_29Y5Z _2od4M" (click)="removeItem(data,subData,i,ij)"></div>
                            <div class="_2zAXs _18lJJ">{{subData.itemCount}}</div>
@@ -68,7 +70,7 @@
                      <div *ngFor="let data of ELEMENT_DATA; let i = index;">
                         <div class="_2zsON"></div>
                         <div class="MGAj1" *ngFor="let subData of data.Subcourse; let ij = index;">
-                           <div class="_2bXOy" *ngIf="subData.addToCart">
+                           <div class="_2bXOy" *ngIf="subData.addToCart != 'false'">
                               <div class="_3SG03">
                                  <div class="_2MJB6"><img src="../../../assets/img/veg.png" class="category_img" />
                                  </div>

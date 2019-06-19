@@ -8,6 +8,7 @@ const menuRoutes: Routes = [
             { path: '', component: LayoutComponent, canActivate: [], children: [    
             { path: '', redirectTo: 'menu', pathMatch: 'full' },
             { path: 'menu', component:MenuDetailsComponent},
+            { path: 'menu/:id', component:MenuDetailsComponent},
             { path: 'checkout', component:CheckoutComponent},
             // { path: 'readyOrders', component:ReadyOrdersComponent},
             // { path: 'PastOrders', component:PastOrdersComponent},
