@@ -13,6 +13,7 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+import { CookieService } from 'ngx-cookie-service';
 // import { CountdownModule } from 'ngx-countdown';
 
 import {
@@ -128,6 +129,7 @@ export function maxValidationMessage(err, field) {
         TypeaheadModule.forRoot(),
         NgxDaterangepickerMd.forRoot(),
         ToasterModule,
+        // CookieService,
         // Material Modules
         MatAutocompleteModule,
         MatButtonModule,
@@ -181,7 +183,7 @@ export function maxValidationMessage(err, field) {
         FileUploadModule
     ],
     providers: [
-        ColorsService
+        ColorsService,CookieService 
     ],
     declarations: [
         FlotDirective,
@@ -227,6 +229,7 @@ export function maxValidationMessage(err, field) {
         NowDirective,
         ScrollableDirective,
         JqcloudDirective,
+        // CookieService,
         // Material Modules
         MatAutocompleteModule,
         MatButtonModule,

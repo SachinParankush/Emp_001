@@ -28,6 +28,7 @@ export class MenuDetailsComponent implements OnInit {
   deliver_Charges = 20;
   grand_total = 0;
   outLetId;
+  SearchMenu: any;
 
   ELEMENT_DATA
   //  = [
@@ -149,7 +150,7 @@ export class MenuDetailsComponent implements OnInit {
     this.empireApiService.getMenuDetails(params).subscribe(
       (res: any) => {
         this.ELEMENT_DATA = res;
-        // this.backUpArray = res;
+        this.backUpArray = res;
         // this.Side_Menu_Data = res;
         // console.log(JSON.stringify(res))
       })
@@ -251,6 +252,22 @@ export class MenuDetailsComponent implements OnInit {
     this.empireAppState.checkOutData.grandTotal = this.grand_total
     this.empireAppState.checkOutData.itemCount = this.cart_Count
     this.router.navigate(['/menuDetails/checkout']);
+  }
+
+  temp(data, s) {
+    return data.filter(e => e.MainCourse.toLowerCase().includes(s) || e.MainCourse.includes(s))
+      .sort((a, b) => a.MainCourse.includes(s) && !b.MainCourse.includes(s) ? -1 : b.MainCourse.includes(s) && !a.MainCourse.includes(s) ? 1 : 0);
+  
+  
+    }
+
+  menuFilter() {
+    let a = this.temp(this.ELEMENT_DATA, this.SearchMenu)
+    this.ELEMENT_DATA = a;
+    if (this.SearchMenu == null || this.SearchMenu == "") {
+      this.ELEMENT_DATA = this.backUpArray
+    }
+
   }
 
 }
