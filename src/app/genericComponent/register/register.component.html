@@ -24,11 +24,12 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Mobile No *</label>
-                                <input type="text" formControlName="mobileNumber" class="form-control" />
+                                <input type="text" pattern="\d*" formControlName="mobileNumber" maxlength="12" class="form-control" />
                                 <span class="text-danger"
                                     *ngIf="registerForm.controls['mobileNumber'].hasError('required')&&(registerForm.controls['mobileNumber'].dirty || registerForm.controls['mobileNumber'].touched)">This
                                     field is required</span>
-
+                                <!-- <span class="text-danger"
+                                    *ngIf="registerForm.controls['mobileNumber'].errors.minLength">Mobile No must be at least 10 numbers</span> -->
                             </div>
                         </div>
                     </div>
