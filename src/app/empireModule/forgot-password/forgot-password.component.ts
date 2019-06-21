@@ -8,30 +8,32 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  angForm: FormGroup;
+  loginForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
 
-    this.angForm = this.fb.group({
+    this.loginForm = this.fb.group({
 
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      OTP: ['', [Validators.required, Validators.minLength(4)]],
+      mobile_no: ['', [Validators.required,Validators.maxLength(12),Validators.minLength(10),Validators.pattern('[0-9]+')]],
+      password: ['', [Validators.required,Validators.maxLength(15),Validators.minLength(6)]],
+      emailId: ['', [Validators.required,Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
+
+      OTP: ['', [Validators.required, Validators.minLength(4),Validators.maxLength(6)]],
     });
 
   }
 
   ngOnInit() {
   }
-  get f() { return this.angForm.controls; }
+  get f() { return this.loginForm.controls; }
 
   onSubmit() {
 
-    if (this.angForm.invalid) {
+    if (this.loginForm.invalid) {
       return;
     }
 
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.angForm.value))
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginForm.value))
   }
 
 }
