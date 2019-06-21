@@ -8,6 +8,7 @@ import { LandingComponent } from './landing/landing.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { genericModule } from '../genericComponent/genericComponent.module';
 import { AddressComponent } from './address/address.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 export const routes = [
@@ -22,7 +23,7 @@ export const routes = [
     genericModule
     // genericModule
   ],
-  declarations: [LandingComponent, DashboardComponent, AddressComponent],
+  declarations: [LandingComponent, DashboardComponent, AddressComponent, ForgotPasswordComponent],
     providers:[DatePipe]
 })
 export class empireModule { 

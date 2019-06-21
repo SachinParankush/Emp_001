@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scroll-to';
 import { AppState } from "../../app.service";
 import { Router, ActivatedRoute } from '@angular/router';
+// import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-menu-details',
@@ -29,6 +30,7 @@ export class MenuDetailsComponent implements OnInit {
   grand_total = 0;
   outLetId;
   SearchMenu: any;
+  // cookieData;
 
   ELEMENT_DATA
   //  = [
@@ -132,7 +134,7 @@ export class MenuDetailsComponent implements OnInit {
 
   cart_Data = [];
 
-  constructor(private empireAppState: AppState, private _scrollToService: ScrollToService,
+  constructor(private cookie: CookieService,private empireAppState: AppState, private _scrollToService: ScrollToService,
     private empireApiService: empireApiService, private modalService: BsModalService,
     private fb: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute) {
       this.outLetId = window.atob(activatedRoute.snapshot.params['id']);
@@ -151,8 +153,12 @@ export class MenuDetailsComponent implements OnInit {
       (res: any) => {
         this.ELEMENT_DATA = res;
         this.backUpArray = res;
+        // this.cookieData = JSON.stringify(this.ELEMENT_DATA);
+        // this.cookie.set( this.outLetId, this.outLetId);
+        // this.cookie.set( this.ELEMENT_DATA,this.backUpArray.value);
         // this.Side_Menu_Data = res;
         // console.log(JSON.stringify(res))
+        console.log(this.cookieData)
       })
   }
 

@@ -28,6 +28,10 @@ export class SignInComponent implements OnInit {
 
   ngOnInit() {
 
+    setTimeout(()=>{
+      localStorage.clear();
+}, 0.0138889)
+
   }
 
   onSubmit() {
@@ -44,8 +48,10 @@ export class SignInComponent implements OnInit {
             this.EmpireAppState.user_id = res.user_id.toString();
             this.EmpireAppState.mobile_no = res.mobile_no;
             this.router.navigate(['/empire/Address']);
-            this.cookie.set( this.EmpireAppState.user_id, this.EmpireAppState.mobile_no );
-            console.log(this.cookie.get(this.EmpireAppState.mobile_no ));
+            // this.cookie.set( this.EmpireAppState.user_id, this.EmpireAppState.mobile_no,0.0138889 );
+            // console.log(this.cookie.get(this.EmpireAppState.mobile_no ));
+            // localStorage.setItem("user_id", this.EmpireAppState.user_id);
+            // localStorage.setItem("mobile_no", this.EmpireAppState.mobile_no);
           }
           else{
             alert("Invalid User Name or Password")
