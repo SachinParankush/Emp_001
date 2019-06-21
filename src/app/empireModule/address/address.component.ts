@@ -168,4 +168,31 @@ export class AddressComponent implements OnInit {
       })
   }
 
+
+  editAddressDetailes(data){
+    alert(JSON.stringify(data))
+    this.flag = true;
+    var addressData={
+     "city": data.city_id,
+     "area":data.area_id,
+     "doorNumber":data.door_no,
+     "street":data.street,
+     "landMark":data.cust_landmark,
+     "fullAddress":data.full_address
+    }
+    this.registerForm.controls['city'].setValue(addressData.city)
+    this.registerForm.controls['area'].setValue(addressData.area)
+    this.registerForm.controls['doorNumber'].setValue(addressData.doorNumber)
+    this.registerForm.controls['street'].setValue(addressData.street)
+    this.registerForm.controls['landMark'].setValue(addressData.landMark)
+    this.registerForm.controls['fullAddress'].setValue(addressData.fullAddress)
+
+    // if (this.flag == false) {
+      this.flag = true;
+    // } else {
+    //   this.flag = false;
+    // }
+    
+  }
+
 }

@@ -8,15 +8,18 @@
 
       <div class="-brc1">
         <div class="_2nd--" *ngFor="let data of location_Details; let i = index;">
-          <div class="_3p8Mf" (click)="selectAddress(data)">
+          <div class="_3p8Mf" >
             <div class="WtfuC"><img src="../../../assets/img/location-1.PNG"></div>
             <div>
               <div class="_2xgU6">{{data.door_no}}</div>
               <div class="KYAcN">{{data.full_address}}</div>
               <div class="_3w1k-">{{data.cust_landmark}}</div>
               <div class="_3w1k-">{{data.street}}</div>
-              <div class="_3dNWs">Deliver Here</div>
+              <div class="_3dNWs" (click)="selectAddress(data)">Deliver Here</div>
             </div>
+            <i class="fas fa-user-edit" style="padding-left:35px;" 
+            (click)="editAddressDetailes(data)"></i>
+            <i class="fas fa-trash-alt" style="padding-left:25px;"></i>
           </div>
         </div>
         <div class="-brc1">
@@ -27,7 +30,8 @@
                 <!-- <div class="_2_VIS">+</div> -->
               </div>
               <div>
-                <div class="_2xgU6">Add new Address</div>
+                <div class="_2xgU6">Add new Address 
+                </div>
                 <!-- <div class="KYAcN">121, 321rd Main Rd, fff, Mysuru, Karnataka 570012, India
                                 </div> -->
                 <div class="_3dNWs _1AS3P" (click)="addNewAdrs()">Add New</div>
