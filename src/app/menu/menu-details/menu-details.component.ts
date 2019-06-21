@@ -134,7 +134,7 @@ export class MenuDetailsComponent implements OnInit {
 
   cart_Data = [];
 
-  constructor(private cookie: CookieService,private empireAppState: AppState, private _scrollToService: ScrollToService,
+  constructor(private empireAppState: AppState, private _scrollToService: ScrollToService,
     private empireApiService: empireApiService, private modalService: BsModalService,
     private fb: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute) {
       this.outLetId = window.atob(activatedRoute.snapshot.params['id']);
@@ -158,7 +158,7 @@ export class MenuDetailsComponent implements OnInit {
         // this.cookie.set( this.ELEMENT_DATA,this.backUpArray.value);
         // this.Side_Menu_Data = res;
         // console.log(JSON.stringify(res))
-        console.log(this.cookieData)
+        // console.log(this.cookieData)
       })
   }
 
