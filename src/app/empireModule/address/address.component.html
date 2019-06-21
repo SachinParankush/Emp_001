@@ -50,6 +50,10 @@
               <div class="form-group">
                 <label>Door No *</label>
                 <input type="text" formControlName="doorNumber" class="form-control" />
+                <span class="text-danger"
+                *ngIf="registerForm.controls['doorNumber'].hasError('required')&&(registerForm.controls['doorNumber'].dirty || registerForm.controls['doorNumber'].touched)">This
+                field is required</span>
+
                 <!-- <div *ngIf="submitted && f.DoorNo.errors" class="invalid-feedback">
                     <div *ngIf="f.DoorNo.errors.required">Door No is required</div>
   
@@ -60,6 +64,10 @@
               <div class="form-group">
                 <label>Street *</label>
                 <input type="text" formControlName="street" class="form-control" />
+                <span class="text-danger"
+                *ngIf="registerForm.controls['street'].hasError('required')&&(registerForm.controls['street'].dirty || registerForm.controls['street'].touched)">This
+                field is required</span>
+
                 <!-- <div *ngIf="submitted && f.Street.errors" class="invalid-feedback">
                     <div *ngIf="f.Street.errors.required">Street is required</div>
                   </div> -->
@@ -70,6 +78,10 @@
           <div class="form-group">
             <label>Landmark *</label>
             <input type="text" formControlName="landMark" class="form-control" />
+            <span class="text-danger"
+            *ngIf="registerForm.controls['landMark'].hasError('required')&&(registerForm.controls['landMark'].dirty || registerForm.controls['landMark'].touched)">This
+            field is required</span>
+
             <!-- <div *ngIf="submitted && f.Landmark.errors" class="invalid-feedback">
                 <div *ngIf="f.Landmark.errors.required">Landmark is required</div>
               </div> -->
@@ -95,6 +107,10 @@
                   <option value="">Choose your city</option>
                   <option *ngFor="let city of City" value={{city.city_id}}>{{city.city_name}}</option>
                 </select>
+                <span class="text-danger"
+                *ngIf="registerForm.controls['city'].hasError('required')&&(registerForm.controls['city'].dirty || registerForm.controls['city'].touched)">This
+                field is required</span>
+
 
                 <!-- <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
   
@@ -112,6 +128,10 @@
                   <option value="">Choose your Area</option>
                   <option *ngFor="let ciity of SearchCity" value={{ciity.area_id}}>{{ciity.area_name}}</option>
                 </select>
+                <span class="text-danger"
+                *ngIf="registerForm.controls['area'].hasError('required')&&(registerForm.controls['area'].dirty || registerForm.controls['area'].touched)">This
+                field is required</span>
+
               </div>
             </div>
           </div>

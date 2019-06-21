@@ -74,10 +74,10 @@ export class AddressComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       city: ['', [Validators.required]],
       area: ['', Validators.required],
-      doorNumber: ['', Validators.required],
-      street: ['', Validators.required],
-      landMark: ['', Validators.required],
-      fullAddress: ['', Validators.required],
+      doorNumber: ['', [Validators.required, Validators.maxLength(6)]],
+      street: ['', [Validators.required, Validators.maxLength(20)]],
+      landMark: ['', [Validators.required,Validators.maxLength(50)]],
+      fullAddress: ['', [Validators.required,Validators.maxLength(50)]],
     });
   }
 

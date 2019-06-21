@@ -48,7 +48,7 @@ export class SignInComponent implements OnInit {
             console.log(this.cookie.get(this.EmpireAppState.mobile_no ));
           }
           else{
-            alert("Ivalid User Name or Password")
+            alert("Invalid User Name or Password")
           }
           })
       }
