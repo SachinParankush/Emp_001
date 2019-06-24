@@ -18,12 +18,14 @@ export class AppState {
     "deliveryPrice":0,
     "cart_Data" : []    
   }
+  checkOutJSON;
 
   mobile_no;
   user_id;
   area_id;
   address_id;
   city_id;
+  area_Details;
 
   get_Address_Data : any;
 
@@ -35,15 +37,24 @@ export class AppState {
   constructor() {
 
     
-    // this.mobile_no=localStorage.getItem('mobile_no');
-    // this.user_id=localStorage.getItem('user_id'); 
-    // this.area_id=localStorage.getItem('area_id'); 
-    // this.address_id=localStorage.getItem('address_id'); 
-    // this.city_id=localStorage.getItem('city_id'); 
+    this.mobile_no=localStorage.getItem('mobile_no');
+    this.user_id=localStorage.getItem('user_id'); 
+    this.area_id=localStorage.getItem('area_id'); 
+    this.address_id=localStorage.getItem('address_id'); 
+    this.city_id=localStorage.getItem('city_id'); 
+    this.area_Details=localStorage.getItem('area_Details'); 
+    this.checkOutJSON=JSON.parse(localStorage.getItem('checkOutData')); 
 
-    // localStorage.setItem('bid', this.globalLoginData.bid);
-    // localStorage.setItem('user_id', this.globalLoginData.user_id);
-    // localStorage.setItem('no_org', this.globalLoginData.no_org);
+    if(this.checkOutData.cart_Data.length == 0 && this.checkOutJSON > 0){
+    this.checkOutData.itemCount = this.checkOutJSON.itemCount;
+    this.checkOutData.itemTotal = this.checkOutJSON.itemTotal;
+    this.checkOutData.grandTotal = this.checkOutJSON.grandTotal;
+    this.checkOutData.CGST = this.checkOutJSON.CGST;
+    this.checkOutData.SGST = this.checkOutJSON.SGST;
+    this.checkOutData.deliveryPrice = this.checkOutJSON.deliveryPrice;
+    this.checkOutData.cart_Data = this.checkOutJSON.cart_Data;
+    }
+    
     
   }
 
@@ -65,6 +76,10 @@ export class AppState {
   // ngOnInit
   // ------------------------------------------------------------------------------------
   ngOnInit() {}
+
+  clearData(){
+    localStorage.clear();
+  }
 
 }
  

@@ -15,7 +15,7 @@ style="margin:0px 0;background-color: #f8f9fa !important;">
       </li>
 
     </ul>
-    <p class="text-center rightPopUpFilter">Basavangudi,
+    <p  *ngIf="areaDetails" class="text-center rightPopUpFilter">{{areaDetails}},
       <a class="nav-link waves-light" routerLink="/empire/Address" [popover]="popTemplate1" placement="bottom" triggers="focus" mdbWavesEffect
         style="display:-webkit-inline-box;" >Change Outlet
                <!-- <i class="fa fa-angle-down" aria-hidden="true" ></i> -->

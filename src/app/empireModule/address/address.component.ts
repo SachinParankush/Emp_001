@@ -67,11 +67,9 @@ export class AddressComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private router: Router, private EmpireAppState: AppState,
     public EmpireApiService: empireApiService) {
-
-    // alert(this.EmpireAppState.user_id)
     this.getAddressList();
     this.getAllAddress();
-    // this.location_Details = this.EmpireAppState.get_Address_Data;
+    this.EmpireAppState.checkOutJSON = "";
 
     this.registerForm = this.formBuilder.group({
       city: ['', [Validators.required]],
@@ -118,7 +116,7 @@ export class AddressComponent implements OnInit {
   }
 
   selectAddress(data) {
-    alert(JSON.stringify(data));
+    // alert(JSON.stringify(data));
     localStorage.setItem("area_id", data.area_id);
     localStorage.setItem("address_id", data.address_id);
     localStorage.setItem("city_id", data.city_id);

@@ -61,7 +61,7 @@
 
   <div class="row center container">
     <div class="col-xs-12 col-sm-12 col-md-6 single-restaurant" style="display: block;"  *ngFor="let data of cardDetails; let i = index;" >
-      <div class="restaurant-wrap" (click)="getMenu(data.branch_id)" *ngIf="cardDetails">
+      <div class="restaurant-wrap" (click)="getMenu(data)" *ngIf="cardDetails">
         <div class="row">
           <div class="col-xs-12 col-sm-3 col-md-12 col-lg-3 text-xs-center">
             <a class="restaurant-logo" href="#"> <img class="img-rounded"

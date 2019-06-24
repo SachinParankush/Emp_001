@@ -24,7 +24,7 @@ export class MenuDetailsComponent implements OnInit {
   data: Date = new Date();
   cart_Count = 0;
   subTotal = 0;
-  cgst =0;
+  cgst = 0;
   sgst = 0;
   deliver_Charges = 20;
   grand_total = 0;
@@ -137,9 +137,9 @@ export class MenuDetailsComponent implements OnInit {
   constructor(private empireAppState: AppState, private _scrollToService: ScrollToService,
     private empireApiService: empireApiService, private modalService: BsModalService,
     private fb: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute) {
-      this.outLetId = window.atob(activatedRoute.snapshot.params['id']);
-      this.getOrderDetails();
-      // alert(this.outLetId)
+    this.outLetId = window.atob(activatedRoute.snapshot.params['id']);
+    this.getOrderDetails();  
+    
   }
 
   ngOnInit() {
@@ -147,18 +147,40 @@ export class MenuDetailsComponent implements OnInit {
 
   getOrderDetails() {
     var params = {
-        "outlet_id": this.outLetId
+      "outlet_id": this.outLetId
     }
     this.empireApiService.getMenuDetails(params).subscribe(
       (res: any) => {
         this.ELEMENT_DATA = res;
         this.backUpArray = res;
-        // this.cookieData = JSON.stringify(this.ELEMENT_DATA);
-        // this.cookie.set( this.outLetId, this.outLetId);
-        // this.cookie.set( this.ELEMENT_DATA,this.backUpArray.value);
-        // this.Side_Menu_Data = res;
-        // console.log(JSON.stringify(res))
-        // console.log(this.cookieData)
+        if (this.empireAppState.checkOutJSON.cart_Data && this.empireAppState.checkOutData.cart_Data.length == 0) {
+          for (let i in this.ELEMENT_DATA) {
+            for (let j in this.ELEMENT_DATA[i].Subcourse) {
+              for (let data in this.empireAppState.checkOutJSON.cart_Data) {
+                if (this.ELEMENT_DATA[i].Subcourse[j].dish_id === this.empireAppState.checkOutJSON.cart_Data[data].dish_id) {
+                  this.ELEMENT_DATA[i].Subcourse[j].addToCart = "true";
+                  this.ELEMENT_DATA[i].Subcourse[j].itemCount = this.empireAppState.checkOutJSON.cart_Data[data].itemCount;
+                  this.ELEMENT_DATA[i].Subcourse[j].item_total_price = this.empireAppState.checkOutJSON.cart_Data[data].item_total_price;
+                  this.total_Amount_Cal();
+                }
+              }
+            }
+          }
+        }
+        if (this.empireAppState.checkOutData.cart_Data) {
+          for (let i in this.ELEMENT_DATA) {
+            for (let j in this.ELEMENT_DATA[i].Subcourse) {
+              for (let data in this.empireAppState.checkOutData.cart_Data) {
+                if (this.ELEMENT_DATA[i].Subcourse[j].dish_id === this.empireAppState.checkOutData.cart_Data[data].dish_id) {
+                  this.ELEMENT_DATA[i].Subcourse[j].addToCart = "true";
+                  this.ELEMENT_DATA[i].Subcourse[j].itemCount = this.empireAppState.checkOutData.cart_Data[data].itemCount;
+                  this.ELEMENT_DATA[i].Subcourse[j].item_total_price = this.empireAppState.checkOutData.cart_Data[data].item_total_price;
+                  this.total_Amount_Cal();
+                }
+              }
+            }
+          }
+        }
       })
   }
 
@@ -170,26 +192,17 @@ export class MenuDetailsComponent implements OnInit {
     this._scrollToService.scrollTo(config);
   }
 
-  // device: number = 1;
-  // onChange(e) {
-  //   if (e.checked == true) {
-  //     this.device = 1;
-  //   } else {
-  //     this.device = 0;
-  //   }
-  // }
-
   addtocart(data, data1, index, index1) {
     this.ELEMENT_DATA[index].Subcourse[index1].addToCart = "true";
-    this.ELEMENT_DATA[index].Subcourse[index1].itemCount = this.ELEMENT_DATA[index].Subcourse[index1].itemCount + 1;  
-    this.ELEMENT_DATA[index].Subcourse[index1].item_total_price = parseInt(this.ELEMENT_DATA[index].Subcourse[index1].dish_price) *  this.ELEMENT_DATA[index].Subcourse[index1].itemCount; 
+    this.ELEMENT_DATA[index].Subcourse[index1].itemCount = this.ELEMENT_DATA[index].Subcourse[index1].itemCount + 1;
+    this.ELEMENT_DATA[index].Subcourse[index1].item_total_price = parseInt(this.ELEMENT_DATA[index].Subcourse[index1].dish_price) * this.ELEMENT_DATA[index].Subcourse[index1].itemCount;
     this.cart_Data.push(data1);
     this.total_Amount_Cal();
   }
 
   addItem(data, data1, index, index1) {
     this.ELEMENT_DATA[index].Subcourse[index1].itemCount = this.ELEMENT_DATA[index].Subcourse[index1].itemCount + 1;
-    this.ELEMENT_DATA[index].Subcourse[index1].item_total_price = parseInt(this.ELEMENT_DATA[index].Subcourse[index1].dish_price) *  this.ELEMENT_DATA[index].Subcourse[index1].itemCount;
+    this.ELEMENT_DATA[index].Subcourse[index1].item_total_price = parseInt(this.ELEMENT_DATA[index].Subcourse[index1].dish_price) * this.ELEMENT_DATA[index].Subcourse[index1].itemCount;
     this.total_Amount_Cal();
   }
 
@@ -202,70 +215,67 @@ export class MenuDetailsComponent implements OnInit {
     }
     else {
       this.ELEMENT_DATA[index].Subcourse[index1].itemCount = this.ELEMENT_DATA[index].Subcourse[index1].itemCount - 1;
-      this.ELEMENT_DATA[index].Subcourse[index1].item_total_price = parseInt(this.ELEMENT_DATA[index].Subcourse[index1].dish_price) *  this.ELEMENT_DATA[index].Subcourse[index1].itemCount;
+      this.ELEMENT_DATA[index].Subcourse[index1].item_total_price = parseInt(this.ELEMENT_DATA[index].Subcourse[index1].dish_price) * this.ELEMENT_DATA[index].Subcourse[index1].itemCount;
       this.total_Amount_Cal();
     }
   }
 
-  total_Amount_Cal(){
+  total_Amount_Cal() {
     this.subTotal = 0;
     this.grand_total = 0;
     this.cart_Count = 0;
     this.cgst = 0;
     this.sgst = 0;
-    for(let i in this.ELEMENT_DATA){
-      for(let j in this.ELEMENT_DATA[i].Subcourse)
-        if(this.ELEMENT_DATA[i].Subcourse[j].addToCart == "true"){
+    for (let i in this.ELEMENT_DATA) {
+      for (let j in this.ELEMENT_DATA[i].Subcourse)
+        if (this.ELEMENT_DATA[i].Subcourse[j].addToCart == "true") {
           this.cart_Count = this.cart_Count + 1;
-          this.subTotal =  this.subTotal + this.ELEMENT_DATA[i].Subcourse[j].item_total_price;
-          this.cgst = (this.subTotal*2.5)/100;
-          this.sgst = (this.subTotal*2.5)/100;
-          // this.empireAppState.checkOutData.cart_Data.push(this.ELEMENT_DATA[i].Subcourse[j]);
-
+          this.subTotal = this.subTotal + this.ELEMENT_DATA[i].Subcourse[j].item_total_price;
+          this.cgst = (this.subTotal * 2.5) / 100;
+          this.sgst = (this.subTotal * 2.5) / 100;
         }
     }
     this.grand_total = this.subTotal + this.cgst + this.sgst + this.deliver_Charges;
-    // this.empireAppState.checkOutData.CGST = this.cgst
-    // this.empireAppState.checkOutData.SGST = this.sgst
-    // this.empireAppState.checkOutData.itemTotal = this.subTotal
-    // this.empireAppState.checkOutData.grandTotal = this.grand_total
-    // this.empireAppState.checkOutData.itemCount = this.cart_Count
   }
 
-  checkOut(){
+  checkOut() {
     this.subTotal = 0;
     this.grand_total = 0;
     this.cart_Count = 0;
     this.cgst = 0;
     this.sgst = 0;
+    this.empireAppState.checkOutData.cart_Data = []
 
-    for(let i in this.ELEMENT_DATA){
-      for(let j in this.ELEMENT_DATA[i].Subcourse)
-        if(this.ELEMENT_DATA[i].Subcourse[j].addToCart == "true"){
+    for (let i in this.ELEMENT_DATA) {
+      for (let j in this.ELEMENT_DATA[i].Subcourse)
+        if (this.ELEMENT_DATA[i].Subcourse[j].addToCart == "true") {
           this.cart_Count = this.cart_Count + 1;
-          this.subTotal =  this.subTotal + this.ELEMENT_DATA[i].Subcourse[j].item_total_price;
-          this.cgst = (this.subTotal*2.5)/100;
-          this.sgst = (this.subTotal*2.5)/100;
+          this.subTotal = this.subTotal + this.ELEMENT_DATA[i].Subcourse[j].item_total_price;
+          this.cgst = (this.subTotal * 2.5) / 100;
+          this.sgst = (this.subTotal * 2.5) / 100;
           this.empireAppState.checkOutData.cart_Data.push(this.ELEMENT_DATA[i].Subcourse[j]);
 
         }
     }
-    
+
     this.grand_total = this.subTotal + this.cgst + this.sgst + this.deliver_Charges;
     this.empireAppState.checkOutData.CGST = this.cgst
     this.empireAppState.checkOutData.SGST = this.sgst
     this.empireAppState.checkOutData.itemTotal = this.subTotal
     this.empireAppState.checkOutData.grandTotal = this.grand_total
     this.empireAppState.checkOutData.itemCount = this.cart_Count
+    if (this.empireAppState.checkOutJSON) {
+      localStorage.removeItem('checkOutData');
+      localStorage.setItem('checkOutData', JSON.stringify(this.empireAppState.checkOutData))
+    }
+    localStorage.setItem('checkOutData', JSON.stringify(this.empireAppState.checkOutData))
     this.router.navigate(['/menuDetails/checkout']);
   }
 
   temp(data, s) {
     return data.filter(e => e.MainCourse.toLowerCase().includes(s) || e.MainCourse.includes(s))
       .sort((a, b) => a.MainCourse.includes(s) && !b.MainCourse.includes(s) ? -1 : b.MainCourse.includes(s) && !a.MainCourse.includes(s) ? 1 : 0);
-  
-  
-    }
+  }
 
   menuFilter() {
     let a = this.temp(this.ELEMENT_DATA, this.SearchMenu)
@@ -273,7 +283,6 @@ export class MenuDetailsComponent implements OnInit {
     if (this.SearchMenu == null || this.SearchMenu == "") {
       this.ELEMENT_DATA = this.backUpArray
     }
-
   }
 
 }

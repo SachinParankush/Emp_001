@@ -59,17 +59,19 @@ export class DashboardComponent implements OnInit {
 
 
   constructor(private router: Router,private EmpireAppState: AppState,private activatedRoute: ActivatedRoute, public EmpireApiService: empireApiService) {
-    alert(this.EmpireAppState.address_id)
+    // alert(this.EmpireAppState.address_id)
     this.address_Details = window.atob(activatedRoute.snapshot.params['id']);
     this.getBarnchDetails(this.address_Details);
-    alert(JSON.stringify(this.address_Details));
+    // alert(JSON.stringify(this.address_Details));
   }
 
   ngOnInit() {
   }
 
   getMenu(data) {
-    let hashedData = window.btoa(data);
+    alert(data.outlet_fullname);
+    localStorage.setItem("area_Details",data.outlet_fullname)
+    let hashedData = window.btoa(data.branch_id);
     this.router.navigate(['/menuDetails/menu', hashedData]);
   }
 

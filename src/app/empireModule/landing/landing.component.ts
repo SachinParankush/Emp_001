@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppState } from "../../app.service";
 
 @Component({
   selector: 'app-landing',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private empireAppState: AppState) {
+    this.empireAppState.clearData();
+   }
 
   ngOnInit() {
   }
