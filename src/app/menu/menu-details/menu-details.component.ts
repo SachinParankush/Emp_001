@@ -5,6 +5,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scroll-to';
 import { AppState } from "../../app.service";
 import { Router, ActivatedRoute } from '@angular/router';
+import swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 // import { CookieService } from 'ngx-cookie-service';
 
 @Component({
@@ -146,6 +148,29 @@ export class MenuDetailsComponent implements OnInit {
   }
 
   getOrderDetails() {
+    let timerInterval
+    Swal.fire({
+      title: 'Go ahead, order some yummy items from the menu.',
+      html: 'Good food is always cooking! ',
+      timer: 2000,
+      onBeforeOpen: () => {
+        Swal.showLoading()
+        timerInterval = setInterval(() => {
+         Swal.getTimerLeft()
+        }, 100)
+      },
+      onClose: () => {
+        clearInterval(timerInterval)
+      }
+    }).then((result) => {
+      if (
+        // Read more about handling dismissals
+        result.dismiss === Swal.DismissReason.timer
+      ) {
+        console.log('I was closed by the timer')
+      }
+    })
+    
     var params = {
       "outlet_id": this.outLetId
     }

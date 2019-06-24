@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { empireApiService } from '../../empire-api-service';
-
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -65,6 +65,11 @@ export class RegisterComponent implements OnInit {
       for (let c in this.registerForm.controls) {
         this.registerForm.controls[c].markAsTouched();
       }
+      swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'Please Enter All the Fields!',
+      })
     }
   }
 

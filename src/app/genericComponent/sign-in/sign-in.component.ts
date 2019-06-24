@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { empireApiService } from '../../empire-api-service';
 import { AppState } from '../../app.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sign-in',
@@ -40,6 +41,18 @@ export class SignInComponent implements OnInit {
           (res: any) => { 
             // alert(JSON.stringify(res))
             if(res.code==200){
+              // swal.fire(
+              //   'Good job!',
+              //   'Logged in Successfully!',
+              //   'success'
+              // )  
+              swal.fire({
+                position: 'top-end',
+                type: 'success',
+                title: 'Logged in Successfully!',
+                showConfirmButton: false,
+                timer: 1000
+              })            
             this.EmpireAppState.user_id = res.user_id.toString();
             this.EmpireAppState.mobile_no = res.mobile_no;
             this.router.navigate(['/empire/Address']);
@@ -47,7 +60,12 @@ export class SignInComponent implements OnInit {
             localStorage.setItem("mobile_no", this.EmpireAppState.mobile_no);            
           }
           else{
-            alert("Invalid User Name or Password")
+            // alert("Invalid User Name or Password")
+            swal.fire({
+              type: 'error',
+              title: 'Oops...',
+              text: 'Invalid User Name or Password!',
+            })
           }
           })
       }
