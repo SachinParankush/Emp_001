@@ -26,6 +26,7 @@ export class AppState {
   address_id;
   city_id;
   area_Details;
+  email_id;
 
   get_Address_Data : any;
 
@@ -39,6 +40,7 @@ export class AppState {
     
     this.mobile_no=localStorage.getItem('mobile_no');
     this.user_id=localStorage.getItem('user_id'); 
+    this.email_id=localStorage.getItem('email_id'); 
     this.area_id=localStorage.getItem('area_id'); 
     this.address_id=localStorage.getItem('address_id'); 
     this.city_id=localStorage.getItem('city_id'); 

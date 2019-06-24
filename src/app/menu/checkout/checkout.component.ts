@@ -50,7 +50,7 @@ export class CheckoutComponent implements OnInit {
     "image": "https://livestatic.novopay.in/resources/img/nodeapp/img/Logo_NP.jpg",
     "prefill": {
       "name": "",
-      "email": "",
+      "email": this.empireAppState.email_id,
       "contact": this.empireAppState.mobile_no,
       "method": ""
     },

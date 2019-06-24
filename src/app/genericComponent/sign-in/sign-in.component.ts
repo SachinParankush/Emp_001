@@ -39,13 +39,7 @@ export class SignInComponent implements OnInit {
         }
         this.EmpireApiService.signIn(params).subscribe(
           (res: any) => { 
-            // alert(JSON.stringify(res))
             if(res.code==200){
-              // swal.fire(
-              //   'Good job!',
-              //   'Logged in Successfully!',
-              //   'success'
-              // )  
               swal.fire({
                 position: 'top-end',
                 type: 'success',
@@ -55,9 +49,11 @@ export class SignInComponent implements OnInit {
               })            
             this.EmpireAppState.user_id = res.user_id.toString();
             this.EmpireAppState.mobile_no = res.mobile_no;
+            this.EmpireAppState.email_id = res.email_id;
             this.router.navigate(['/empire/Address']);
             localStorage.setItem("user_id", this.EmpireAppState.user_id);
             localStorage.setItem("mobile_no", this.EmpireAppState.mobile_no);            
+            localStorage.setItem("email_id", this.EmpireAppState.email_id);            
           }
           else{
             // alert("Invalid User Name or Password")
