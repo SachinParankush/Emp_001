@@ -20,3 +20,6 @@ export const GETAREALIST = "http://192.168.0.181:5000/get_area_cities";
 export const ADD_MULTIPLE_ADDRESS = "http://192.168.0.181:5000/add_multiple_addess";
 export const GET_BRANCH_DETAILS = "http://192.168.0.181:5000/get_branhes_on_area_id";
 export const GET_OUTLET_MENU = "http://192.168.0.181:5000/get_outlet_menu";
+export const SAVEORDER = "http://192.168.0.181:5000/save_order";
+export const EDIT_ADDRESS = "http://192.168.0.181:5000/edit_address";
+export const DELETE_ADDRESS = "http://192.168.0.181:5000/delete_address";

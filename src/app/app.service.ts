@@ -27,7 +27,7 @@ export class AppState {
   city_id;
   area_Details;
   email_id;
-
+  outlet_id;
   get_Address_Data : any;
 
   outLetArray: any;
@@ -45,6 +45,7 @@ export class AppState {
     this.address_id=localStorage.getItem('address_id'); 
     this.city_id=localStorage.getItem('city_id'); 
     this.area_Details=localStorage.getItem('area_Details'); 
+    this.outlet_id=localStorage.getItem('outlet_id'); 
     this.checkOutJSON=JSON.parse(localStorage.getItem('checkOutData')); 
 
     if(this.checkOutData.cart_Data.length == 0 && this.checkOutJSON > 0){

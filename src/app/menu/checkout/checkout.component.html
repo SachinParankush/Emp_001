@@ -7,7 +7,7 @@
       </div>
 
       <div class="_2zPJt">
-        <div class="_1IPhI">Change</div>
+        <div class="_1IPhI" routerLink="/empire/Address">Change</div>
         <div class="_2kejs">sss</div>
         <div class="_1QRRt">123, 33rd Main Rd, cc, Mysuru, Karnataka 570012, India</div>
         <div class="_1__JV">33 MINS</div>
@@ -42,7 +42,7 @@
                   <div class="_2QlY5" title="Cash">Cash</div>
                   <div class="_2YDf0 _23V-r">Please keep exact change handy to help us serve you better</div>
                 </div>
-                <div class="_2ZJ0s _2vnDb">Pay ₹{{grand_total}}</div>
+                <div class="_2ZJ0s _2vnDb" (click)="cash_On_Delivery()">Pay ₹{{grand_total}}</div>
               </div>
             </div>
 

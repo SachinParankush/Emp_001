@@ -69,8 +69,10 @@ export class DashboardComponent implements OnInit {
   }
 
   getMenu(data) {
-    alert(data.outlet_fullname);
+    // alert(data.branch_id);
+    this.EmpireAppState.outlet_id = data.branch_id;
     localStorage.setItem("area_Details",data.outlet_fullname)
+    localStorage.setItem("outlet_id",data.branch_id)
     let hashedData = window.btoa(data.branch_id);
     this.router.navigate(['/menuDetails/menu', hashedData]);
   }

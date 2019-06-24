@@ -5,7 +5,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scroll-to';
 import { AppState } from "../../app.service";
 import { Router, ActivatedRoute } from '@angular/router';
-import swal from 'sweetalert2';
 import Swal from 'sweetalert2';
 // import { CookieService } from 'ngx-cookie-service';
 

@@ -19,7 +19,8 @@
             </div>
             <i class="fas fa-user-edit" style="padding-left:35px;" 
             (click)="editAddressDetailes(data)"></i>
-            <i class="fas fa-trash-alt" style="padding-left:25px;"></i>
+            <i class="fas fa-trash-alt" style="padding-left:25px;"
+            (click)="deletAddressData(data)"></i>
           </div>
         </div>
         <div class="-brc1">
@@ -142,7 +143,8 @@
         </form>
         <div class="row">
           <div class="col-md-6">
-            <button class="newAddress" (click)="onSubmit()">Add New Address</button>
+            <button *ngIf="editFlag == false" class="newAddress" (click)="onSubmit()">Add New Address</button>
+            <button *ngIf="editFlag == true" class="newAddress" (click)="updateAddressData()">Update Address</button>
           </div>
           <div class="col-md-6">
             <button class="cancel" (click)="addNewAdrs()">Close</button>

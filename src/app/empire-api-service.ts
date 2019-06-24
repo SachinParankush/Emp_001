@@ -254,6 +254,45 @@ export class empireApiService {
             .map(res => res.json()
             );
     }
+    /* ----------------------------------------------------------------------------------
+    **  Http call to  save_Order_Details  
+    ------------------------------------------------------------------------------------*/
+    save_Order_Details(params): Observable<any> {
+        var url = this.getUrl(config.SERVERTYPE, config.SAVEORDER);
+        console.log("calling save_Order_Details method");
+        return this.http.post(url,
+            JSON.stringify(params),
+            this.options)
+            .map(res => res.json()
+            );
+    }
+
+
+           /* ----------------------------------------------------------------------------------
+    **  Http call to get getEditAddress data 
+    ------------------------------------------------------------------------------------*/
+    getEditAddress(params): Observable<any> {
+        var url = this.getUrl(config.SERVERTYPE, config.EDIT_ADDRESS);
+        console.log("calling getEditAddress method");
+        return this.http.post(url,
+            JSON.stringify(params),
+            this.options)
+            .map(res => res.json()
+            );
+    }
+
+           /* ----------------------------------------------------------------------------------
+    **  Http call to get getDeleteAddress data 
+    ------------------------------------------------------------------------------------*/
+    getDeleteAddress(params): Observable<any> {
+        var url = this.getUrl(config.SERVERTYPE, config.DELETE_ADDRESS);
+        console.log("calling getDeleteAddress method");
+        return this.http.post(url,
+            JSON.stringify(params),
+            this.options)
+            .map(res => res.json()
+            );
+    }
 
 
     // API is get the Apiendpoint url based on the parameter passed handling both Web and Device
