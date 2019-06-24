@@ -67,6 +67,8 @@ export class AddressComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private router: Router, private EmpireAppState: AppState,
     public EmpireApiService: empireApiService) {
+
+    // alert(this.EmpireAppState.user_id)
     this.getAddressList();
     this.getAllAddress();
     // this.location_Details = this.EmpireAppState.get_Address_Data;
@@ -76,8 +78,8 @@ export class AddressComponent implements OnInit {
       area: ['', Validators.required],
       doorNumber: ['', [Validators.required, Validators.maxLength(6)]],
       street: ['', [Validators.required, Validators.maxLength(20)]],
-      landMark: ['', [Validators.required,Validators.maxLength(50)]],
-      fullAddress: ['', [Validators.required,Validators.maxLength(50)]],
+      landMark: ['', [Validators.required, Validators.maxLength(50)]],
+      fullAddress: ['', [Validators.required, Validators.maxLength(50)]],
     });
   }
 
@@ -116,6 +118,10 @@ export class AddressComponent implements OnInit {
   }
 
   selectAddress(data) {
+    alert(JSON.stringify(data));
+    localStorage.setItem("area_id", data.area_id);
+    localStorage.setItem("address_id", data.address_id);
+    localStorage.setItem("city_id", data.city_id);
     let hashedData = window.btoa(data.area_id);
     this.router.navigate(['/empire/Dashboard', hashedData]);
   }
@@ -160,26 +166,28 @@ export class AddressComponent implements OnInit {
       "mobile_no": this.EmpireAppState.mobile_no,
       "user_id": this.EmpireAppState.user_id
     }
-    alert(JSON.stringify(params));
+
     this.EmpireApiService.getAddressData(params).subscribe(
       (res: any) => {
+        // alert(JSON.stringify(res));
         this.location_Details = res;
         console.log("Yooooooooooooo" + JSON.stringify(res));
       })
   }
 
 
-  editAddressDetailes(data){
-    alert(JSON.stringify(data))
+  editAddressDetailes(data) {
     this.flag = true;
-    var addressData={
-     "city": data.city_id,
-     "area":data.area_id,
-     "doorNumber":data.door_no,
-     "street":data.street,
-     "landMark":data.cust_landmark,
-     "fullAddress":data.full_address
+
+    var addressData = {
+      "city": data.city_id,
+      "area": data.area_id,
+      "doorNumber": data.door_no,
+      "street": data.street,
+      "landMark": data.cust_landmark,
+      "fullAddress": data.full_address
     }
+
     this.registerForm.controls['city'].setValue(addressData.city)
     this.registerForm.controls['area'].setValue(addressData.area)
     this.registerForm.controls['doorNumber'].setValue(addressData.doorNumber)
@@ -187,12 +195,30 @@ export class AddressComponent implements OnInit {
     this.registerForm.controls['landMark'].setValue(addressData.landMark)
     this.registerForm.controls['fullAddress'].setValue(addressData.fullAddress)
 
-    // if (this.flag == false) {
-      this.flag = true;
-    // } else {
-    //   this.flag = false;
-    // }
-    
   }
+
+
+  // getEditAddress() {
+  //   var params = {
+  //     user_id:"",
+  //     mobile_no:"",
+  //     address_id:"",
+  //     data = [{
+  //     "city":"",
+  //     "area":"".
+  //     "doorNumber":"",
+  //     "street":"",
+  //     "landMark":"",
+  //     "fullAddress":"",
+  //     }]
+  //   }
+  //   this.EmpireApiService.getEditAddress(params).subscribe(
+  //     (res: any) => {
+  //       alert(JSON.stringify(res));
+  //       this.location_Details = res;
+  //       console.log("Yooooooooooooo" + JSON.stringify(res));
+  //     })
+
+  // }
 
 }

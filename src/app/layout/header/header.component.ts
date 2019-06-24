@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppState } from "../../app.service";
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-header',
@@ -24,7 +23,7 @@ export class HeaderComponent implements OnInit {
   // Constructor
   // -----------------------------------------------------------------------
 
-  constructor(private router: Router,private empireAppState: AppState,private cookie: CookieService) {
+  constructor(private router: Router,private empireAppState: AppState) {
    this.outLetDetails= this.empireAppState.outLetArray;
    this.backUpArray= this.empireAppState.outLetArray;
   }
@@ -54,7 +53,7 @@ export class HeaderComponent implements OnInit {
 
     logout(){
       // alert("logout");
-      this.cookie.deleteAll();
+      // this.cookie.deleteAll();
       this.router.navigate(['/empire/Landing']);
     }
 

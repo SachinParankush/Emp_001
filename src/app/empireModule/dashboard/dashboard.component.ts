@@ -58,7 +58,8 @@ export class DashboardComponent implements OnInit {
   // ]
 
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, public EmpireApiService: empireApiService) {
+  constructor(private router: Router,private EmpireAppState: AppState,private activatedRoute: ActivatedRoute, public EmpireApiService: empireApiService) {
+    alert(this.EmpireAppState.address_id)
     this.address_Details = window.atob(activatedRoute.snapshot.params['id']);
     this.getBarnchDetails(this.address_Details);
     alert(JSON.stringify(this.address_Details));

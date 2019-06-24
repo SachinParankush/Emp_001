@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { IfStmt } from '@angular/compiler';
 
 
 @Injectable()
@@ -20,6 +21,9 @@ export class AppState {
 
   mobile_no;
   user_id;
+  area_id;
+  address_id;
+  city_id;
 
   get_Address_Data : any;
 
@@ -29,8 +33,14 @@ export class AppState {
   // Constructor
   //-----------------------------------------------------------------------------
   constructor() {
-    // localStorage.setItem('brand_name', this.globalLoginData.brand_name);
-    // localStorage.setItem('organisation_name', this.globalLoginData.organisation_name);
+
+    
+    // this.mobile_no=localStorage.getItem('mobile_no');
+    // this.user_id=localStorage.getItem('user_id'); 
+    // this.area_id=localStorage.getItem('area_id'); 
+    // this.address_id=localStorage.getItem('address_id'); 
+    // this.city_id=localStorage.getItem('city_id'); 
+
     // localStorage.setItem('bid', this.globalLoginData.bid);
     // localStorage.setItem('user_id', this.globalLoginData.user_id);
     // localStorage.setItem('no_org', this.globalLoginData.no_org);

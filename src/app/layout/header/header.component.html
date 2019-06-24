@@ -15,12 +15,18 @@ style="margin:0px 0;background-color: #f8f9fa !important;">
       </li>
 
     </ul>
+    <p class="text-center rightPopUpFilter">Basavangudi,
+      <a class="nav-link waves-light" routerLink="/empire/Address" [popover]="popTemplate1" placement="bottom" triggers="focus" mdbWavesEffect
+        style="display:-webkit-inline-box;" >Change Outlet
+               <!-- <i class="fa fa-angle-down" aria-hidden="true" ></i> -->
+      </a>
+    </p>
     <form class="form-inline my-0 my-lg-0 mnuBtns">
-      <a><button class="btn btn-warning btn-xs">FAQ's</button> </a>
+      <!-- <a><button class="btn btn-warning btn-xs">FAQ's</button> </a>
       <a> <i class="material-icons iconsStyle" matBadge="11"  matBadgePosition="above after" matBadgeColor="warn">notification_important </i>
           
-           </a>
-      <a><i class="material-icons iconsStyle" >account_circle</i></a>
+           </a> -->
+      <!-- <a><i class="material-icons iconsStyle" >account_circle</i></a> -->
       <a (click)="logout()"> <i class="material-icons iconsStyle">power_settings_new</i></a>
 
     </form>
