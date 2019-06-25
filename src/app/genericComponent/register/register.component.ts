@@ -69,6 +69,15 @@ export class RegisterComponent implements OnInit {
             this.registerForm.reset();
             console.log(JSON.stringify(res))
           }
+          if (res.code == 201) {
+            swal.fire({
+              type: 'error',
+              title: 'Oops...',
+              text: 'User Already Present!',
+            })
+            this.registerForm.reset();
+            console.log(JSON.stringify(res))
+          }
         });
     }
     else {
