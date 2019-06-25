@@ -163,7 +163,7 @@ export class AddressComponent implements OnInit {
 
   setArea() {
     this.SearchCity = [];
-    if (this.registerForm.value.city == "Bangalore") {
+    if (this.registerForm.value.city == "1") {
       this.SearchCity = this.area1;
     } else {
       this.SearchCity = this.area2;

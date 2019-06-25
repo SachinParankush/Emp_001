@@ -36,15 +36,15 @@ export class RegisterComponent implements OnInit {
     this.getAddressList();
     this.registerForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.maxLength(30)]],
-      mobileNumber: ['', Validators.compose([Validators.required, Validators.maxLength(12), Validators.minLength(10),Validators.pattern('[0-9]+')])],
-      emailId: ['', [Validators.required,Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
+      mobileNumber: ['', Validators.compose([Validators.required, Validators.maxLength(12), Validators.minLength(10), Validators.pattern('[0-9]+')])],
+      emailId: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
       password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
       city: ['', [Validators.required]],
       area: ['', [Validators.required]],
       street: ['', [Validators.required, Validators.maxLength(20)]],
       doorNumber: ['', [Validators.required, Validators.maxLength(6)]],
-      landMark: ['', [Validators.required,Validators.maxLength(50)]],
-      fullAddress: ['', [Validators.required,Validators.maxLength(50)]],
+      landMark: ['', [Validators.required, Validators.maxLength(50)]],
+      fullAddress: ['', [Validators.required, Validators.maxLength(50)]],
     });
   }
 
@@ -58,18 +58,30 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       this.EmpireApiService.register(this.registerForm.value).subscribe(
         (res: any) => {
-          console.log(JSON.stringify(res))
+          if (res.code == 200) {
+            swal.fire({
+              position: 'top-end',
+              type: 'success',
+              title: 'Registration Success!',
+              showConfirmButton: false,
+              timer: 1000
+            })
+            this.registerForm.reset();
+            console.log(JSON.stringify(res))
+          }
         });
     }
     else {
       for (let c in this.registerForm.controls) {
         this.registerForm.controls[c].markAsTouched();
       }
+
       swal.fire({
         type: 'error',
         title: 'Oops...',
         text: 'Please Enter All the Fields!',
       })
+      this.registerForm.reset();
     }
   }
 
