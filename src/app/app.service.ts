@@ -48,7 +48,7 @@ export class AppState {
     this.outlet_id=localStorage.getItem('outlet_id'); 
     this.checkOutJSON=JSON.parse(localStorage.getItem('checkOutData')); 
 
-    if(this.checkOutData.cart_Data.length == 0 && this.checkOutJSON > 0){
+    if (this.checkOutData.cart_Data.length == 0 && this.checkOutJSON > 0) {
     this.checkOutData.itemCount = this.checkOutJSON.itemCount;
     this.checkOutData.itemTotal = this.checkOutJSON.itemTotal;
     this.checkOutData.grandTotal = this.checkOutJSON.grandTotal;
@@ -82,6 +82,27 @@ export class AppState {
 
   clearData(){
     localStorage.clear();
+    this.checkOutData = {    
+      "itemCount": 0,
+      "itemTotal": 0,
+      "grandTotal": 0,
+      "CGST": 0,
+      "SGST":0,
+      "deliveryPrice":0,
+      "cart_Data" : []    
+    }
+    this.checkOutJSON = "";
+
+    this.mobile_no = "";
+    this.user_id = "";
+    this.area_id = "";
+    this.address_id = "";
+    this.city_id = "";
+    this.area_Details = "";
+    this.email_id = "";
+    this.outlet_id = "";
+    this.get_Address_Data = "";
+    this.outLetArray = "";
   }
 
 }
