@@ -9,6 +9,8 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 export class ForgotPasswordComponent implements OnInit {
 
   loginForm: FormGroup;
+  showMainContent: Boolean = true;
+  clicked = false;
 
   constructor(private fb: FormBuilder) {
 
@@ -28,12 +30,15 @@ export class ForgotPasswordComponent implements OnInit {
   get f() { return this.loginForm.controls; }
 
   onSubmit() {
+     this.showMainContent = this.showMainContent ? false : true;
 
     if (this.loginForm.invalid) {
       return;
     }
+    this.showMainContent = this.showMainContent ? false : true;
 
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginForm.value))
   }
 
+  
 }

@@ -81,11 +81,11 @@
           </div>
 
           <div class="form-group">
-            <label>Landmark *</label>
+            <label>Landmark</label>
             <input type="text" formControlName="landMark" class="form-control" />
-            <span class="text-danger"
+            <!-- <span class="text-danger"
             *ngIf="registerForm.controls['landMark'].hasError('required')&&(registerForm.controls['landMark'].dirty || registerForm.controls['landMark'].touched)">This
-            field is required</span>
+            field is required</span> -->
 
             <!-- <div *ngIf="submitted && f.Landmark.errors" class="invalid-feedback">
                 <div *ngIf="f.Landmark.errors.required">Landmark is required</div>
@@ -149,7 +149,7 @@
           <div class="_1dzL9"><span class="fa fa-briefcase"></span>
             <div class="sf8jl">Work</div>
           </div>
-          <div class="_1dzL9" (click)="ShowHideButton()" ><img _ngcontent-c3="" src="../../../assets/img/location-1.PNG">
+          <div class="_1dzL9" (click)="ShowHideButton()" ><span class="fa fa-map-marker"></span>
             <div class="sf8jl" >Other</div>
           </div>
           <div class="_1qe1S">
