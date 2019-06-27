@@ -32,22 +32,43 @@
                                     *ngIf="registerForm.controls['mobileNumber'].errors.minLength">Mobile No must be at least 10 numbers</span> -->
                             </div>
                         </div>
+
+
                     </div>
 
                     <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label>Email Address *</label>
-                                <input type="text" formControlName="emailId" class="form-control" autocomplete="new-password" />
 
-                                <span class="text-danger"
-                                    *ngIf="registerForm.controls['emailId'].hasError('required')&&(registerForm.controls['emailId'].dirty || registerForm.controls['emailId'].touched)">This
-                                    field is required</span>
-
-
-
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>OTP *</label>
+                                    <input type="text" pattern="\d*" formControlName="OTP" maxlength="6"  class="form-control" />
+                                    <span class="text-danger"
+                                        *ngIf="registerForm.controls['OTP'].hasError('required')&&(registerForm.controls['OTP'].dirty || registerForm.controls['OTP'].touched)">This
+                                        field is required</span>
+                                    <!-- <span class="text-danger"
+                                        *ngIf="registerForm.controls['mobileNumber'].errors.minLength">Mobile No must be at least 10 numbers</span> -->
+                                </div>
                             </div>
-                        </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Email Address *</label>
+                                    <input type="text" formControlName="emailId" class="form-control" autocomplete="new-password" />
+    
+                                    <span class="text-danger"
+                                        *ngIf="registerForm.controls['emailId'].hasError('required')&&(registerForm.controls['emailId'].dirty || registerForm.controls['emailId'].touched)">This
+                                        field is required</span>
+                                    </div>
+                                </div>
+    
+                    </div>
+    
+
+                           
+
+    
+
+                        <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Password *</label>
@@ -58,8 +79,6 @@
 
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Door No *</label>
@@ -70,6 +89,10 @@
 
                             </div>
                         </div>
+
+
+                    </div>
+                    <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Street *</label>
@@ -80,16 +103,21 @@
 
                             </div>
                         </div>
+                        <div class="col-sm-6">
+
+                        <div class="form-group">
+                            <label>Landmark </label>
+                            <input type="text" formControlName="landMark" class="form-control" />
+                            <span class="text-danger"
+                                *ngIf="registerForm.controls['landMark'].hasError('required')&&(registerForm.controls['landMark'].dirty || registerForm.controls['landMark'].touched)">This
+                                field is required</span>
+    
+                        </div>
+                        </div>
+    
+
                     </div>
 
-                    <div class="form-group">
-                        <label>Landmark *</label>
-                        <input type="text" formControlName="landMark" class="form-control" />
-                        <span class="text-danger"
-                            *ngIf="registerForm.controls['landMark'].hasError('required')&&(registerForm.controls['landMark'].dirty || registerForm.controls['landMark'].touched)">This
-                            field is required</span>
-
-                    </div>
 
                     <div class="form-group">
                         <label>Full Address *</label>
@@ -133,6 +161,40 @@
                             </div>
                         </div>
                     </div>
+
+                
+                <div class="_2i256" *ngIf="showMainContent">
+                    <div class="_1dzL9"><span class="fa fa-home"></span>
+                        <div class="sf8jl">Home</div>
+                    </div>
+                    <div class="_1dzL9"><span class="fa fa-briefcase"></span>
+                        <div class="sf8jl">Work</div>
+                    </div>
+                    <div class="_1dzL9" (click)="ShowHideButton()"><span class="fa fa-map-marker"></span>
+                        <div class="sf8jl">Other</div>
+                    </div>
+                    <div class="_1qe1S">
+                        <div class="_3Um38 _3vwW5"><input class="_381fS _1oTLG _2VYMY" type="text" name="annotation"
+                                id="annotation" tabindex="1" placeholder="Friends home" maxlength="20" value="">
+                            <div class="_2EeI1 _26LFr"></div><label class="_1Cvlf _2tL9P" for="annotation"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="_2i256" *ngIf="!showMainContent">
+                    <div class="_1dzL9 _2I0ZJ" (click)="ShowHideButton()"><span
+                            class="_3Ey3V icon-markerDark"></span><span class="fa fa-map-marker"></span>
+                        <div class="sf8jl">Other</div>
+                    </div>
+                    <div class="_1qe1S _1I3pI">
+                        <div class="_3Um38 _3vwW5">
+                            <input class="_381fS _1oTLG _2VYMY" type="text" name="annotation" id="annotation"
+                                tabindex="1" placeholder="Dad’s home, my man cave" maxlength="20" value="">
+                            <!-- <div class="_2EeI1 _26LFr"></div><label class="_1Cvlf _2tL9P" for="annotation"></label> -->
+                        </div>
+                        <!-- <div class="_3RRl6">Cancel</div> -->
+                    </div>
+                </div>
+                <br>
                     <div class="row">
                         <div class="col-md-5">
 
