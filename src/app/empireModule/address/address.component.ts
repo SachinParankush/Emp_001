@@ -21,6 +21,7 @@ export class AddressComponent implements OnInit {
   submitted = false;
   flag = false;
   editFlag = false;
+  showMainContent: Boolean = true;
 
   City = [
     {
@@ -50,7 +51,7 @@ export class AddressComponent implements OnInit {
     data: []
   }
 
-  cardDetails 
+  cardDetails
   // = [
   //   {
   //     "HotelName": "Empire",
@@ -188,7 +189,7 @@ export class AddressComponent implements OnInit {
     this.flag = true;
     this.editFlag = true;
     this.paramsEditData.data = [];
-    
+
     var addressData = {
       "city": data.city_id,
       "area": data.area_id,
@@ -204,63 +205,65 @@ export class AddressComponent implements OnInit {
     this.registerForm.controls['landMark'].setValue(addressData.landMark)
     this.registerForm.controls['fullAddress'].setValue(addressData.fullAddress)
     // paramsData = {
-      this.paramsEditData.address_id = data.address_id;  
+    this.paramsEditData.address_id = data.address_id;
     // }
-   
+
 
   }
 
 
- deletAddressData(data){
-  Swal.fire({
-    title: 'Are you sure?',
-    text: "You won't be able to revert this!",
-    type: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes, delete it!'
-  }).then((result) => {
-    if (result.value) {
-      Swal.fire(
-        'Deleted!',
-        'Your Address has been deleted.',
-        'success'
-      )
-    }
-  })
- }
-
-
- updateAddressData(){
-
-   var paramsData = {
-     "city": "",
-     "area": "",
-     "doorNumber": "",
-     "street": "",
-     "landMark": "",
-     "fullAddress": "",
-   }
-
-   paramsData.city = this.registerForm.value.city;
-   paramsData.area = this.registerForm.value.area;
-   paramsData.doorNumber = this.registerForm.value.doorNumber;
-   paramsData.street = this.registerForm.value.street;
-   paramsData.landMark = this.registerForm.value.landMark;
-   paramsData.fullAddress = this.registerForm.value.fullAddress;
-   this.paramsEditData.user_id = this.EmpireAppState.user_id,
-   this.paramsEditData.mobile_no = this.EmpireAppState.mobile_no,
-   
-   this.paramsEditData.data.push(paramsData);
-
-   console.log(JSON.stringify(this.paramsEditData))
-  this.EmpireApiService.getEditAddress(this.paramsEditData).subscribe(
-    (res: any) => {
-      alert(JSON.stringify(res));
-      // this.location_Details = res;
-      // console.log("Yooooooooooooo" + JSON.stringify(res));
+  deletAddressData(data) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          'Deleted!',
+          'Your Address has been deleted.',
+          'success'
+        )
+      }
     })
- }
+  }
 
+
+  updateAddressData() {
+
+    var paramsData = {
+      "city": "",
+      "area": "",
+      "doorNumber": "",
+      "street": "",
+      "landMark": "",
+      "fullAddress": "",
+    }
+
+    paramsData.city = this.registerForm.value.city;
+    paramsData.area = this.registerForm.value.area;
+    paramsData.doorNumber = this.registerForm.value.doorNumber;
+    paramsData.street = this.registerForm.value.street;
+    paramsData.landMark = this.registerForm.value.landMark;
+    paramsData.fullAddress = this.registerForm.value.fullAddress;
+    this.paramsEditData.user_id = this.EmpireAppState.user_id,
+      this.paramsEditData.mobile_no = this.EmpireAppState.mobile_no,
+
+      this.paramsEditData.data.push(paramsData);
+
+    console.log(JSON.stringify(this.paramsEditData))
+    this.EmpireApiService.getEditAddress(this.paramsEditData).subscribe(
+      (res: any) => {
+        alert(JSON.stringify(res));
+        // this.location_Details = res;
+        // console.log("Yooooooooooooo" + JSON.stringify(res));
+      })
+  }
+  ShowHideButton() {
+    this.showMainContent = this.showMainContent ? false : true;
+  }
 }

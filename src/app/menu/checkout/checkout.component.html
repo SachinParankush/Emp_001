@@ -18,7 +18,7 @@
     </div>
 
 
-    <div >
+    <div>
       <div class="_1rwo5 ">
         <div class="F8Sye _1rtRz _2YrH1">Payment</div>
         <div style="display: flex;">
@@ -35,9 +35,10 @@
           <div class="insights-overview-details-content bkcolor">
             <div class="margin_left_15px" *ngIf="cod">
               <div class="_2_G0K">
-                <div class="_1ISkC"><img class="_2tuBw _12_oN" width="140" height="80" alt=""
-                    src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_140,h_80/image-pay-by-cash_av6bcw">
+                <div class="_1ISkC"><img class="_2tuBw _12_oN" alt=""
+                  src="../../../assets/img/checkoutHand.PNG">
                 </div>
+                <br>
                 <div class="_2gp3l _1fMbb">
                   <div class="_2QlY5" title="Cash">Cash</div>
                   <div class="_2YDf0 _23V-r">Please keep exact change handy to help us serve you better</div>
@@ -74,84 +75,84 @@
     </div>
   </div>
 
-    <div class="col-lg-3 col-md-3 col-sm-3 " style="padding-top: 45px;padding-left: 45px;">
-      <div class="container background" *ngIf="cart_Count != 0 ">
-        <div class="_2uq6N">Cart
-           <div class="_1XFmX">{{cart_Count}} Items</div>
-        </div>
-        <div class="ScrollStyle1">
+  <div class="col-lg-3 col-md-3 col-sm-3 " style="padding-top: 45px;padding-left: 45px;">
+    <div class="container background" *ngIf="cart_Count != 0 ">
+      <div class="_2uq6N">Cart
+        <div class="_1XFmX">{{cart_Count}} Items</div>
+      </div>
+      <div class="ScrollStyle1">
         <div class="_1t-Al _1XUXj">
-           <div class="_3YMqW"></div>
-           <div class="_2ObNr _2qOpI">
-              <div >
-                 <div class="_2zsON"></div>
-                 <div class="MGAj1" *ngFor="let subData of cartItems; let ij = index;">
-                    <div class="_2bXOy" *ngIf="subData.addToCart">
-                       <div class="_3SG03">
-                          <div class="_2MJB6"><img src="../../../assets/img/veg.png" class="category_img" />
-                          </div>
-                          <div class="_33KRy">{{subData.dish_name}}</div>
-                       </div>
-                       <div class="_2bWmk">
-                          <div class="_1yTZI">
-                             <div class="_2bWmk">
-                                <div class="_1yTZI">
-                                   <div class="_29ugw">
-                                      <div class="_1ds9T" (click)="addItem(data,subData,i,ij)">+</div>
-                                      <div class="_29Y5Z" (click)="removeItem(data,subData,i,ij)"></div>
-                                      <div class="_2zAXs">{{subData.itemCount}}</div>
-                                   </div>
-                                   <div class="_1mx0r"><span class="_2W2U4">{{subData.item_total_price}}</span>
-                                   </div>
-                                </div>
-                             </div>
-                          </div>
-                       </div>
+          <div class="_3YMqW"></div>
+          <div class="_2ObNr _2qOpI">
+            <div>
+              <div class="_2zsON"></div>
+              <div class="MGAj1" *ngFor="let subData of cartItems; let ij = index;">
+                <div class="_2bXOy" *ngIf="subData.addToCart">
+                  <div class="_3SG03">
+                    <div class="_2MJB6"><img src="../../../assets/img/veg.png" class="category_img" />
                     </div>
-                 </div>
-                 <div class="_3DPdG"></div>
+                    <div class="_33KRy">{{subData.dish_name}}</div>
+                  </div>
+                  <div class="_2bWmk">
+                    <div class="_1yTZI">
+                      <div class="_2bWmk">
+                        <div class="_1yTZI">
+                          <div class="_29ugw">
+                            <div class="_1ds9T" (click)="addItem(data,subData,i,ij)">+</div>
+                            <div class="_29Y5Z" (click)="removeItem(data,subData,i,ij)"></div>
+                            <div class="_2zAXs">{{subData.itemCount}}</div>
+                          </div>
+                          <div class="_1mx0r"><span class="_2W2U4">{{subData.item_total_price}}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-           </div>
-           <div class="_1v28S"></div>
+              <div class="_3DPdG"></div>
+            </div>
+          </div>
+          <div class="_1v28S"></div>
         </div>
         <div class="EEeV3">
-           <div class="_161V3">
-              <div class="_1DWmI">Subtotal</div>
-              <div><span>₹ {{subTotal}}</span></div>
-           </div>
-           <div class="_3PZFF">
-              <div class="_3e0Qi">Bill Details</div>
-              <div class="_3rlIu">
-                 <div class="_2VV4a"><span>Item Total</span></div>
-                 <div class="_1I8bA"><span class="ZH2UW">{{subTotal}}</span></div>
+          <div class="_161V3">
+            <div class="_1DWmI">Subtotal</div>
+            <div><span>₹ {{subTotal}}</span></div>
+          </div>
+          <div class="_3PZFF">
+            <div class="_3e0Qi">Bill Details</div>
+            <div class="_3rlIu">
+              <div class="_2VV4a"><span>Item Total</span></div>
+              <div class="_1I8bA"><span class="ZH2UW">{{subTotal}}</span></div>
+            </div>
+            <div class="_3rlIu">
+              <div class="_2VV4a"><span>CGST</span></div>
+              <div class="_1I8bA"><span class="ZH2UW">{{cgst}}</span></div>
+            </div>
+            <div class="_3rlIu">
+              <div class="_2VV4a"><span>SGST</span></div>
+              <div class="_1I8bA"><span class="ZH2UW">{{sgst}}</span></div>
+            </div>
+            <div class="_1Accg"></div>
+            <div class="_3rlIu">
+              <div class="_2VV4a">Delivery Fee<div class="_3sNvC">
+                </div>
               </div>
-              <div class="_3rlIu">
-                 <div class="_2VV4a"><span>CGST</span></div>
-                 <div class="_1I8bA"><span class="ZH2UW">{{cgst}}</span></div>
-              </div>
-              <div class="_3rlIu">
-                 <div class="_2VV4a"><span>SGST</span></div>
-                 <div class="_1I8bA"><span class="ZH2UW">{{sgst}}</span></div>
-              </div>
-              <div class="_1Accg"></div>
-              <div class="_3rlIu">
-                 <div class="_2VV4a">Delivery Fee<div class="_3sNvC">
-                    </div>
-                 </div>
-                 <div class="_1I8bA"><span class="ZH2UW">{{deliver_Charges}}</span></div>
-              </div>
-           </div>
+              <div class="_1I8bA"><span class="ZH2UW">{{deliver_Charges}}</span></div>
+            </div>
           </div>
         </div>
-           <div class="ZBf6d">
-              <div>TO PAY</div>
-              <div class="_3ZAW1">{{grand_total}}</div>
-           </div>
-        
-     
-     </div>
+      </div>
+      <div class="ZBf6d">
+        <div>TO PAY</div>
+        <div class="_3ZAW1">{{grand_total}}</div>
+      </div>
+
 
     </div>
+
+  </div>
 
 
 </div>

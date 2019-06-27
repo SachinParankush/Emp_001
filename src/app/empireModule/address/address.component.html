@@ -141,6 +141,38 @@
             </div>
           </div>
         </form>
+
+        <div class="_2i256" *ngIf="showMainContent">
+          <div class="_1dzL9"><span class="fa fa-home"></span>
+            <div class="sf8jl">Home</div>
+          </div>
+          <div class="_1dzL9"><span class="fa fa-briefcase"></span>
+            <div class="sf8jl">Work</div>
+          </div>
+          <div class="_1dzL9" (click)="ShowHideButton()" ><img _ngcontent-c3="" src="../../../assets/img/location-1.PNG">
+            <div class="sf8jl" >Other</div>
+          </div>
+          <div class="_1qe1S">
+            <div class="_3Um38 _3vwW5"><input class="_381fS _1oTLG _2VYMY" type="text" name="annotation" id="annotation"
+                tabindex="1" placeholder="Friends home" maxlength="20" value="">
+              <div class="_2EeI1 _26LFr"></div><label class="_1Cvlf _2tL9P" for="annotation"></label>
+            </div>
+          </div>
+        </div>
+        <div class="_2i256" *ngIf="!showMainContent">
+          <div class="_1dzL9 _2I0ZJ"  (click)="ShowHideButton()"><span class="_3Ey3V icon-markerDark"></span>
+            <div class="sf8jl">Other</div>
+          </div>
+          <div class="_1qe1S _1I3pI">
+            <div class="_3Um38 _3vwW5">
+              <input class="_381fS _1oTLG _2VYMY" type="text" name="annotation" id="annotation" tabindex="1"
+                placeholder="Dad’s home, my man cave" maxlength="20" value="">
+              <!-- <div class="_2EeI1 _26LFr"></div><label class="_1Cvlf _2tL9P" for="annotation"></label> -->
+            </div>
+            <!-- <div class="_3RRl6">Cancel</div> -->
+          </div>
+        </div>
+        <br>
         <div class="row">
           <div class="col-md-6">
             <button *ngIf="editFlag == false" class="newAddress" (click)="onSubmit()">Add New Address</button>
