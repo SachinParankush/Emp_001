@@ -57,6 +57,9 @@ export class SignInComponent implements OnInit {
           }
           else{
             // alert("Invalid User Name or Password")
+            for (let c in this.loginForm.controls) {
+              this.loginForm.controls[c].markAsTouched();
+            }
             swal.fire({
               type: 'error',
               title: 'Oops...',

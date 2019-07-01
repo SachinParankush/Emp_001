@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { AppState } from '../../app.service';
 import { empireApiService } from '../../empire-api-service';
 import Swal from 'sweetalert2';
@@ -11,9 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./address.component.scss']
 })
 
-
 export class AddressComponent implements OnInit {
-
 
   title = 'Angular Form';
   angForm: FormGroup;
@@ -51,6 +49,12 @@ export class AddressComponent implements OnInit {
     data: []
   }
 
+  paramsDeleteData = {
+    user_id: this.EmpireAppState.user_id,
+    mobile_no: this.EmpireAppState.mobile_no,
+    address_id: ""
+  }
+
   cardDetails
   // = [
   //   {
@@ -81,7 +85,6 @@ export class AddressComponent implements OnInit {
     this.getAddressList();
     this.getAllAddress();
     this.EmpireAppState.checkOutJSON = "";
-
     this.registerForm = this.formBuilder.group({
       city: ['', [Validators.required]],
       area: ['', Validators.required],
@@ -94,8 +97,6 @@ export class AddressComponent implements OnInit {
 
 
   ngOnInit() {
-
-
   }
 
   onSubmit() {
@@ -107,7 +108,7 @@ export class AddressComponent implements OnInit {
 
     if (this.registerForm.valid) {
       paramsData.data.push(this.registerForm.value)
-      console.log(JSON.stringify(paramsData))
+      // console.log(JSON.stringify(paramsData))
       this.EmpireApiService.saveMultipleAddress(paramsData).subscribe(
         (resp: any) => {
           this.getAllAddress();
@@ -180,7 +181,7 @@ export class AddressComponent implements OnInit {
     this.EmpireApiService.getAddressData(params).subscribe(
       (res: any) => {
         this.location_Details = res;
-        console.log("Yooooooooooooo" + JSON.stringify(res));
+        // console.log("Yooooooooooooo" + JSON.stringify(res));
       })
   }
 
@@ -197,44 +198,59 @@ export class AddressComponent implements OnInit {
       "street": data.street,
       "landMark": data.cust_landmark,
       "fullAddress": data.full_address
+
     }
-    this.registerForm.controls['city'].setValue(addressData.city)
-    this.registerForm.controls['area'].setValue(addressData.area)
-    this.registerForm.controls['doorNumber'].setValue(addressData.doorNumber)
-    this.registerForm.controls['street'].setValue(addressData.street)
-    this.registerForm.controls['landMark'].setValue(addressData.landMark)
-    this.registerForm.controls['fullAddress'].setValue(addressData.fullAddress)
+    this.registerForm.controls["city"].setValue(addressData.city)
+    this.registerForm.controls["area"].setValue(addressData.area)
+    this.registerForm.controls["doorNumber"].setValue(addressData.doorNumber)
+    this.registerForm.controls["street"].setValue(addressData.street)
+    this.registerForm.controls["landMark"].setValue(addressData.landMark)
+    this.registerForm.controls["fullAddress"].setValue(addressData.fullAddress)
     // paramsData = {
     this.paramsEditData.address_id = data.address_id;
-    // }
+    // alert(JSON.stringify(this.paramsEditData));
+    // 
 
 
   }
 
 
   deletAddressData(data) {
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-      if (result.value) {
-        Swal.fire(
-          'Deleted!',
-          'Your Address has been deleted.',
-          'success'
-        )
-      }
-    })
+    this.paramsDeleteData.user_id = this.EmpireAppState.user_id,
+      this.paramsDeleteData.mobile_no = this.EmpireAppState.mobile_no,
+      this.paramsDeleteData.address_id = data.address_id;
+    // console.log(JSON.stringify(this.paramsDeleteData))
+    // alert(JSON.stringify(this.paramsDeleteData))
+    this.EmpireApiService.getDeleteAddress(this.paramsDeleteData).subscribe(
+      (res: any) => {
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.value) {
+            Swal.fire(
+              'Deleted!',
+              'Your Address has been deleted.',
+              'success'
+            )
+          }
+        })
+        // alert(JSON.stringify(res));
+        // this.location_Details = res;
+        // console.log("Yooooooooooooo" + JSON.stringify(res));
+        // window.location.reload();
+        this.getAllAddress();
+        this.registerForm.reset();
+        this.flag = false;
+      })
   }
 
-
   updateAddressData() {
-
     var paramsData = {
       "city": "",
       "area": "",
@@ -252,15 +268,18 @@ export class AddressComponent implements OnInit {
     paramsData.fullAddress = this.registerForm.value.fullAddress;
     this.paramsEditData.user_id = this.EmpireAppState.user_id,
       this.paramsEditData.mobile_no = this.EmpireAppState.mobile_no,
-
       this.paramsEditData.data.push(paramsData);
 
-    console.log(JSON.stringify(this.paramsEditData))
+    // console.log(JSON.stringify(this.paramsEditData))
+    // alert(JSON.stringify(this.paramsEditData))
     this.EmpireApiService.getEditAddress(this.paramsEditData).subscribe(
       (res: any) => {
-        alert(JSON.stringify(res));
+        // alert(JSON.stringify(res));
         // this.location_Details = res;
         // console.log("Yooooooooooooo" + JSON.stringify(res));
+        this.getAllAddress();
+        this.registerForm.reset();
+        this.flag = false;
       })
   }
   ShowHideButton() {

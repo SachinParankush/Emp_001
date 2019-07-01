@@ -9,19 +9,27 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 export class ForgotPasswordComponent implements OnInit {
 
   loginForm: FormGroup;
+  loginFormOTP: FormGroup;
   showMainContent: Boolean = true;
-  clicked = false;
+  value = "send OTP";
 
   constructor(private fb: FormBuilder) {
 
     this.loginForm = this.fb.group({
 
-      mobile_no: ['', [Validators.required,Validators.maxLength(12),Validators.minLength(10),Validators.pattern('[0-9]+')]],
-      password: ['', [Validators.required,Validators.maxLength(15),Validators.minLength(6)]],
-      emailId: ['', [Validators.required,Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
+      mobile_no: ['', [Validators.required, Validators.maxLength(12), Validators.minLength(10), Validators.pattern('[0-9]+')]],
+      // password: ['', [Validators.required, Validators.maxLength(15), Validators.minLength(6)]],
+      emailId: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
 
-      OTP: ['', [Validators.required, Validators.minLength(4),Validators.maxLength(6)]],
+      // OTP: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(6)]],
     });
+
+    this.loginFormOTP = this.fb.group({
+
+      password: ['', [Validators.required, Validators.maxLength(15), Validators.minLength(6)]],
+      OTP: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(6)]],
+    });
+
 
   }
 
@@ -30,15 +38,33 @@ export class ForgotPasswordComponent implements OnInit {
   get f() { return this.loginForm.controls; }
 
   onSubmit() {
-     this.showMainContent = this.showMainContent ? false : true;
-
-    if (this.loginForm.invalid) {
+    
+    if (this.loginForm.valid) {
+      this.showMainContent = this.showMainContent ? false : true;
+      this.loginForm.controls['mobile_no'].disable()
+      this.loginForm.controls['emailId'].disable()
+      this.value = "Resend OTP";
       return;
-    }
-    this.showMainContent = this.showMainContent ? false : true;
-
+    } else {
+      for (let c in this.loginForm.controls) {
+        this.loginForm.controls[c].markAsTouched();
+      }
+  }
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginForm.value))
   }
 
-  
+
+  submit() {
+    
+    if (this.loginForm.valid) {
+      return;
+    } else {
+      for (let c in this.loginFormOTP.controls) {
+        this.loginFormOTP.controls[c].markAsTouched();
+    }
+  }
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginFormOTP.value))
+  }
+
+
 }
